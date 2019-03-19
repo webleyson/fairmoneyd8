@@ -1,0 +1,27 @@
+{#
+/*@file
+*Available variables:
+*@see template_preprocess_block()
+@ingroup themeable
+#}
+
+<div id="blog-item-" class="most-recent-item dotted-bottom col-xs-12" data-id="">
+	<div class="row">
+				{% set output = preg_match_all('/<img.+src=[\'"]([^\'"]+)[\'"].*>/i', fields["body"].content, matches) %}
+		{% set first_img = matches[1][0] %}
+
+		{% if (first_img is not empty) %}
+		
+		<img class="col-xs-3" src="{{ first_img }}"/>
+				{% else %} 
+		
+		
+		<img class="col-xs-3" src="http://www.celfcreative.com/scripts/image/generate.php?width=100&height=100&bg_color=cccccc"/>
+				
+		
+		<h3 class="col-xs-9">
+			<a href="/fairmoney-featured-in-the-sunday-mirror">{{ fields['title'].content }}{% endif %}</a> 
+			<span class="info">{{ fields['created'].content }}</span>
+		</h3>
+	</div>
+</div>

@@ -1,0 +1,8 @@
+{#
+/*@file
+*Available variables:
+*@see template_preprocess_block()
+@ingroup themeable
+#}
+{% set menu_data = menu_tree_all_data('main-menu') %} 
+{{ fairmoney_main_menu({('menu_data' : menu_data, 'attributes' : {('id' : 'navigation') }

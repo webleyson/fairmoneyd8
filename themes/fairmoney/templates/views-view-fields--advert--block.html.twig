@@ -1,0 +1,22 @@
+{#
+/*@file
+*Available variables:
+*@see template_preprocess_block()
+@ingroup themeable
+#}
+
+
+ {% set image = fields['field_advert'].content %}
+ {% set href = strip_tags(fields['field_advert_url'].content) %}
+
+ {% if ( image is defined ) %}
+
+ {% if ( href is defined ) %}
+ {{ '<a href="' ~ href ~ '" target="_blank">' ~ image ~ '</a>' }}
+ {% else %} 
+ {{ image }}
+ {% endif %}
+
+ {% else %} 
+ {{ 'nope' }}
+ {% endif %}

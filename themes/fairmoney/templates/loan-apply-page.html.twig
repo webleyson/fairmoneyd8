@@ -1,0 +1,50 @@
+{#
+/*@file
+*Available variables:
+*@see template_preprocess_block()
+@ingroup themeable
+#}
+<div class="content">
+  {% if (is_form_valid) %} 
+    {% if (action == 'Request') %} 
+      <form id="apply-request-form" action="{{ base_path() }}{% endif %}{% endif %}loans/apply" method="post">
+        <input id="apply-token" name="apply" type="hidden" value="{{ csrf_token }}" />
+        <input id="broker-reference-hidden" name="broker_reference" type="hidden" value="{{ htmlentities(broker_reference) }}" />
+        <input id="lender-option-id-hidden" name="lender_option_id" type="hidden" value="{{ htmlentities(lender_option_id) }}" />
+        <input id="finance-option-id-hidden" name="finance_option_id" type="hidden" value="{{ htmlentities(finance_option_id) }}" />
+        <input id="lender-id-hidden" name="lender_id" type="hidden" value="{{ htmlentities(lender_id) }}" />
+        <input id="lender-name-hidden" name="lender_name" type="hidden" value="{{ htmlentities(lender_name) }}" />
+        <input id="loan-type-hidden" name="loan_type" type="hidden" value="{{ htmlentities(loan_type) }}" />
+        <input id="fulfilling-broker-hidden" name="fulfilling_broker" type="hidden" value="{{ htmlentities(fulfilling_broker) }}" />
+        <input id="fulfilment-apply-prompt-hidden" name="fulfilment_apply_prompt" type="hidden" value="{{ htmlentities(fulfilment_apply_prompt) }}" />
+        <input id="fulfilment-description-hidden" name="fulfilment_description" type="hidden" value="{{ htmlentities(fulfilment_description) }}" />
+        <input name="action" type="hidden" value="Process" />
+      </form>
+      <div id="request-result-loader">
+        <i class="fa-circle-o-notch fa fa-spin"></i>
+        <h3>Applying to lender. Please wait&hellip;</h3>
+        <p>Do not refresh your browser</p>
+      </div>
+    {% elseif ( action == 'Process') %} 
+      {% if (is_error) %} 
+        <h2 class="subtitle">Error</h2>
+        <p>
+          <pre>
+            {{ error_message }}{% endif %}{% endif %} 
+          </pre>
+        </p>
+      {% else %} 
+        <div id="result-container">
+          {% if (redirect_url != '') %} 
+            <script type="text/javascript">
+              window.location.href = '{{ redirect_url }}{% endif %}{% endif %}';
+            </script>
+          {% else %} 
+            <h1 class="subtitle"><strong>Your</strong> Result</h1>
+            <h3>{{ result_message }}{% endif %}</h3>
+          {% endif %} 
+        </div>
+      {% endif %} 
+    {% endif %} 
+  {% endif %} 
+</div>

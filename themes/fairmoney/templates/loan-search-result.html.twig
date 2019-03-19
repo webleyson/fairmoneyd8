@@ -1,0 +1,61 @@
+{#
+/*@file
+*Available variables:
+*@see template_preprocess_block()
+@ingroup themeable
+#}
+
+{% if (is_form_valid and action == 'Search') %} 
+  <div id="result-metadata" style="display: none;">
+    <div data-key="token" data-value="{{ csrf_token }}{% endif %}"></div>
+    <div data-key="broker-reference" data-value="{{ broker_reference }}"></div>
+    <div data-key="status-code" data-value="{{ status_code }}"></div>
+    <div data-key="search-time" data-value="{{ search_time }}"></div>
+  </div>
+  {% if (is_error) %} 
+    <h2 class="subtitle">Error</h2>
+    <p>
+      <pre>
+        {{ error_message }}{% endif %} 
+      </pre>
+    </p>
+  {% else %} 
+    {% if (status_code != 'CA' or count(direct_items) == 0) %} 
+        {% if (_POST['loan_type'] == 'Car Purchase Finance') %} 
+            <h2 class="subtitle">Car loans are only available via <a href="{{ base_path() }}{% endif %}{% endif %}{% endif %}loans/smart-search">Smart Search</a>.</h2>
+        {% else %} 
+            <h2 class="subtitle">No results found matching your criteria.</h2>
+        {% endif %} 
+
+<!--
+      <p>
+        Broker reference: {{ broker_reference }}{% endif %}<br />
+        Comparison status: {{ status_codes[status_code] ~ ' (' ~ status_code ~ ')' }} 
+      </p>
+-->
+    {% elseif (count(direct_items) > 0) %} 
+      <h1 style="margin-bottom: 5px;"><strong>Your</strong> results</h1>
+
+<!--
+      <p>
+        Broker reference: {{ broker_reference }}{% endif %}<br />
+        Comparison status: {{ status_codes[status_code] ~ ' (' ~ status_code ~ ')' }} 
+      </p>
+-->
+
+      {{ theme('loan_search_result_table', {('node' : node, 'broker_reference' : broker_reference, 'lender_logos' : lender_logos, 'start_number' : 1, 'items' : direct_items, 'view_var_loan_type' : view_var_loan_type) }
+    {% endif %} ) }}
+
+    {% if (count(alternative_items) > 0) %} 
+      <h1 id="alt-products">You may also be interested in the following products</h1>
+      {{ theme('loan_search_result_table', {('node' : node, 'broker_reference' : broker_reference, 'lender_logos' : lender_logos, 'start_number' : count(direct_items) + 1, 'items' : alternative_items, 'view_var_loan_type' : view_var_loan_type) }
+    {% endif %} ){% endif %} }}
+
+    {% if (search_time != constant('null')) %} 
+<!--
+      <p>Search time = {{ search_time }}{% endif %}s</p>
+-->
+    {% endif %} 
+
+  {% endif %} 
+{% endif %}

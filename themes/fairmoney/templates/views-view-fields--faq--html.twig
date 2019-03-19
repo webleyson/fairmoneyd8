@@ -1,0 +1,14 @@
+{#
+/*@file
+*Available variables:
+*@see template_preprocess_block()
+@ingroup themeable
+#}
+
+
+<div id="faq-item-{{ fields['nid'].content }}" class="faq-item" data-id="{{ fields['nid'].content }}">
+  <h3 class="faq-question">{{ fields['title'].content }}<i class="fa fa-plus"></i></h3>
+  <div class="faq-answer">
+    {{ fields['body'].content }} 
+  </div>
+</div>

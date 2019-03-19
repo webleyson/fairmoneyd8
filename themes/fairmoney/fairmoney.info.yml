@@ -1,0 +1,12 @@
+name: Fairmoney
+description: Fairmoney theme.
+core: "8.x"
+type: theme
+base theme: classy
+regions: 
+  header: Header
+  footer: Footer
+  content: Content
+  sidebar: Sidebar
+libraries:
+  - fairmoney/global

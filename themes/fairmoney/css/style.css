@@ -1,0 +1,5605 @@
+/* FairMoney Styles */
+/* Media Citizens */
+/* Tom Wilkinson - Evgeny Dalakyan - Alex Webb */
+
+/* Eric Meyer's Reset CSS v2.0 - http://cssreset.com */
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td,article,aside,canvas,details,embed,figure,figcaption,footer,header,hgroup,menu,nav,output,ruby,section,summary,time,mark,audio,video{border:0;font-size:100%;font:inherit;vertical-align:baseline;margin:0;padding:0}article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section{display:block}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:none}table{border-collapse:collapse;border-spacing:0}
+
+/* --------------- Clearfix --------------- */
+
+.cf:before,
+.cf:after {
+  content: " ";
+  display: table;
+}
+
+.cf:after {
+  clear: both;
+}
+
+.cf {
+  *zoom: 1;
+}
+
+a {
+  color: #337ab7;
+  text-decoration: none;
+}
+
+/* --------------- Elements --------------- */
+
+body, html {
+  margin: 0;
+  padding: 0;
+  font-size: 16px; font-size: 100%;
+  height: 100%;
+  -webkit-font-smoothing: antialiased;
+  
+  color: #555;
+  /*min-width: 980px;*/
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* --------------- Layout --------------- */
+
+#page {
+  min-height: 100%;
+  position: relative;
+}
+
+#main-container {
+  padding-top: 95px;
+}
+
+.inner {
+  width: 960px;
+  margin: 0 auto;
+  position: relative;
+  padding: 0 10px;
+}
+
+#footer {
+  box-sizing: border-box;
+  overflow: hidden;
+  width: 100%;
+}
+
+#skip-link {
+  display: none;
+}
+
+/* --------------- Navigation --------------- */
+
+#header {
+  background: #FFF;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  z-index: 9999999;
+  -webkit-box-shadow: 0px 0px 3px 0px rgba(50, 50, 50, 0.75);
+  -moz-box-shadow: 0px 0px 3px 0px rgba(50, 50, 50, 0.75);
+  box-shadow: 0px 0px 3px 0px rgba(50, 50, 50, 0.75);
+  behavior: url(https://fairmoney.com/sites/all/themes/fairmoney/pie/PIE.htc);
+}
+
+#logo-container {
+  width: auto;
+  float: left;
+  margin-right: 0;
+}
+
+.logo {
+  float: left;
+  padding: 10px 0 5px 0;
+  width: 245px;
+  width: 300px; /*TD: 12:22 03/06/2015 */;
+  height: auto;
+}
+
+.strapline {
+  
+  float: left;
+  display: block;
+  font-size: 15px;
+  padding: 0 0 17px 0;
+  margin: 5px 0 0 0;
+  line-height: normal !important
+}
+
+#navigation {
+  float: right;
+  padding: 20px 0;
+  padding: 28px 0; /*TD: 12:24 03/06/2015 */;
+}
+
+.nav-menu-btn {
+  display: none;
+  float: right;
+  padding: 32px 25px;
+}
+
+.nav-menu-btn i {
+  color: #777;
+  font-size: 30px;
+  line-height: 30px;
+}
+
+#navigation li {
+  float: left;
+  margin: 0 10px;
+  position: relative;
+}
+
+#navigation #menu-item-879 {
+  display: none;
+}
+#navigation #menu-item-879 a {
+  width: auto !important;
+  border: 0px none;
+  color: #FFF;
+  padding: 8px 15px;
+  border-radius: 8px;
+  cursor: pointer;
+  background: transparent linear-gradient(to bottom, #7AC92F 0%, #37B34A 100%) repeat scroll 0% 0%;
+}
+#navigation #menu-item-879 a:hover {
+  background: transparent linear-gradient(to bottom, #37B34A 0%, #7AC92F 100%) repeat scroll 0% 0%;
+  text-decoration: none;
+}
+#navigation #menu-item-879 a:active {
+  background: transparent linear-gradient(to bottom, #2F993F 0%, #6BAD29 100%) repeat scroll 0% 0%;
+}
+
+#navigation li.active,
+#navigation li:hover {
+  transition: 0.2s ease-in;
+  border-bottom: 3px solid #8EC3FA;
+}
+
+#navigation li a,
+#navigation li span {
+  text-decoration: none;
+  padding: 10px;
+  display: block;
+  font-size: 15px;
+  color: #555;
+  cursor: pointer;
+}
+
+#navigation li ul {
+  display: none;
+  position: absolute;
+  top: 35px;
+  padding: 12px 15px ;
+  background-color: #8EC3FA;
+  left: -60px;
+  box-shadow: 0px 2px 5px 0 rgba(0,0,0,0.2)
+}
+
+#navigation li:hover > ul {
+/*   display: block; */
+}
+
+#navigation li ul li {
+  width: 165px;
+  margin: 0;
+  border-color: #fff;
+  border-bottom: 1px solid #fff;
+}
+
+#navigation li ul li:nth-last-child(1) {
+  border: none;
+}
+
+#navigation li ul li a {
+  color: #fff;
+  padding: 10px;
+}
+
+#navigation li ul li:hover,
+#navigation li ul li.active {
+  border-bottom-width: 1px;
+  background-color: #fff;
+}
+
+#navigation li ul li:hover a,
+#navigation li ul li.active a {
+  color:#68aff9;
+}
+
+#navigation li ul li:hover ul li a,
+#navigation li ul li.active ul li a {
+  color: #fff !important;
+}
+
+
+#navigation li ul li:hover ul li a:hover,
+#navigation li ul li.active ul li a.active,
+#navigation li ul li:hover ul li a.active {
+  color:#68aff9 !important;
+}
+
+#navigation .level-3 {
+  display: block;
+  position: relative;
+  top: 0;
+  left: 0;
+  padding: 0 2% 0 6%;
+  border-top: 1px solid white;
+  box-shadow: none;
+  width: 92%;
+  overflow: hidden;
+}
+
+/* --------------- Typography --------------- */
+
+/* 1em = 16px; Keep Line-Height/Margin in multiples of multiplier 4px(0.25rem) for vertical rythum; */
+
+h1 {
+  font-size: 40px; font-size: 2.5rem;
+  margin: 0 0 24px 0; margin: 0 0 1.5rem 0;
+  line-height: 48px; line-height: 3rem
+}
+
+h2 {
+  font-size: 32px; font-size: 2rem;
+  margin: 0 0 8px 0; margin: 0 0 0.5rem 0;
+  line-height: 40px; line-height: 2.5rem;
+}
+
+.node-type-default-page h2,
+.node-type-default-page h3 {
+  color:#68aff9
+}
+
+h3 {
+  font-size: 22px;
+  /* font-size: 1.5rem; */
+  margin: 0 0 8px 0;
+  margin: 0 0 0.5rem 0;
+  line-height: 32px;
+  /* line-height: 2rem; */
+}
+
+h4 {
+  font-size: 20px; font-size: 1.25rem;
+  margin: 0 0 8px 0; margin: 0 0 0.5rem 0;
+  line-height: 32px; line-height: 2rem
+}
+
+
+h5 {
+  font-size: 16px; font-size: 1rem;
+  margin: 0 0 8px 0; margin: 0 0 0.5rem 0;
+  line-height: 24px; line-height: 1.5rem
+}
+
+h6 {
+  font-size: 14px; font-size: 0.875rem;
+  margin: 0 0 8px 0; margin: 0 0 0.5rem 0;
+  line-height: 16px; line-height: 1rem
+}
+
+p {
+  font-size: 16px; font-size: 1rem;
+  margin: 0 0 24px 0; margin: 0 0 1.5rem 0;
+  line-height: 32px; line-height: 1.75rem;
+}
+
+strong {
+  font-weight: bold;
+}
+
+
+.content blockquote {
+  font-style: italic;
+  padding: 2px 0;
+  border-style: solid;
+  border-color: #CCC;
+  border-width: 0;
+  padding-left: 20px;
+  padding-right: 8px;
+  border-left-width: 5px;
+  margin: 20px;
+}
+
+.content blockquote p {
+  margin: 0;
+}
+
+small {
+  font-size: 80%;
+}
+
+pre {
+  display: block;
+  background-color: #f0f0f0;
+  padding: 10px;
+  font-family: 'Courier New', Courier, 'Lucida Sans Typewriter', 'Lucida Typewriter', monospace;
+  margin-bottom: 24px; margin-bottom: 1.5rem;
+}
+
+sup {
+  position: relative;
+  top: -0.7em;
+  font-size: 50%;
+  line-height: 0;
+}
+
+.content ul, ol {
+  margin: 0 0 24px 40px; margin: 0 0 1.5rem 2.5rem;
+  list-style-position: outside;
+}
+
+.content ol {
+  list-style: decimal;
+}
+
+.content ul {
+  list-style: disc;
+}
+
+.content ul > li,.content  ol > li {
+  font-size:16px; font-size: 1rem;
+  line-height: 32px; line-height: 1.75rem;
+  margin: 0 0 16px 0; margin: 0 0 1rem 0;
+}
+
+.content ul li ul {
+  margin-top: 1.5rem;
+}
+
+.content a {
+  text-decoration: none;
+  font-weight: bold;
+  text-decoration: none;
+  color: #68aff9
+}
+
+.content a#apply {
+  color: #fff!important;
+}
+
+/* --------------- Forms --------------- */
+
+form {
+  border: 0;
+  width: 100%;
+}
+
+/* --- Submit --- */
+
+
+
+.cta-btn,
+button {
+  background: #8EC3FA;
+  position: relative;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+  color: #FFF;
+  text-decoration: none;
+  padding: 7px 7px;
+  font-size: 17px;
+  margin: 20px 0;
+  display: block;
+  width: 117px;
+  line-height: 20px;
+  text-align: left;
+  behavior: url(https://fairmoney.com/sites/all/themes/fairmoney/pie/PIE.htc);
+}
+
+button {
+  border: 0;
+  text-align: left;
+  font-weight: normal;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.cta-btn i,
+button i {
+  position: absolute;
+  top: 25%;
+  right: 8px;
+  font-size: 19px;
+  line-height: 19px;
+}
+
+.cta-btn-green {
+	background: #7AC92F;
+	padding: 7px 14px;
+}
+
+input[type=submit]:focus {
+  outline: none;
+  box-shadow: 0px 0px 10px rgba(255,255,255,0.5);
+}
+
+/* --- Input --- */
+input[type=text],
+input[type=number],
+input[type=email] {
+  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -ms-box-sizing: border-box;
+  -o-box-sizing: border-box;
+  padding: 10px;
+  font-size:18px; font-size: 1.125rem;
+  line-height:18px; line-height: 1.125rem;
+  color: #666;
+  
+  text-align: left !important;
+  border: 1px solid #ebebeb;
+  width: 100%;
+  -webkit-appearance: none;
+}
+
+input[type=text]:focus,
+input[type=number]:focus,
+input[type=email]:focus,
+button:focus {
+  outline: 0;
+  box-shadow: 0px 0px 10px #f0f0f0;
+/*   font-weight: normal !important */
+}
+
+/* --- Radio --- */
+
+.ui-radio-label span {
+  box-sizing: border-box;
+  width: 20px;
+  height: 20px;
+  padding: 0 !important;
+  border: 4px solid #f6f6f6;
+  border-radius: 5px;
+  behavior: url(https://fairmoney.com/sites/all/themes/fairmoney/pie/PIE.htc);
+}
+
+.ui-radio-label {
+  border-radius: 5px;
+  behavior: url(https://fairmoney.com/sites/all/themes/fairmoney/pie/PIE.htc);
+}
+
+
+
+/* --- Checkbox --- */
+
+/* --- Select Menu --- */
+
+.ui-selectmenu-button,
+input,
+input[type=text]  {
+  border-radius: 3px;
+  behavior: url(https://fairmoney.com/sites/all/themes/fairmoney/pie/PIE.htc);
+}
+
+.ui-selectmenu-text,
+.ui-button {
+  color: #666;
+  font-weight: 300;
+}
+
+.ui-selectmenu-button, .ui-buttonset {
+  margin: 0 0 10px 0;
+  border: 0;
+}
+
+.ui-selectmenu-button .ui-icon {
+  background: url('../images/input-arrow-down.png') no-repeat center center;
+  background-color:#68aff9;
+  width: 46px;
+  top: 0!important;
+  padding: 0;
+  margin: 0!important;
+  right: 0!important;
+  height: 100%;
+}
+
+.ui-selectmenu-open {
+  max-height: 200px;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+.ui-selectmenu-button span.ui-selectmenu-text {
+  font-size: 1.125rem;
+  line-height: 1.125rem;
+  
+
+}
+
+.blue .ui-selectmenu-button .ui-icon {
+  background: url('../images/input-arrow-down-dark.png') no-repeat center center;
+  background-color: #fff;
+  width: 46px;
+  top: 0!important;
+  padding: 0;
+  margin: 0!important;
+  right: 0!important;
+  height: 100%;
+}
+
+.blue .ui-menu-item.ui-state-focus {
+  background: #fff!important;
+  color:#68aff9 !important
+}
+
+.blue input[type=text] {
+  background-color: #f6f6f6 !important
+}
+
+.blue input[readonly="readonly"] {
+  opacity: 0.3
+}
+
+.blue input[readonly="readonly"]:focus {
+  box-shadow: none !important;
+}
+
+/* Webkit scrollbars */
+
+.ui-selectmenu-open::-webkit-scrollbar {
+    -webkit-appearance: none;
+}
+.ui-selectmenu-open::-webkit-scrollbar {
+  width: 15px;
+}
+
+.ui-selectmenu-open::-webkit-scrollbar-track {
+  background-color: #e6e6e6;
+
+}
+
+.ui-selectmenu-open::-webkit-scrollbar-thumb {
+  border-radius: 8px;
+  border: 4px solid #e6e6e6; /* should match background, can't be transparent */
+  background-color: rgba(0, 0, 0, 0.2);
+  behavior: url(https://fairmoney.com/sites/all/themes/fairmoney/pie/PIE.htc);
+}
+
+
+.ui-selectmenu-menu,
+.ui-state-default,
+.ui-dialog {
+  background: #f6f6f6;
+}
+
+.ui-dialog {
+  box-shadow: 0 0 40px 0px rgba(0, 0, 0, 0.4);
+}
+
+.ui-state-hover {
+  background: #ebebeb;
+}
+
+.ui-menu-item.ui-state-focus,
+.ui-state-active {
+  background: #8EC3FA;
+  color: #fff ;
+}
+
+.ui-selectmenu-button {
+  width: 100% !important;
+}
+
+.ui-menu .ui-menu-item {
+  padding: 5px 1em 8px .4em ;
+}
+
+.ui-corner-all {
+  border-radius: 3px;
+  behavior: url(https://fairmoney.com/sites/all/themes/fairmoney/pie/PIE.htc);
+}
+
+.ui-selectmenu-button span.ui-selectmenu-text {
+  padding: 0.7em 2.1em 0.7em 1em;
+}
+
+/* --- Form Validation --- */
+
+input.parsley-success,
+select.parsley-success,
+textarea.parsley-success {
+  /*color: #468847;
+  background-color: #DFF0D8;
+  border: 1px solid #D6E9C6;*/
+}
+
+input.parsley-error,
+select.parsley-error,
+textarea.parsley-error {
+  color: #B94A48;
+  background-color: #F2DEDE;
+  border: 1px solid #EED3D7;
+}
+
+.blue input.parsley-error,
+.blue select.parsley-error,
+.blue textarea.parsley-error {
+    background-color: #F2DEDE !important;
+}
+
+.parsley-errors-list {
+  margin: 10px 0 0 0;
+  padding: 0;
+  list-style-type: none;
+  color: #B94A48;
+  opacity: 0;
+  -moz-opacity: 0;
+  -webkit-opacity: 0;
+
+  transition: all .3s ease-in;
+  -o-transition: all .3s ease-in;
+  -ms-transition: all .3s ease-in;
+  -moz-transition: all .3s ease-in;
+  -webkit-transition: all .3s ease-in;
+}
+
+.parsley-errors-list.filled {
+  opacity: 1;
+}
+
+
+
+/* --------------- Home Page --------------- */
+
+/* --- Top Container --- */
+
+.top-container {
+  background: url('../images/background/bg-1.jpg');
+  width: 100%;
+  height: 1035px;
+  background-position: 50% 50%!important;
+  background-size: cover!important;
+  position: relative;
+  z-index: 1;
+  background-repeat: no-repeat;
+
+/*  -ms-behavior: url(https://fairmoney.com/sites/all/themes/fairmoney/pie/backgroundsize.min.htc);
+  behavior: url(https://fairmoney.com/sites/all/themes/fairmoney/pie/backgroundsize.min.htc);*/
+
+}
+
+/* --- Top Loans Widget --- */
+
+#top-loans-container {
+  width: 320px;
+  float: right;
+  margin: 60px 0 0 0;
+}
+
+#top-loans-container .intro-text {
+  color: #fff;
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+#top-loans-container .intro-text h3 {
+  
+  color: #FFF;
+  font-style: italic;
+  font-weight: bold;
+  margin: 0;
+}
+
+#top-loans-container .intro-text p {
+  line-height: 18px;
+  font-size: 1.25rem;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+#top-loans-container .intro-text p.key-note {
+  margin: 0 0 10px 0;
+  padding: 0;
+  font-size: 18px;
+}
+
+#top-loans-container i {
+  font-size: 20px;
+  color: #fff;
+  margin-left: 10px;
+}
+
+ul.top-loans-list {
+  width: 250px;
+  display: block;
+  margin: 0 auto;
+}
+
+#top-loans-container #small-print-container {
+  position: relative;
+  top: -30px;
+  width: 260px;
+  left: 33px;
+  color: #fff;
+  text-shadow: 1px 1px 0 rgba(0,0,0,0.5);
+}
+
+#top-loans-container #small-print-container span.italic {
+  font-size: 14px;
+  font-style: italic;
+}
+
+.top-loans-list li {
+  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -ms-box-sizing: border-box;
+  -o-box-sizing: border-box;
+  background: #fff;
+  background: rgba(255,255,255,0.9);
+  margin: 0 0 40px 0;
+  width: 100%;
+  float: left;
+  position: relative;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+  padding: 10px 10px 10px 50px;
+  -webkit-box-shadow: 0px 0px 3px 0px rgba(50, 50, 50, 0.75);
+  -moz-box-shadow: 0px 0px 3px 0px rgba(50, 50, 50, 0.75);
+  box-shadow: 0px 0px 3px 0px rgba(50, 50, 50, 0.75);
+  behavior: url(https://fairmoney.com/sites/all/themes/fairmoney/pie/PIE.htc);
+}
+
+.top-loans-list li .list-title {
+  font-size: 16px; font-size: 1rem;
+  line-height: 16px; line-height: 1rem;
+  text-align: center;
+  color: #777;
+  padding-bottom: 0.25rem;
+}
+
+.top-loans-list li .list-info {
+  font-size: 20px; font-size: 1.25rem;
+  line-height: 20px; line-height: 1.25rem;
+  text-align: center;
+  color: #333;
+}
+
+.top-loans-list .badge-title {
+  -webkit-border-top-left-radius: 5px;
+  -webkit-border-top-right-radius: 5px;
+  -moz-border-radius-topleft: 5px;
+  -moz-border-radius-topright: 5px;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  behavior: url(https://fairmoney.com/sites/all/themes/fairmoney/pie/PIE.htc);
+}
+
+/*
+#payday-container {
+  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -ms-box-sizing: border-box;
+  -o-box-sizing: border-box;
+  background: #fff;
+  background: rgba(142, 195, 250,1);
+  margin: 0 auto 40px auto;
+  width: 250px;
+  display: block;
+  position: relative;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+  padding: 20px;
+  -webkit-box-shadow: 0px 0px 3px 0px rgba(50, 50, 50, 0.75);
+  -moz-box-shadow: 0px 0px 3px 0px rgba(50, 50, 50, 0.75);
+  box-shadow: 0px 0px 3px 0px rgba(50, 50, 50, 0.75);
+  behavior: url(https://fairmoney.com/sites/all/themes/fairmoney/pie/PIE.htc);
+}
+
+#payday-container a {
+  color: #fff;
+  text-decoration: none;
+  font-size: 18px;
+}
+*/
+
+#payday-btn:visited,
+#payday-btn:active,
+#payday-btn {
+  font-size: 14px;
+  color: #fff;
+  text-decoration: none;
+  font-style: italic;
+  text-shadow: 1px 1px 0 rgba(0,0,0,0.5);
+}
+
+.badge-title {
+  color: #FFF;
+  padding: 5px 10px;
+  font-size: 15px;
+  position: absolute;
+  top: -30px;
+  right: 10px;
+  text-shadow: 1px 1px 0 rgba(0,0,0,0.5);
+}
+
+.badge-title.gold,
+.gold .badge-title {
+  background: #EFD558;
+}
+
+.badge-title.silver,
+.silver .badge-title {
+  background: #A3A3A3;
+}
+
+.badge-title.bronze,
+.bronze .badge-title {
+  background: #D29474;
+}
+
+.badge-icon {
+  background: url('../images/badges.png');
+  height: 82px;
+  width: 68px;
+  position: absolute;
+  top: -28px;
+  left: -34px;
+}
+
+.badge-icon.silver,
+.silver .badge-icon {
+  background-position: -70px 0;
+}
+
+.badge-icon.bronze,
+.bronze .badge-icon {
+  background-position: -143px 0;
+}
+
+.top-loans-list table {
+  float: left;
+  width: 90%;
+  font-size: 18px;
+}
+
+/* --- Sales Pitch Widget --- */
+
+#pitch-container {
+  width: 400px;
+  float: left;
+}
+
+.pitch-title {
+  color: #FFF;
+  font-size: 45px;
+  margin: 60px 0 25px 0;
+  font-style: italic;
+  font-weight: bold;
+  letter-spacing: -1px;
+  text-shadow: 1px 1px 5px rgba(0,0,0,0.1);
+}
+
+.pitch-list {
+  width: 470px;
+  float: left;
+}
+
+.pitch-list li {
+  font-size: 28px;
+  margin: 0 0 10px 0;
+  color: #FFF;
+  font-weight: bold;
+  letter-spacing: -0.5px;
+  text-shadow: 1px 1px 5px rgba(0,0,0,0.1);
+}
+
+.pitch-list li img.homepage-bullet {
+  width: 40px;
+  position: relative;
+  top: 10px;
+  margin-right: 10px;
+}
+
+h2.pitch-footer {
+  
+  font-weight: bold;
+  font-style: italic;
+  font-size: 38px;
+  line-height: 40px;
+  /* font-size: 2.6rem; */
+  margin: 50px 0 150px 0;
+  width: 380px;
+  float: left;
+  text-align: center;
+  color: #FFF;
+  text-shadow: 0px 5px 6px rgba(0, 0, 0, 0.3);
+}
+
+.arrow-down {
+  position: absolute;
+  top: 475px;
+  left: 165px;
+}
+
+/* --- Rollovers --- */
+
+i.fa-question-circle {
+  cursor: pointer;
+}
+
+.tooltip {
+  width: 300px;
+  height: auto;
+  padding: 20px 25px;
+  
+  color: #555;
+  background: #fff;
+  border-radius: 6px;
+  -webkit-box-shadow: 2px 2px 2px rgba(50, 50, 50, 0.3);
+  -moz-box-shadow: 2px 2px 2px rgba(50, 50, 50, 0.3);
+  box-shadow: 2px 2px 2px rgba(50, 50, 50, 0.3);
+  position: absolute;
+  z-index: 99999999;
+  behavior: url(https://fairmoney.com/sites/all/themes/fairmoney/pie/PIE.htc);
+}
+
+.tooltip p,
+.tooltip li {
+  font-size: 16px; font-size: 0.875rem !important;
+  line-height: 22px; line-height: 1.25rem !important;
+  margin: 0;
+}
+
+#staging .tooltip p{
+  font-size: 22px; font-size: 0.7em !important;
+  line-height: 30px; line-height: 1.3em !important;
+  margin: 0;
+}
+
+#staging .tooltip li {
+  font-size: 22px; font-size: 0.7em !important;
+  line-height: 30px; line-height: 1.3em !important;
+  margin: 0;
+}
+
+.tooltip h4 {
+  
+  font-weight: bold;
+  color: #666;
+}
+
+.tooltip .small-badge {
+  position: absolute;
+  left: -20px;
+  top: -20px
+}
+
+.page-loans .tooltip {
+  background-color: #8EC3FA;
+  background-color: rgba(142, 195, 250, 0.95);
+  color: #fff;
+  width: 500px;
+}
+
+.page-loans .tooltip h4 {
+  color: #fff;
+}
+
+.page-loans .form-section.blue .tooltip {
+  background-color: #FFF;
+  color: #333;
+  width: 500px;
+}
+
+.page-loans .form-section.blue .tooltip h4 {
+  color: #333
+}
+
+#tooltip-gold-hover h4,
+#tooltip-silver-hover h4,
+#tooltip-bronze-hover h4{
+  margin-left: 10px;
+}
+
+#tooltip-unsure-profile-hover i,
+#tooltip-credit-score-hover i {
+  display: inline-block;
+  font-size: 25px;
+}
+
+#tooltip-unsure-profile-hover i {
+  color:#68aff9;
+}
+
+#tooltip-credit-score-hover i {
+  color: #aaa;
+}
+
+#more-info-credit-score-hover {
+  margin-left: 10px;
+  display: inline-block;
+  font-size: 20px;
+  color: #aaa;
+  position: relative;
+}
+
+.advert-container {
+  width: 269px;
+  height: 269px;
+}
+
+.advert-container img {
+  width: 100%;
+  height: auto;
+}
+
+/* --- Footer --- */
+
+#footer {
+  background: #f5f5f5;
+  padding: 10px 0;
+}
+
+#footer .disclaimer {
+  float: left;
+  width: 71%;
+  margin: 0 0 0 4%;
+}
+
+#footer .disclaimer p {
+  margin-bottom: 5px; /*TD: 11:37 03/06/2015;*/
+}
+
+#footer .copyright {
+  float: left;
+  width: 71%;
+  margin: 2% 4%;
+  margin-top: 10px; /*TD: 11:36 03/06/2015;*/
+  margin-bottom: 10px; /*TD: 11:36 03/06/2015;*/
+}
+
+#footer .footer-logos {
+  float: left;
+  width: 70%;
+  margin: 0 0 0 4%;
+}
+
+#footer .footer-logos a {
+  width: 150px;
+  display: block;
+  float: left;
+  margin: 0 30px 0 0;
+}
+
+#footer  a.fair-money-lender  {
+  float: right;
+  text-align: left;
+  color: #555;
+  font-weight: normal;
+  width: 100%;
+}
+
+#footer .footer-logos a.pancredit {
+
+}
+
+#footer .footer-logos a.equiniti {
+  padding-top: 14px;
+}
+
+#footer .footer-logos a.ccta {
+  padding-top: 28px;
+}
+
+#footer .footer-logos img {
+  width: 100%;
+  height: auto;
+}
+
+#footer p, #footer a {
+  line-height:20px; line-height: 1.25rem;
+  font-size: 14px; font-size: 0.875rem;
+  font-size: 12px; font-size: 0.75rem; /*TD: 11:53 03/06/2015;*/
+  line-height: 1.0rem; /*TD: 11:39 03/06/2015;*/
+
+}
+
+#footer .disclaimer p {
+  margin-bottom: 5px; /*TD: 11:37 03/06/2015;*/
+}
+
+#footer .links {
+  float: right;
+  width: 160px;
+}
+
+#footer .links ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  display: block;
+  float: right;
+  margin: 10px 0 0 0;
+  text-align: left;
+}
+
+#footer .links ul li {
+  text-align: left;
+  margin-bottom: 0;
+  line-height: 20px;
+  line-height: 1.25rem;
+  font-size: 14px;
+  font-size: 0.875rem;
+}
+
+#footer .links ul li a {
+  font-weight: normal;
+/*   color: #777; */
+}
+
+/* --- Selection Container --- */
+
+#selection-container {
+  float: left;
+  width: 100%;
+  margin-top: 25px;
+}
+
+.selection-box {
+  width: 315px;
+  height: 200px;
+  background: #fff;
+  background: rgba(255,255,255,0.9);
+  position: relative;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+  -webkit-box-shadow: 0px 0px 3px 0px rgba(50, 50, 50, 0.75);
+  -moz-box-shadow: 0px 0px 3px 0px rgba(50, 50, 50, 0.75);
+  box-shadow: 0px 0px 3px 0px rgba(50, 50, 50, 0.75);
+  padding: 12px 35px 28px 35px;
+  behavior: url(https://fairmoney.com/sites/all/themes/fairmoney/pie/PIE.htc);
+}
+
+.selection-box h1 {
+  text-align: center;
+}
+
+#selection-a {
+  float: left;
+}
+
+#selection-b {
+  float: right;
+}
+
+#under-selection-a {
+	color: #FFF;
+	left: 0;
+	position: absolute;
+	width: 385px;
+	bottom: -88px;
+	font-size: 18px;
+	line-height: 18px;
+	text-shadow: 1px 1px 0 rgba(0,0,0,0.5);
+}
+
+.information-container-info a {
+  float: right;
+  margin: 0;
+}
+
+.selection-box .selection-icon-conatiner {
+  background: #FFF;
+  border-radius: 50%;
+  position: absolute;
+  top: -40px;
+  left: -40px;
+  width: 90px;
+  height: 90px;
+  -webkit-box-shadow: 2px 2px 2px rgba(50, 50, 50, 0.3);
+  -moz-box-shadow: 2px 2px 2px rgba(50, 50, 50, 0.3);
+  box-shadow: 2px 2px 2px rgba(50, 50, 50, 0.3);
+  behavior: url(https://fairmoney.com/sites/all/themes/fairmoney/pie/PIE.htc);
+}
+
+.selection-box .selection-icon-conatiner .selection-icon {
+  display: block;
+  
+  font-weight: bold;
+  font-style: italic;
+  font-size: 42px;
+  color: #68aff9;
+  width: 34px;
+  text-align: center;
+  margin: 44px auto 0;
+  position: relative;
+  line-height: 0px;
+}
+
+.selection-box h1 {
+  font-size: 30px;
+  margin: 0 0 10px 0;
+  line-height: 33px;
+}
+
+.selection-box p {
+    font-size: 16px; font-size: 1rem;
+    margin-top:24px; margin-top: 1.6rem;
+    line-height: 16px; line-height: 1rem;
+}
+
+#profile-select-list li {
+  width: 31%;
+  float: left;
+  margin: 0 1%;
+  position: relative;
+}
+
+#profile-select-list .badge-title {
+  position: inherit;
+  margin: 5px auto 2px auto;
+  padding: 5px;
+  display: block;
+  top: inherit;
+  right: inherit;
+  text-align: center;
+  width: 85px;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+  font-size: 15px;
+  behavior: url(https://fairmoney.com/sites/all/themes/fairmoney/pie/PIE.htc);
+  text-shadow: 1px 1px 0 rgba(0,0,0,0.5);
+}
+
+.badge-title.gold {
+  background: #EFD558;
+}
+
+.badge-title.silver {
+  background: #A3A3A3;
+}
+
+.badge-title.bronze {
+  background: #D29474;
+}
+
+#profile-select-list .badge-icon {
+  position: inherit;
+  margin: 11px auto;
+  display: block;
+  top: inherit;
+  left: inherit;
+}
+
+#profile-select-list .choose {
+  width: 84px;
+  margin: 8px auto 0;
+  text-align: left;
+}
+
+#profile-select-list .fa-question-circle {
+  position: absolute;
+  top: 83px;
+  right: 0;
+  color: #aaa;
+}
+
+#selection-b .fa-question-circle {
+  color: #aaa;
+  margin-left: 5px;
+  font-size:20px; font-size: 1.25rem;
+}
+
+.or-text {
+    position: absolute;
+    text-transform: uppercase;
+    
+    font-weight: bold;
+    top: 710px;
+    left: 471px;
+    color: #FFF;
+    font-size: 30px;
+    text-shadow: 1px 1px 5px rgba(0,0,0,0.5);
+}
+
+.arrow-right {
+  position: absolute;
+  top: 750px;
+  left: 437px;
+}
+
+.next-section {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  margin: 0 0 0 -55px;
+}
+/* --- Profile Search --- */
+
+#quick-search-container {
+  width: 100%;
+  float: left;
+}
+
+#quick-search-container .inner {
+  padding: 0;
+}
+
+#quick-search-container #quick-search-controls {
+  margin-right: 4%;
+}
+
+#quick-search-container .quick-search-info,
+#quick-search-container #quick-search-controls {
+  width: 48%;
+  float: left;
+  margin-top: 30px
+}
+
+#quick-search-container .quick-search-header h2 {
+  
+  font-weight: bold;
+  font-style: italic;
+  font-size: 48px; font-size: 3rem;
+  line-height:48px; line-height: 3rem;
+  margin: 0;
+  display: inline-block;
+  color: #777
+}
+
+.quick-search-header .badge-icon {
+  display: inline-block;
+  position: relative;
+  margin-left: 15px;
+  top: 20px;
+  left: 0;
+}
+
+.quick-search-header .badge-title {
+  position: relative;
+  margin: 0 32px;
+  padding: 10px 15px;
+  display: inline-block;
+  top: -10px;
+  right: inherit;
+  text-align: center;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+  font-size: 20px;
+  behavior: url(https://fairmoney.com/sites/all/themes/fairmoney/pie/PIE.htc);
+}
+
+#quick-search-controls h3 {
+  
+}
+
+#quick-search-controls label {
+  display: block;
+  margin: 1rem 0;
+}
+
+#quick-search-container input[type=text] {
+  width: 75%;
+}
+
+#quick-search-container .ui-selectmenu-button {
+  max-width: 75%;
+}
+
+
+#quick-search-container .quick-search-info .profile-explanation {
+  background-color: #e9e9e9;
+  padding: 20px;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -o-border-radius: 5px;
+  border-radius: 5px;
+  behavior: url(https://fairmoney.com/sites/all/themes/fairmoney/pie/PIE.htc);
+}
+
+#quick-search-container .quick-search-info .profile-explanation p {
+  font-size: 16px; font-size: 1rem;
+  line-height:24px; line-height: 1.5rem;
+  margin: 0;
+}
+
+#quick-search-container .quick-search-info .profile-explanation li {
+  font-size: 16px; font-size: 1rem;
+  line-height:24px; line-height: 1.5rem;
+  margin: 0;
+}
+
+#quick-search-container .quick-search-info .profile-explanation ul {
+  margin-top: 16px;
+}
+
+#quick-search-container .switch-profiles h4{
+  margin-top: 15px;
+  
+  font-weight: bold;
+}
+
+#quick-search-container .switch-profiles #gold-explanation,
+#quick-search-container .switch-profiles #silver-explanation,
+#quick-search-container .switch-profiles #bronze-explanation {
+  display: none;
+}
+
+/* --------------- Apply Directly --------------- */
+
+#request-result-loader {
+  margin: 100px 0;
+  text-align: center;
+}
+
+#request-result-loader i {
+  font-size: 48px; font-size: 3rem;
+  margin-bottom: 30px;
+  color:#68aff9;
+
+}
+
+#request-result-loader h3 {
+  text-align: center;
+}
+
+#result-container {
+  margin: 100px 0;
+}
+
+#result-container h1 {
+/*   color:#68aff9; */
+}
+
+#result-container p, #result-container h3 {
+  display: inline;
+}
+
+/* --------------- Loan Page --------------- */
+
+#control-container {
+  background: #DDDDDD;
+}
+
+#form-container .content {
+  padding-bottom: 0;
+}
+
+#form-container {
+  position: relative;
+}
+
+/* Profile selectors */
+.profile-selector {
+  float: left;
+  margin: 0 2% 1.25% 0;
+  width: auto;
+  display: block;
+}
+
+.profile-selector .ui-button-text {
+  padding: .4em 1em .4em 2.8em;
+}
+/*
+.profile-selector:nth-child(5) {
+margin-right: 0;
+}*/
+
+.profile-selector label {
+  box-sizing: border-box;
+  float: right;
+  width: auto;
+  display: block;
+  margin-top: 3px;
+  padding: 6px 5px;
+  border-radius: 3px;
+  behavior: url(https://fairmoney.com/sites/all/themes/fairmoney/pie/PIE.htc);
+}
+
+.profile-selector .profile-type {
+  font-size: 16px;
+  font-size: 1rem;
+  line-height: 28px;
+  line-height: 1.75rem;
+  float: left;
+  display: inline;
+  margin: 0 8px 0 0;
+  padding-left: 30px;
+
+}
+
+.profile-selector label[for='lender-status-radio-1']:before {
+    background: url('../images/gold-small.png') no-repeat;
+}
+
+.profile-selector label[for='lender-status-radio-2']:before {
+    background: url('../images/silver-small.png') no-repeat;
+}
+
+.profile-selector label[for='lender-status-radio-3']:before {
+    background: url('../images/bronze-small.png') no-repeat;
+}
+
+.profile-selector label[for='lender-status-radio-1']:before,
+.profile-selector label[for='lender-status-radio-2']:before,
+.profile-selector label[for='lender-status-radio-3']:before {
+  content: '';
+  background-size: contain;
+  display: block;
+  position: absolute;
+  width: 30px;
+  height: 40px;
+  left: 10px;
+  top: 3px;
+  -ms-behavior: url(https://fairmoney.com/sites/all/themes/fairmoney/pie/backgroundsize.min.htc);
+  behavior: url(https://fairmoney.com/sites/all/themes/fairmoney/pie/backgroundsize.min.htc);
+}
+
+.profile-selector label[for='lender-status-radio-0'] .ui-button-text {
+  padding: .4em 1em .4em 1em;
+}
+
+#control-container .ui-state-default {
+  background: #FFF;
+  margin-right: -0.3em;
+  border-radius: 3px;
+  behavior: url(https://fairmoney.com/sites/all/themes/fairmoney/pie/PIE.htc);
+}
+
+#control-container .ui-state-default:hover {
+  background: #8EC3FA;
+  color: #FFF;
+}
+
+#form-container #filter-container .ui-state-default {
+  margin: 0 0 4px 0;
+}
+
+#form-container .ui-state-active {
+  background: #8EC3FA;
+  color: #FFF;
+}
+
+#filter-container .checkboxes label:nth-child(2) {
+  width: 23%
+}
+
+#filter-container .checkboxes label {
+  height: 47px;
+}
+
+/*.profile-selector:nth-child(1) .profile-type {
+  padding: 0;
+}*/
+
+/*.profile-selector label[for='lender-status-radio-1']:before{
+  content: '';
+  background: url('../images/gold-small.png') no-repeat;
+  background-size: contain;
+  display: block;
+  position: absolute;
+  width: 40px;
+  height: 50px;
+  left: -140px;
+  top: -7px;
+}
+
+.profile-selector label[for='lender-status-radio-2']:before {
+  content: '';1
+  display: block;
+  background: url('../images/silver-small.png') no-repeat;
+  background-size: contain;
+  position: absolute;
+  width: 40px;
+  height: 50px;
+  left: -127px;
+  top: -8px;
+}
+
+.profile-selector label[for='lender-status-radio-3']:before {
+  content: '';
+  display: block;
+  background: url('../images/bronze-small.png') no-repeat;
+  background-size: contain;
+  position: absolute;
+  width: 40px;
+  height: 50px;
+  left: -165px;
+  top: -8px;
+}*/
+
+.profile-selectors  {
+  width: 57%;
+  float: left;
+/*   margin-right: 4%; */
+  margin-bottom: 1%;
+}
+
+/* --- Controls --- */
+
+.ui-widget-overlay {
+  overflow: hidden;
+}
+
+.control-group {
+  position: relative;
+  box-sizing: border-box;
+  padding: 15px 0 8px 0;
+  border-top: 1px solid #8EC3FA;
+  margin-bottom: 5px;
+  float: left;
+  width: 100%;
+}
+
+.control-group h3 {
+position: absolute;
+top: -27px;
+z-index: 99;
+background-color: #DDD;
+padding: 3px 0 0 0;
+margin: 8px 0 0 10px;
+line-height: 27px;
+font-size: 20px;
+}
+
+#loan-container {
+  width: 100%;
+  float: left;
+}
+
+#loan-container .ui-button-text-only .ui-button-text {
+  padding: 0.7em 1em;
+}
+
+#loan-container #term-container,
+#loan-container #amend-container {
+  margin-right: 1.5%;
+  width: 19%;
+}
+
+/*
+#loan-container #amend-container {
+	cursor: pointer;
+	width: 100%;
+	margin: 0;
+	height: 40px;
+	border-radius: 3px;
+}
+*/
+#term-container span {
+	max-width: 127px;
+}
+
+#term-container span.ui-selectmenu-button span.ui-selectmenu-text {
+padding: 0.7em 2.1em 0.7em 0.6em;
+}
+
+#loan-container #amount-container {
+  margin-right: 1%;
+  width: 19%;
+}
+
+#loan-container #loan-type-container {
+  /*width: 38%;*/
+  width: 31%;
+}
+
+#loan-container div {
+  float: left;
+  width: 20%;
+}
+
+#loan-container div#submit-container {
+    float: right;
+    width: 28%;
+}
+
+#loan-container button {
+  width: 100%;
+  text-align: left;
+  position: relative;
+  border-radius: 3px;
+  padding: 9px 0px 10px 10px;
+  margin: 0;
+  cursor: pointer;
+  behavior: url(https://fairmoney.com/sites/all/themes/fairmoney/pie/PIE.htc);
+}
+
+
+#loan-type-container span.ui-selectmenu-button {
+	/*width: 70% !important;*/
+  width: 61% !important;
+	margin-left: 3%;
+}
+
+#submit-btn {
+  clear:both
+}
+
+#filter-container {
+  width: 100%;
+  float: left;
+  font-size: 0.875rem;
+}
+
+#loan-container #submit-container input[type=submit] {
+  width: 100%;
+  height: 40px;
+  border: 0;
+  background-color: #8EC3FA;
+  padding: 0;
+  font-size: 16px; font-size: 1rem;
+  line-height: 16px; line-height: 1rem;
+  
+  color: #fff;
+  position: relative;
+  -webkit-appearance: none;
+  border-radius: 3px;
+  cursor: pointer;
+  behavior: url(https://fairmoney.com/sites/all/themes/fairmoney/pie/PIE.htc);
+  /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#7ac92f+0,37b34a+100 */
+  background: #7ac92f; /* Old browsers */
+  background: -moz-linear-gradient(top, #7ac92f 0%, #37b34a 100%); /* FF3.6+ */
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#7ac92f), color-stop(100%,#37b34a)); /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(top, #7ac92f 0%,#37b34a 100%); /* Chrome10+,Safari5.1+ */
+  background: -o-linear-gradient(top, #7ac92f 0%,#37b34a 100%); /* Opera 11.10+ */
+  background: -ms-linear-gradient(top, #7ac92f 0%,#37b34a 100%); /* IE10+ */
+  background: linear-gradient(to bottom, #7ac92f 0%,#37b34a 100%); /* W3C */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#7ac92f', endColorstr='#37b34a',GradientType=0 ); /* IE6-9 */
+}
+
+
+
+/*#loan-container #amount-container label,
+#loan-container #term-container label,
+#loan-type-container label.loan-type,
+#profile-container label.loan-type {
+  width: 100%;
+  float: left;
+  line-height: 1.4;
+  font-size: 1rem;
+  margin-bottom: 3px;
+}*/
+
+/*#loan-type-container label {
+  width: auto;
+  font-size: 14px;
+  padding: 0;
+}
+
+#loan-type-container label {
+  margin-bottom: 0;
+}*/
+
+#loan-container input[type=text],
+#loan-container .ui-selectmenu-text {
+  font-size: 16px; font-size: 1rem;
+  margin: 0;
+}
+
+#loan-container #term-container .ui-selectmenu-button {
+  width: 100% !important;
+  float: left;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+  behavior: url(https://fairmoney.com/sites/all/themes/fairmoney/pie/PIE.htc);
+  overflow: hidden
+}
+
+/*#loan-container #loan-type-container .radios label span{
+  height: 40;
+  line-height: 40px;
+  padding: 0 0.9em;
+  margin: 0;
+}*/
+
+input[type=text]
+
+#filter-container span {
+  font-size:14px; font-size:0.875rem;
+}
+
+#filter-container .ui-button-text-only .ui-button-text {
+  padding: .4rem 1rem;
+}
+
+#filter-container label[for=loan-attribute-checkbox-1] .ui-button-text,
+#filter-container label[for=loan-attribute-checkbox-2] .ui-button-text,
+#filter-container label[for=loan-attribute-checkbox-3] .ui-button-text,
+#filter-container label[for=loan-attribute-checkbox-4] .ui-button-text {
+  padding: 0.9rem 1rem;
+}
+
+.content-area ul.parsley-errors-list {
+  margin: 0;
+}
+
+#result-loader {
+  background: url('../images/ajax-loader.gif') center bottom no-repeat;
+  width: 100%;
+  height: 60px;
+  margin: 50px 0;
+}
+
+.control-group label.label-title {
+  display: block;
+  font-size: 1rem;
+  margin-bottom: 10px;
+}
+
+#term-container .label-title {
+  float: left;
+  width: 47px;
+  margin-right: 8px;
+  margin-top: 2px;
+}
+
+#term-container #loan-period-text,
+#term-container #loan-period-alt-text {
+  float: left;
+  width: 61px;
+  margin-left: 19px !important;
+  background: #FFF;
+}
+
+#amount-container .prepend-input input {
+  padding-left: 1.5rem;
+}
+
+#amount-container .prepend-input .prepend-content {
+  padding-left: 0.5rem;
+}
+
+#amount-container .label-title{
+  float: left;
+  width: 42px;
+  margin-top: 2px;
+}
+
+#amount-container #loan-amount-text:not([type="number"]),
+#amount-container #loan-amount-alt-text:not([type="number"]) {
+  float: left;
+  width: 107px;
+  margin-left: 20px !important;
+  background: #FFF;
+}
+
+#amount-container .prepend-input {
+  float: left;
+  width: 107px;
+  margin-left: 20px !important;
+}
+
+#amount-container .prepend-input .parsley-errors-list li {
+  width: 100%;
+}
+
+#loan-type-container .label-title{
+  width: 103px;
+  float: left;
+  margin-top: 2px;
+}
+
+#loan-type-container .label-title #small-text {
+  font-size: 12px;
+}
+
+#loan-container #loan-type-container .radios {
+  width: 250px;
+  margin-left: 10px;
+}
+
+#profile-container .smart-search-cta {
+  box-sizing: border-box;
+  float: right;
+  width: 374px;
+  background-color: #8EC3FA;
+  padding: 12px 10px;
+  margin-bottom: 15px;
+  color: #FFF;
+  line-height: 19px;
+  border-radius: 3px;
+  position: relative;
+  behavior: url(https://fairmoney.com/sites/all/themes/fairmoney/pie/PIE.htc);
+}
+
+#profile-container .smart-search-cta .fa-angle-right {
+  font-size: 31px;
+  position: absolute;
+  right: 16px;
+  top: 5px;
+}
+
+#profile-container .smart-search-cta a,
+#profile-container .smart-search-cta p {
+  display: inline;
+  line-height: 1.3;
+  margin: 0;
+  font-size:14px; font-size: 0.875rem;
+}
+
+#profile-container .smart-search-btn {
+  display: inline-block;
+  padding: 10px;
+  background-color: #f6f6f6;
+  font-weight: normal;
+  text-align: left;
+  margin-left: 10px;
+  font-weight: bold;
+}
+
+#profile-container .ui-buttonset {
+margin: 0 0 3px 0;
+}
+
+#search-result {
+  width: 100%;
+  margin-right: 0;
+  float: left;
+}
+
+#search-result #alt-products {
+  margin: 60px 0 10px 0;
+  
+}
+
+#search-result-container {
+  margin-bottom: 90px;
+}
+
+#search-result-container .content {
+  padding-top: 0;
+}
+
+#search-result h1 {
+  font-size:24px; font-size: 2rem;
+  line-height: 24px; line-height: 2rem;
+  color: #8EC3FA;
+  margin-top: 10px;
+}
+
+#search-warning-container {
+  float: left;
+  margin-top: 30px;
+}
+
+/*
+/* --- Results ---
+
+.results-table {
+  display: none;
+}
+
+.results-table thead {
+  border-bottom: 2px solid #CCC;
+  height: 80px;
+  color: #000;
+}
+
+.results-table thead th {
+ 
+  font-size: 21px;
+  font-size: 1.5rem;
+  margin: 0 0 8px 0;
+  margin: 0 0 0.5rem 0;
+  line-height: 26px;
+  line-height: 1.6rem;
+  padding: 15px 0;
+  vertical-align: middle;
+  text-align: center;
+  font-weight: bold;
+  color: #666;
+}
+
+.results-table tbody td {
+  vertical-align: top;
+  padding: 20px 10px 0px;
+  vertical-align: middle;
+  text-align: center;
+}
+
+.results-table .example-container td,
+.results-table .more-details-container td {
+  text-align: left;
+}
+
+.results-table tbody .example {
+  padding-bottom: 20px;
+}
+
+.results-table tbody .example p {
+  font-size: 14px;
+  font-size: 0.875rem;
+  margin: 0 0 21px 0;
+  margin: 0 0 1rem 0;
+  line-height: 19px;
+  line-height: 1.25rem;
+}
+
+.results-table img {
+  height: auto;
+  max-width: inherit;
+  width: 120px;
+}
+
+.results-table .details-container p {
+  margin: 0;
+  font-size: 18px;
+  font-size: 1.2rem;
+  line-height: 20px;
+  line-height: 1.25rem;
+}
+
+.results-table .more-details-container {
+  border-bottom: 2px solid #CCC;
+}
+
+.results-table .more-details-container div {
+  display: block;
+  padding: 20px;
+  background: #FAFAFA;
+  margin: 0 0 20px 0;
+}
+
+.results-table .more-details-container table {
+  margin-bottom: 45px;
+}
+
+.results-table .more-details-container  tbody tr:nth-child(even) {
+  background: #F2F2F2;
+}
+
+.results-table .more-details-container  tbody td {
+  padding: 10px;
+}
+
+#search-result-container .apply-btn {
+  display: block;
+  padding: 10px;
+  background-color: #5fb767;
+  color: #fff;
+  font-weight: normal;
+  text-align: left;
+  width: 110px;
+}
+
+.results-table .apply-btn i,
+.results-table .smart-search-btn i,
+.results-table .more-details i {
+  display: inline-block;
+  float: right;
+}
+
+#search-result-container .smart-search-btn {
+  display: block;
+  padding: 10px;
+  background-color: #8EC3FA;
+  color: #FFF;
+  font-weight: normal;
+  text-align: left;
+  margin: 2px 0 0 0;
+}
+
+.results-table .more-details {
+  display: block;
+  padding: 10px;
+  font-weight: normal;
+  text-align: left
+}
+
+
+/* --- Results Mobile --- */
+
+#terms-container {
+  clear: both;
+  padding-top: 25px;
+  border-top: 1px solid #FFF;
+}
+
+#credit-check-container {
+  padding-bottom: 25px;
+  display: block;
+}
+
+#property-details-container .terms a,
+#property-details-container #terms-container a {
+  color: #fff;
+}
+
+#credit-check-container .terms {
+  clear: both;
+  padding-top: 8px;
+}
+
+#search-result-loader i {
+  color: #8EC3FA;
+  margin-right: 15px;
+}
+
+#search-result-loader {
+  float: left;
+  width: 97%;
+  padding: 1.5%;
+  background-color: #ebf5ff;
+  margin: 4% 0;
+  display: block;
+  text-align: left;
+  line-height: 3em;
+  
+  text-align: center;
+}
+
+.results-table {
+  margin: 5px 0 0 0;
+  display: block;
+}
+
+.results-table .table-head {
+  border-bottom: 2px solid #CCC;
+  height: 80px;
+  color: #000;
+  margin: 0 0 20px 0!important;
+}
+
+.results-table .table-head li {
+ 
+  font-size: 20px;
+  font-size: 1.25rem;
+  line-height: 20px;
+  line-height: 1.6rem;
+  padding: 1%;
+  vertical-align: middle;
+  text-align: center;
+  font-weight: bold;
+  color: #666;
+  width: 11.6%;
+}
+
+.results-table li {
+  padding: 0;
+  float: left;
+  margin: 0;
+  list-style: none;
+}
+
+.results-table .loan-item {
+  border-bottom: 2px solid #CCC;
+  margin: 0 0 20px 0;
+}
+
+.results-table .loan-details,
+.results-table .loan-portal,
+.results-table .loan-example,
+.results-table .table-head {
+  margin: 0;
+  padding: 0;
+}
+
+.loan-example p {
+  margin-bottom: 0px;
+}
+
+.results-table .loan-details {
+  width: 85%;
+  float: left;
+}
+
+.loan-portal {
+  width: 15%;
+  float: right;
+}
+
+.results-table .loan-details li {
+  width: 14%;
+  padding: 1%;
+  text-align: center;
+  min-height: 100px;
+  min-height: 80px; /*TD: 13:27; 03/06/2015;*/
+  margin: 0 0 5px 0;
+  display: block;
+}
+
+.results-table .loan-details li div {
+  display: block;
+  vertical-align: middle;
+}
+
+/*TD: 13:23; 03/06/2015;*/
+.results-table .loan-details li img {
+  width: auto;
+  height: 45px;
+}
+
+/*TD: 13:23; 03/06/2015;*/
+.results-table .loan-details li strong {
+  display: block;
+}
+
+.results-table .loan-more-details tbody tr:nth-child(even) {
+  background: #F2F2F2;
+}
+
+.loan-more-details h3 {
+  font-weight: bold;
+}
+
+.loan-more-details strong {
+  font-weight: normal;
+  color: #111;
+}
+
+.results-table .loan-more-details tbody td {
+  padding: 3px 10px;
+}
+
+.results-table .loan-more-details {
+  display: block;
+  padding: 10px;
+  font-weight: normal;
+  text-align: left;
+  margin: 0;
+  margin-bottom: 0px; /*TD: 13:28 03/06/2015;*/
+  padding-bottom: 0px; /*TD: 13:28 03/06/2015;*/
+}
+
+.results-table .loan-more-details div {
+  display: block;
+  padding: 20px;
+  background: #FAFAFA;
+  margin: 0 0 20px 0;
+}
+
+.results-table .loan-more-details div table {
+  margin: 0 0 10px 0;
+}
+
+.results-table .loan-detail h2 {
+  display: none;
+  font-size: 20px;
+  line-height: 21px;
+  
+}
+
+.results-table .loan-detail p {
+  font-size: 18px;
+  line-height: 24px;
+}
+
+/*.loan-more-details-apply .more-details {
+  display: block;
+  padding: 10px;
+  background-color: #5FB767;
+  color: #FFF;
+  font-weight: normal;
+  text-align: left;
+  width: 110px;
+  background: #00F;
+  width: 98%;
+  padding: 1%;
+}*/
+
+.loan-portal .apply-btn,
+.loan-portal .smart-search-btn {
+  display: block;
+  background-color: #5FB767;
+  color: #FFF;
+  font-weight: normal;
+  text-align: left;
+  background: #00F;
+  width: 86%;
+  padding: 3% 7%;
+  border-radius: 3px;
+  behavior: url(https://fairmoney.com/sites/all/themes/fairmoney/pie/PIE.htc);
+}
+
+.loan-portal .apply-btn {
+  background-color: #8EC3FA;
+}
+
+.loan-portal .smart-search-btn {
+  background-color: #5fb767;
+}
+
+.loan-portal li {
+  width: 100%;
+  margin: 0 0 5px 0!important;
+}
+
+/*.loan-more-details-apply .apply-btn {
+  width: 98%!important;
+  padding: 1%!important;
+}*/
+
+/*.loan-mobile-apply li {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}*/
+
+
+/* --- Sidebar --- */
+
+#sidebar {
+  width: 18%;
+  float: left;
+}
+
+#sidebar #further-search-info {
+  padding: 10px;
+  background: #f6f6f6;
+}
+
+/* --- Apply CTA Block --- */
+
+.apply-cta-container {
+	background: #1559a8;
+	padding: 25px;
+	margin-bottom: 25px;
+}
+
+.apply-cta-container p {
+	margin: 0;
+	color: #fff;
+	font-size: 1.25rem;
+}
+
+.apply-cta-container a {
+	margin-bottom: 0;
+	background-color: #fff;
+	margin: 35px 0 0 auto;
+	color: #1559a8;
+	padding: 10px;
+}
+
+.cta-loans a:after {
+	font-family: 'fontAwesome';
+	content: "\f105";
+	float: right;
+}
+
+/* --- Pop Ups --- */
+
+.ui-dialog  .ui-dialog-title {
+  font-size: 32px;
+  font-size: 2rem;
+  line-height: 32px;
+  line-height: 2rem;
+ 
+  padding: 10px 0 10px;
+  display: block;
+}
+
+
+.ui-dialog h3 {
+  margin-bottom: 16px; margin-bottom: 1rem;
+}
+
+.ui-dialog table.compact {
+  margin-bottom: 16px; margin-bottom: 1rem;
+  width: 60%;
+  font-size: 14px;
+  font-size: 0.875rem;
+}
+
+.ui-dialog table.compact td {
+  padding: 5px;
+  border: 1px solid #818181;
+}
+
+.ui-dialog table.compact td.left {
+  font-weight: bold;
+}
+
+.ui-dialog p {
+  font-size: 16px; font-size: 1rem;
+}
+
+.ui-dialog .ui-dialog-titlebar-close {
+  line-height: 20px;
+  top: 10px;
+  margin: 0;
+
+}
+
+.ui-dialog-titlebar-close:before {
+  display:inline-block;
+  font-family:FontAwesome;
+  font-style:normal;
+  font-weight:normal;
+  line-height:1;
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+  content:"\f00d";
+}
+
+.ui-dialog-buttonset .ui-button  {
+  background-color: #818181;
+  color: #fff;
+}
+
+.ui-dialog-buttonset .ui-button.proceed {
+  background-color: #5fb767;
+}
+
+.ui-state-focus,
+.ui-state-active {
+  text-shadow: none;
+  text-decoration: none;
+  box-shadow: 0px 0px 0px rgba(0,0,0,0) !important;
+  font-weight:normal;
+}
+
+.ui-dialog-buttonset button:focus {
+  box-shadow: 0px 0px 0px rgba(0,0,0,0) !important
+}
+
+/* --------------- Smart Search --------------- */
+
+.prepend-input {
+  width: 100%;
+}
+
+.prepend-input input {
+  padding-left: 2rem;;
+}
+
+.prepend-input .prepend-content {
+  position: absolute;
+  line-height: 43px;
+  width: 2rem;
+  padding-left: 1em;
+  font-size: 1.125rem;
+  color: #666;
+}
+
+.form-section.white .prepend-input .prepend-content {
+  color: white;
+}
+
+.form-section.white input[type=text],
+.form-section.white input[type=number] {
+  background-color: #8EC3FA;
+  color: #fff;
+}
+
+.form-section.white .ui-state-default {
+  background-color: #8EC3FA;
+}
+
+.form-section.white .ui-selectmenu-text{
+  color: #fff;
+  font-weight: bold;
+}
+
+.form-section.white .ui-selectmenu-button .ui-icon {
+  background: url('../images/input-arrow-down-dark.png') no-repeat center center;
+  background-color: #f6f6f6;
+
+}
+
+.form-section.white .circle.ui-state-default {
+    background-color: #ECECEC;
+    border-color: #8EC3FA !important;
+}
+
+
+.blue .label-required {
+  font-weight: bold;
+}
+
+.page-loans-smart-search #search-result-loader{
+    margin-top: 90px;
+    margin-bottom: 90px;
+}
+
+.page-loans-smart-search .content {
+  padding: 40px 0 0 0;
+}
+
+
+.find-address-btn {
+  float: left;
+  line-height: 27px;
+  margin: 0 5px 0 0;
+}
+
+.form-section.blue {
+  background-color: #8ec3fa;
+  color: #fff;
+}
+
+
+.form-section-inner {
+  width: 75%;
+  margin: 50px 0 100px 0;
+}
+
+#loan-details-container .form-section-inner {
+  margin: 0 0 100px 0;
+}
+
+.form-section-inner .smart-search-intro {
+/*
+  padding: 0 0 20px 0;
+  border-bottom: 1px solid #ccc;
+  margin: 0 0 40px 0;
+  position: relative;
+*/
+}
+
+.form-section-inner h2 {
+  
+  margin-bottom: 40px;
+}
+
+.smart-search-intro h1 {
+  color: #8EC3FA;
+}
+
+@media screen and (max-width: 500px) {
+  .smart-search-intro h1 {
+    text-align: center;
+  }
+}
+
+.next-arrow {
+  position: absolute;
+  height: 86px;
+  width: 88px;
+  background-color: #fff;
+  font-size: 48px; font-size: 3rem;
+  bottom: -43px;
+  margin: auto;
+  left: 0;
+  right: 0;
+  text-align: center;
+  color: #8EC3FA;
+  border-radius: 50%;
+  cursor: pointer;
+  z-index: 9;
+  -webkit-box-shadow: 1px 1px 3px 0px rgba(50, 50, 50, 0.4);
+  -moz-box-shadow: 1px 1px 3px 0px rgba(50, 50, 50, 0.4);
+  box-shadow: 1px 1px 3px 0px rgba(50, 50, 50, 0.4);
+  behavior: url(https://fairmoney.com/sites/all/themes/fairmoney/pie/PIE.htc);
+}
+
+.next-arrow p {
+  margin-bottom: -15px;
+  margin-top: 15px;
+}
+
+/*
+.smart-search-intro .next-arrow {
+  height: 50px;
+  width: 50px;
+  line-height: 50px;
+  bottom: -25px;
+  font-size:36px; font-size: 2.25rem;
+  cursor: default;
+}
+*/
+
+.circle.label {
+  behavior: url(https://fairmoney.com/sites/all/themes/fairmoney/pie/PIE.htc);
+}
+
+.form-section-number {
+  background: #FFF;
+  width: 60px;
+  line-height: 60px;
+  height: 60px;
+  text-align: center;
+  border-radius: 50%;
+  color: #8EC3FA;
+  font-size: 36px; font-size: 2rem;
+  margin-right: 10px;
+  -webkit-box-shadow: 1px 1px 3px 0px rgba(50, 50, 50, 0.4);
+  -moz-box-shadow: 1px 1px 3px 0px rgba(50, 50, 50, 0.4);
+  box-shadow: 1px 1px 3px 0px rgba(50, 50, 50, 0.4);
+  display: inline-block;
+  font-weight: bold;
+  font-style: italic;
+  letter-spacing: -0.5px;
+  behavior: url(https://fairmoney.com/sites/all/themes/fairmoney/pie/PIE.htc);
+}
+
+.loan-purpose-unique{
+  overflow: hidden;
+}
+
+.loan-purpose-unique label {
+  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -ms-box-sizing: border-box;
+  -o-box-sizing: border-box;
+  width: 16.65%;
+  float: left;
+  margin: 0;
+  clear: none;
+  padding: 17px 5px 0 5px;
+  height: 110px;
+  overflow: hidden;
+  text-align: center;
+  font-size: 0.875rem;
+}
+
+.form-section.white .loan-purpose-unique .ui-state-default {
+  background-color: #DDD;
+  border: 1px solid #FFF;
+  border-radius: 8px;
+  behavior: url(https://fairmoney.com/sites/all/themes/fairmoney/pie/PIE.htc);
+}
+
+.form-section.white .loan-purpose-unique .ui-state-default:hover {
+  background-color: #8EC3FA;
+  color: #fff;
+}
+
+.loan-purpose-unique .ui-button-text-only .ui-button-text {
+  padding: 0;
+}
+
+.loan-purpose-unique label i {
+  display: block;
+  font-size: 32px;
+  font-size: 2rem;
+  margin-bottom: 10px;
+}
+
+#loan-details-container label {
+  margin: 0 auto 8px 0;
+  display: block;
+  clear: both;
+}
+
+#loan-details-container input,
+#loan-details-container select,
+#loan-details-container .ui-widget {
+  margin-bottom: 5px;
+}
+
+#your-details-container label,
+#employment-status-container label,
+#property-details-container label {
+  width: 20%;
+  float: left;
+  clear: both;
+  margin: 1% 4% 3% 0;
+
+}
+
+#property-details-container p.minimum-text {
+  top: 110px;
+  position: absolute;
+  left: 77px;
+}
+
+#smart-search-form select {
+  padding: 14px 50px 14px 14px;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+    appearance: none;
+  border: 1px solid #ebebeb;
+  background-image: url(../images/input-arrow-down-dark.png);
+  background-position: 90% 18px;
+  margin-right: 5px;
+  background-repeat: no-repeat;
+  background-color: #f6f6f6;
+  color: #666;
+  
+}
+
+@media screen and (max-width: 500px) {
+  #smart-search-form select {
+    width: 100%;
+    margin-right: 0;
+  }
+}
+
+@media screen and (max-width: 991px) {
+  #property-details-container p.minimum-text {
+    position: initial;
+  }
+}
+
+label.ui-button {
+  clear: none !important;
+  }
+
+#your-details-container input,
+#employment-status-container input:not([type="number"]),
+#employment-status-container .prepend-input,
+#property-details-container input:not([type="number"]),
+#property-details-container .prepend-input,
+#employment-status-container select,
+#your-details-container select,
+#property-details-container select,
+#your-details-container .ui-widget,
+#employment-status-container .ui-widget,
+#property-details-container .ui-widget {
+  max-width: 76%;
+  float: left;
+  margin-bottom: 15px;
+  margin-top: 0;
+}
+
+#your-details-container label,
+#employment-status-container label,
+#property-details-container label {
+  margin: 1% 2% 2% 0;
+}
+
+#dob-day-select-button {
+  width: 20% !important;
+  margin-right: 4%;
+}
+
+#dob-month-select-button,
+#employment-start-month-select-button,
+.movein-month-select {
+  width: 26% !important;
+  margin-right: 4%;
+}
+
+#dob-year-select-button,
+#employment-start-year-select-button,
+.movein-year-select {
+  width: 22% !important;
+}
+
+.movein-month-select,
+.movein-year-select {
+  float: left
+}
+
+.movein-month-select span,
+.movein-year-select span,
+.address-select span {
+  max-width: none !important;
+}
+
+.address-item-container:nth-child(1n+2) {
+  padding-top: 20px;
+  margin-top: 20px;
+  border-top: 1px solid #fff;
+}
+
+.address-item-container label {
+  position: relative
+}
+
+.address-item-container #house-or-text {
+  position: absolute;
+  top: 29px;
+  left: 28px;
+}
+
+#address {
+  display: none;
+}
+
+.address-select,
+.select-address-btn {
+  float: right !important;
+  width: 50%;
+}
+
+.address-error {
+  margin-left: 4%;
+  float: left;
+  top: 7px;
+  position: relative;
+}
+
+/*
+.postcode-text,
+.address-select {
+  width: 48% !important;
+  margin-right: 4%;
+}
+*/
+
+.find-address-btn,
+.select-address-btn {
+  display: block;
+  width: 24%;
+  background-color: #f6f6f6;
+  height: 42px;
+  line-height: 42px;
+  text-align: center;
+  border-radius: 3px;
+  margin-right: 0;
+  margin-bottom: 15px;
+  behavior: url(https://fairmoney.com/sites/all/themes/fairmoney/pie/PIE.htc);
+}
+
+a.find-address-btn,
+a.select-address-btn {
+  color: #8ec3fa;
+  text-decoration: none;
+}
+
+a.select-address-btn {
+  clear: both;
+  margin: 0 2%;
+}
+
+a.find-address-btn {
+  float: left;
+  margin-left: 22%;
+}
+
+#home-owner {
+  float: left;
+  width: 100%;
+  margin-top: 30px;
+  text-align: left;
+}
+
+#home-owner label.homeowner-question {
+  display: block;
+  float: left;
+  width: 100%;
+}
+
+#clear-btn {
+    margin-left: 20px;
+}
+
+label.circle {
+  width: 25px !important;
+  height: 25px;
+  display: block;
+  float: left;
+  border-radius: 50%;
+  border: 4px solid #f6f6f6;
+  margin-right: 10px !important;
+  margin-top: 5px !important;
+  behavior: url(https://fairmoney.com/sites/all/themes/fairmoney/pie/PIE.htc);
+}
+
+p.circle {
+  float: left;
+  margin-right: 10px !important;
+  margin-top: 10px;
+}
+
+.blue button {
+  display: block;
+  float: left;
+  border: 0;
+  background-color: #f6f6f6;
+  color: #555;
+  padding: 0 15px;
+  height: 55px;
+  margin-top: 40px;
+  font-size: 16px; font-size: 1rem;
+  width: 225px;
+  line-height:55px;
+  cursor: pointer;
+}
+
+#submit-btn {
+  font-size: 23px;
+  width: 298px;
+  padding: 0.5% 2%;
+  height: auto;
+  margin-top: 0;
+  float: right;
+}
+
+#submit-btn i {
+   font-size: 28px;
+}
+
+#clear-btn {
+  margin-left: 20px;
+  width: auto;
+  line-height: 45px;
+  height: auto;
+  top: 18px;
+  background: transparent;
+  color: #fff;
+   margin-top: 0;
+}
+
+a.find-address-btn:hover,
+a.select-address-btn:hover,
+.blue button:hover {
+  box-shadow: 3px 3px 5px rgba(40, 40, 40, 0.1)
+}
+
+a.find-address-btn:active,
+a.select-address-btn:active,
+.blue button:active,
+.blue button:focus {
+  box-shadow: inset -2px -2px 5px rgba(40, 40, 40, 0.1) !important;
+  font-weight:normal !important;
+}
+
+#clear-btn:hover {
+    
+    box-shadow: none;
+    font-weight: bold;
+    text-shadow: 3px 3px 5px rgba(40, 40, 40, 0.1)
+}
+
+
+.blue button i {
+  top:18px;
+  right:15px;
+}
+
+.address-loader {
+  display: block;
+  float: left;
+  width: 48%;
+  text-align: left;
+  margin-bottom: 13px;
+  margin-left: 4%;
+  top: 11px;
+  position: relative;
+}
+
+.address-loader i {
+  margin-right: 10px
+}
+
+#credit-check-container {
+  float: left;
+  margin-top: 50px;
+}
+
+#credit-check-container p {
+  line-height: 24px; line-height: 1.5rem;
+}
+
+/* --------------- Defualt Page --------------- */
+
+.inner .content {
+  padding: 40px 0 80px 0;
+/*   overflow: hidden; */
+}
+
+body.front #quick-search-container .inner .content {
+  display: none;
+}
+
+.has-sidebar .content {
+  width: 68%;
+  margin-right: 4%;
+}
+
+.content {
+  width: 100%;
+  float: left
+}
+
+
+#sidebar {
+  padding: 40px 0 80px 0;
+  width: 28%;
+  float: left;
+}
+
+#footer .content {
+    width: 100%;
+    padding-top: 10px; /*TD: 11:34 03/06/2015;*/
+}
+
+.page-loans-smart-search #footer {
+  padding-top: 50px;
+}
+
+
+/* --------------- FAQ Page --------------- */
+
+.inner .view-content {
+  padding: 40px 0 80px 0;
+  overflow: hidden;
+}
+
+.faq-question {
+  display: block;
+  position: relative;
+  padding: 10px 45px 10px 10px;
+  background-color: #f0f0f0;
+  border: 1px solid #ddd;
+  cursor: pointer;
+}
+
+.faq-question i {
+  display: block;
+  position: absolute;
+  top: 15px;
+  right: 15px;
+}
+
+/* --------------- Blog --------------- */
+
+/* --- Pagination --- */
+
+.item-list {
+  text-align: center;
+}
+
+.item-list ul {
+  list-style: none;
+  padding: 0
+}
+
+.item-list ul li {
+  display: inline-block;
+  width: 25px;
+  height:25px;
+  font-size: 16px;
+  line-height: 25px;
+  text-align: center;
+}
+
+.item-list ul li.pager-current {
+  background: #8EC3FA;
+  color:#fff;
+}
+
+/* -------------- Error -------------- */
+
+ul.parsley-errors-list {
+  list-style: none;
+  margin: 0;
+  width: 100%
+}
+
+
+ul.parsley-errors-list li {
+  font-size: 15px;
+  line-height: 16px;
+  margin-bottom: 16px;
+  width: 50%;
+  background-color: #fb6e6e;
+  padding: 10px;
+  float: right;
+  text-align: center;
+  border-radius: 3px;
+  color: #fff;
+  text-align: center;
+/*   border: 2px solid #fb6e6e; */
+  margin-top: -16px;
+  border-radius: 0 0 3px 3px;
+  margin-right: 11%;
+  border-top: 0;
+  behavior: url(https://fairmoney.com/sites/all/themes/fairmoney/pie/PIE.htc);
+}
+
+/*
+.blue ul.parsley-errors-list li {
+  border: 0;
+  background-color: #fff;
+  color: #fb6e6e
+}
+*/
+
+ul.parsley-errors-list li:after {
+  clear: both;
+}
+
+#loan-details-container ul.parsley-errors-list li,
+#amount-container ul.parsley-errors-list li,
+#term-container ul.parsley-errors-list li {
+  box-sizing: border-box;
+  width: 66%;
+  margin-right: 16%;
+}
+
+#amount-container ul.parsley-errors-list li,
+#term-container ul.parsley-errors-list li {
+  margin-top: 10px;
+}
+
+.ui-selectmenu-open {
+  border-bottom: #C6C6C6 3px solid;
+}
+
+.postcode-errors ul.parsley-errors-list li {
+/*   margin-top: 0; */
+  border-radius: 3px;
+  behavior: url(https://fairmoney.com/sites/all/themes/fairmoney/pie/PIE.htc);
+}
+
+#dob-errors ul.parsley-errors-list li,
+#employment-errors ul.parsley-errors-list li,
+.movein-errors ul.parsley-errors-list li {
+  margin-top: -16px;
+  border-radius: 0px;
+  behavior: url(https://fairmoney.com/sites/all/themes/fairmoney/pie/PIE.htc);
+}
+
+#dob-errors ul.parsley-errors-list,
+#employment-errors ul.parsley-errors-list,
+.movein-errors ul.parsley-errors-list {
+  float: right;
+  display: block;
+}
+
+#dob-errors ul.parsley-errors-list:nth-child(1),
+#employment-errors ul.parsley-errors-list:nth-child(1),
+.movein-errors ul.parsley-errors-list:nth-child(1) {
+  margin-top: 16px;
+}
+
+#dob-errors ul.parsley-errors-list li {
+  width: 66%;
+  margin-right: 3%;
+}
+
+#employment-errors ul.parsley-errors-list li,
+#movein-errors ul.parsley-errors-list li  {
+  margin-right: 28%;
+  width: 41%
+}
+
+.postcode-errors ul.parsley-errors-list li {
+  width: 38%;
+  margin-right: 31.4%;
+}
+
+/* -------------- Testimoninal Block -------------- */
+
+.testimonial-container {
+  padding: 20px;
+  background-color: #8EC3FA;
+  margin-top: 40px;
+}
+
+.testimonial-container img {
+  width: 40%;
+  height: auto;
+  float: left;
+}
+
+.testimonial-container h2{
+  margin-bottom: 24px;
+  color: #fff;
+}
+
+.testimonial-container h4 {
+  float: right;
+  width: 56%;
+  margin-left: 4%;
+  
+  font-size: 24px; font-size: 1.5rem;
+  color: #fff;
+}
+
+.testimonial-container blockquote:before {
+  content: '\201C';
+  font-size: 60px;
+  font-family: 'Georgia', serif;
+  color:#68aff9;
+  position: relative;
+  top: 7px;
+  display: block;
+  float: left;
+  color: #fff;
+}
+
+/*
+.testimonial-container blockquote:after {
+  content: '\201D';
+  font-size: 60px;
+  font-family: 'Georgia', serif;
+  color:#68aff9;
+  position: relative;
+  top: 20px;
+}
+*/
+
+.testimonial-container blockquote {
+  clear: both;
+  font-size: 18px;
+  font-size: 1rem;
+  line-height: 24px;
+  line-height: 1.5rem;
+  float: left;
+  display: block;
+  margin-top: 20px;
+  color: #fff;
+}
+
+/* form to merge */
+#title-menu,
+#dob-day-select-menu,
+#dob-month-select-menu,
+#dob-year-select-menu,
+#marital-status-select-menu,
+#employment-status-select-menu,
+#employment-start-month-select-menu,
+#employment-start-year-select-menu,
+#movein-month-select-menu,
+#movein-year-select-menu,
+#property-type-select-menu,
+#address-menu {
+  padding: 0 3px;
+  background-color: #C4C4C4;
+  overflow: hidden;
+}
+
+#title-menu .ui-menu-item,
+#title-menu .ui-menu-item,
+#dob-day-select-menu .ui-menu-item,
+#dob-month-select-menu .ui-menu-item,
+#dob-year-select-menu .ui-menu-item,
+#marital-status-select-menu .ui-menu-item,
+#employment-status-select-menu .ui-menu-item,
+#employment-start-month-select-menu .ui-menu-item,
+#employment-start-year-select-menu .ui-menu-item,
+#movein-month-select-menu .ui-menu-item,
+#movein-year-select-menu .ui-menu-item,
+#property-type-select-menu .ui-menu-item,
+#address-menu .ui-menu-item {
+  background-color: #fff;
+}
+
+#title-menu .ui-state-focus,
+#dob-day-select-menu .ui-state-focus,
+#dob-month-select-menu .ui-state-focus,
+#dob-year-select-menu .ui-state-focus,
+#marital-status-select-menu .ui-state-focus,
+#employment-status-select-menu .ui-state-focus,
+#employment-start-month-select-menu .ui-state-focus,
+#employment-start-year-select-menu .ui-state-focus,
+#movein-month-select-menu .ui-state-focus,
+#movein-year-select-menu .ui-state-focus,
+#property-type-select-menu .ui-state-focus,
+#address-menu .ui-state-focus {
+  background-color: #C4C4C4
+}
+
+.form-progress-container {
+  display: block;
+  position: absolute;
+  right: 0;
+  top: 60px;
+  text-align: right
+}
+
+.form-progress-container p{
+  margin: 1.2rem 0 0 0;
+  line-height: 1.2rem;
+}
+
+@media screen and (max-width:991px) {
+  .form-progress-container {
+    margin: 0 0 -40px 0;
+    padding-top: 0;
+    left: 0;
+    width: 99%;
+  }
+}
+
+@media screen and (max-width:500px) {
+  .form-progress-container {
+    padding-top: 0;
+    margin: 0;
+    position: initial;
+    text-align: center;
+  }
+  #your-details-container .form-progress-container,
+  #employment-status-container .form-progress-container,
+  #property-details-container .form-progress-container {
+    padding-top: 60px !important;
+  }
+}
+
+.form-progress-container a.progress-button {
+  padding: 7px 12px;
+  background: #f6f6f6;
+  border-radius: 50%;
+  font-size: 16px;
+  line-height: 24px;
+  margin-right: 5px;
+  color: #aaa;
+  cursor: pointer;
+  behavior: url(https://fairmoney.com/sites/all/themes/fairmoney/pie/PIE.htc);
+  font-weight: normal;
+}
+
+a.progress-button.active {
+  background: #1559a9;
+  color: #fff;
+  -webkit-box-shadow: 1px 1px 3px 0px rgba(50, 50, 50, 0.4);
+  -moz-box-shadow: 1px 1px 3px 0px rgba(50, 50, 50, 0.4);
+  box-shadow: 1px 1px 3px 0px rgba(50, 50, 50, 0.4);
+  behavior: url(https://fairmoney.com/sites/all/themes/fairmoney/pie/PIE.htc);
+}
+
+/*
+a.progress-button.section-2-btn,
+a.progress-button.section-3-btn {
+  padding: 7px 8px;
+}
+*/
+
+a.progress-button.disabled {
+  cursor: default;
+}
+
+@media screen and (max-width: 980px) {
+
+  #header .inner {
+    width: auto;
+  }
+
+}
+
+@media screen and (max-width: 850px) {
+
+/*  .nav-menu-btn {
+    display: block;
+  }
+
+  #navigation {
+    display: none;
+    width: 100%;
+    padding: 0 0 10px 0;
+  }*/
+
+}
+
+/* -------------- Desktop -------------- */
+
+@media screen and (max-width: 991px) {
+
+  body, html {
+    min-width: 0;
+  }
+
+  /* --------------- Layout --------------- */
+
+  #main-container {
+    /*padding: 0 0 370px 0;*/
+  }
+
+  .inner {
+    max-width: 960px;
+    width: auto;
+  }
+
+  .inner .content {
+    padding: 35px 0 0 0;
+  }
+
+  /* --------------- Navigation --------------- */
+
+  #header {
+    position: inherit;
+  }
+
+  #logo-container {
+    width: 50%;
+    margin-right: 0;
+    text-align: left;
+  }
+
+  .logo {
+    float: none;
+    width: 150px;
+  }
+
+  .strapline {
+    display: none;
+    width: 100%;
+  }
+
+  #navigation {
+    display: none;
+    width: 100%;
+    padding: 0 0 10px 0;
+  }
+
+  #navigation li {
+    width: 100%;
+    margin: 0;
+  }
+
+  #navigation li ul {
+    position: static;
+    float: left;
+    width: 100%;
+    box-shadow: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  #navigation li ul li {
+    width: 100%;
+  }
+
+  #navigation li ul li a {
+    text-align: left;
+  }
+
+  .nav-menu-btn {
+    display: block;
+  }
+
+  /* --- Results --- */
+
+  .results-table .table-head {
+    display: none;
+  }
+
+  .results-table .loan-details {
+    width: 100%;
+    float: left;
+  }
+
+  .loan-portal {
+    width: 100%;
+    float: left;
+  }
+
+  #loan-container #amount-container,
+  #loan-container #term-container,
+  #loan-container #amend-container {
+    margin-right: 0;
+    width: 100%;
+    margin-bottom: 20px;
+  }
+
+  #amount-container .label-title,
+  #term-container .label-title,
+  #loan-type-container .label-title {
+    width: 100%;
+  }
+
+  #amount-container #loan-amount-text,
+  #term-container #loan-period-select {
+    width: 100%;
+    margin-left: 0 !important;
+  }
+
+  #loan-container #loan-type-container {
+    margin-right: 0;
+    width: 100%;
+  }
+  #loan-type-container span.ui-selectmenu-button {
+    margin-left: 0;
+    width: 100% !important;
+  }
+  #term-container span {
+    max-width: 100%;
+  }
+
+  #loan-container div#submit-container {
+    width: 100%;
+    height: 70px;
+    margin: 0 0 20px 0;
+  }
+
+  #profile-container .smart-search-cta {
+    width: 100%;
+  }
+
+  .loan-portal .apply-btn,
+  .loan-portal .smart-search-btn {
+    width: 96%;
+    padding: 1% 2%;
+    font-size: 21px;
+    line-height: 36px;
+  }
+
+  .results-table .loan-details li {
+    text-align: left;
+    min-height: auto;
+    width: 23%;
+    text-align: left;
+    display: inline-block;
+  }
+
+  .results-table .loan-detail h2 {
+    display: block;
+    font-size: 15px !important;
+    line-height: 13px;
+    min-height: 30px;
+  }
+
+  .results-table .loan-detail p {
+    font-size: 15px;
+    line-height: 15px;
+    margin: 0;
+  }
+
+  .results-table .loan-details {
+    text-align: left;
+    margin-bottom: 10px;
+  }
+
+  .results-table .loan-item {
+    padding: 10px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+    border: 2px solid #CCC;
+    behavior: url(https://fairmoney.com/sites/all/themes/fairmoney/pie/PIE.htc);
+  }
+
+  .results-table .loan-more-details tbody td {
+    display: block;
+  }
+
+  #search-result-container {
+    margin-bottom: 0;
+  }
+
+  .profile-selector {
+    margin: 0;
+    width: 100%;
+  }
+
+  .results-table .loan-more-details div {
+    padding: 0;
+    margin: 20px 0 0 0;
+  }
+
+  .results-table .loan-more-details {
+    padding: 0;
+  }
+
+  .profile-selectors {
+    width: 100%;
+    margin: 0;
+    margin-bottom: 20px;
+  }
+
+  #control-container .profile-selectors .ui-state-default {
+    margin-right: 0;
+  }
+
+  #search-result-container {
+    margin-bottom: 0;
+  }
+
+  .profile-selector .ui-button {
+    width: 100%;
+    margin: 0 0 5px 0;
+  }
+
+  /* --------------- Home Page --------------- */
+
+  body.front {
+    background: #fff;
+  }
+
+  #main-container {
+/*    padding: 0 0 300px 0;*/
+    padding-top: 0;
+  }
+
+  #top-loans-container #small-print-container {
+    color: #444;
+    text-shadow: none;
+  }
+
+  .top-container {
+    background: #8EC3FA;
+    height: auto;
+  }
+
+  #top-loans-container {
+    margin: 0 auto 30px auto;
+    background: #FFF;
+    padding: 20px;
+    float: none;
+    border-radius: 10px;
+    width: auto;
+    behavior: url(https://fairmoney.com/sites/all/themes/fairmoney/pie/PIE.htc);
+  }
+
+  .nav-menu-btn {
+    padding: 15px 15px;
+  }
+
+  body.front #quick-search-container .inner .content {
+    background: #FFF;
+    padding: 20px;
+    float: none;
+    border-radius: 10px;
+    width: auto;
+    margin: 10px;
+    behavior: url(https://fairmoney.com/sites/all/themes/fairmoney/pie/PIE.htc);
+  }
+
+  .quick-search-header .badge-icon {
+    margin: 0 0 20px 0;
+  }
+
+  #quick-search-container .quick-search-header h2 {
+    width: 100%;
+  }
+
+  .quick-search-header .badge-title {
+    margin: 20px 0;
+  }
+
+  #pitch-container {
+    width: 100%;
+    text-align: center;
+    float: none;
+  }
+
+  #selection-container {
+    margin: 0 auto 30px auto;
+    background: #FFF;
+    padding: 20px;
+    /*float: none;*/
+    border-radius: 10px;
+    width: auto;
+    behavior: url(https://fairmoney.com/sites/all/themes/fairmoney/pie/PIE.htc);
+  }
+
+  .pitch-title {
+    font-size: 30px;
+    margin: 10px 0;
+  }
+
+  .pitch-list {
+    width: 100%;
+  }
+
+  .pitch-list li {
+    font-size: 23px;
+    margin: 0 0 5px 0;
+  }
+
+  .pitch-list li img.homepage-bullet {
+    width: 28px;
+    top: 7px;
+  }
+
+  h2.pitch-footer {
+    width: 100%;
+    margin: 30px 0;
+  }
+
+  #top-loans-container .intro-text h3,
+  #top-loans-container .intro-text p,
+  #under-selection-a {
+    color: #555;
+  }
+
+  .selection-box .selection-icon {
+    display: inline-block;
+    float: none;
+    position: initial;
+    font-size: 20px;
+    padding: 10px 13px;
+    margin: 0 10px 0;
+  }
+
+  .selection-box h1 {
+    display: inline-block;
+  }
+
+  .or-text,
+  .arrow-right,
+  .arrow-down {
+    display: none;
+  }
+
+  .selection-box {
+    width: 100%;
+    border: 0;
+    position: relative;
+    padding: 30px 0;
+    background: #fff;
+    border-radius: 0;
+    -webkit-box-shadow: 0px 0px 0px 0px rgba(50, 50, 50, 0);
+    -moz-box-shadow:    0px 0px 0px 0px rgba(50, 50, 50, 0);
+    box-shadow:         0px 0px 0px 0px rgba(50, 50, 50, 0);
+    height: auto;
+    text-align: center;
+    behavior: url(https://fairmoney.com/sites/all/themes/fairmoney/pie/PIE.htc);
+  }
+
+  .information-container-info {
+    /*display: none;*/
+  }
+
+  #selection-b .information-container-info {
+    max-width: 400px;
+    margin: 20px auto 0;
+  }
+
+  .selection-box .cta-btn {
+    margin: 20px auto;
+  }
+
+  #under-selection-a {
+    position: inherit;
+    float: left;
+    left: 0;
+    width: auto;
+    width: 100%;
+    margin: 0 0 10px 0;
+  }
+
+  #quick-search-container .quick-search-info,
+  #quick-search-container #quick-search-controls {
+    width: 100%;
+    margin: 0;
+  }
+
+  #footer a.fair-money-lender img:after{
+    display: block;
+    content:"";
+    width:100%;
+  }
+
+  /* --------------- Smart Search --------------- */
+
+  .form-section-inner {
+    width: 100%;
+    margin: 50px 0 100px 0;
+  }
+
+  #your-details-container input,
+  #employment-status-container input,
+  #property-details-container input,
+  #employment-status-container select,
+  #your-details-container select,
+  #property-details-container select,
+  #your-details-container .ui-widget,
+  #employment-status-container .ui-widget,
+  #property-details-container .ui-widget {
+    max-width: 100%;
+  }
+
+  #your-details-container label,
+  #employment-status-container label,
+  #property-details-container label {
+    width: 100%;
+  }
+
+  #dob-day-select-button {
+    width: 31% !important;
+  }
+
+  #dob-month-select-button, #employment-start-month-select-button, .movein-month-select {
+    width: 31% !important;
+  }
+
+  #dob-year-select-button, #employment-start-year-select-button, .movein-year-select {
+    width: 30% !important;
+  }
+
+  #your-details-container input,
+  #employment-status-container input,
+  #property-details-container input,
+  #employment-status-container select,
+  #your-details-container select,
+  #property-details-container select,
+  #your-details-container .ui-widget,
+  #employment-status-container .ui-widget,
+  #property-details-container .ui-widget {
+    font-size: 18px;
+    font-size: 1.125rem;
+    line-height: 18px;
+    line-height: 1.125rem;
+  }
+
+/*  .page-loans .tooltip {
+    width: 77%!important;
+    margin: 0 0 0 19%!important;
+  }*/
+
+  .page-loans .tooltip {
+    width: 77%!important;
+    left: 4%!important;
+  }
+
+/*  #loan-details-container .ui-widget {
+    width: 25%;
+  }*/
+
+  .tooltip {
+    width: 65%;
+  }
+
+  .ui-dialog {
+    width: 100%!important;
+  }
+
+  #loan-type-container .label-title {
+    width: 100%;
+  }
+
+  .ui-buttonset .ui-button {
+    width: 100%;
+  }
+
+  #term-container .label-title {
+    margin-left: 0;
+  }
+
+  #profile-select-list .badge-title {
+    width: 69px;
+    font-size: 12px;
+  }
+
+  #profile-select-list .choose {
+    width: 68px;
+  }
+
+  .selection-box .selection-icon-conatiner .selection-icon {
+    margin: 22px auto 0;
+  }
+
+  .selection-box .selection-icon-conatiner {
+    height: 65px;
+    width: 65px;
+  }
+
+  #loan-container #loan-type-container .radios {
+    width: 100%;
+    margin-left: 0;
+  }
+
+  .loan-purpose-unique label {
+    width: 100%;
+    padding: 2%;
+    margin: 0 0 5px 0!important;
+    text-align: left;
+    height: auto;
+  }
+
+  #filter-container .checkboxes label,
+  #filter-container .checkboxes label:nth-child(2) {
+    width: 100%;
+  }
+
+  .loan-purpose-unique label i {
+    float: left;
+    margin: 5px 0 0 0;
+    padding: 0 15px;
+  }
+
+  .loan-purpose-unique .ui-button-text-only .ui-button-text {
+    font-size: 18px;
+    line-height: 40px;
+    /*text-indent: 17px;*/
+  }
+
+  .advert-container {
+    width: 100%;
+    height: auto;
+  }
+
+  /* --------------- Blog --------------- */
+
+
+
+  /* --- Sidebar --- */
+
+  #sidebar {
+    width: 100%;
+  }
+
+  .has-sidebar .content {
+    width: 100%;
+    margin-right: 0;
+  }
+
+  .content .pager {
+    margin: 0;
+  }
+
+  .testimonial-container .photo {
+    display: none;
+  }
+
+  .testimonial-container h4 {
+    float: left;
+    margin: 0;
+    width: 100%;
+  }
+
+  /* --- Footer --- */
+
+  
+
+}
+
+/* -------------- Mobile -------------- */
+
+@media screen and (max-width: 640px) {
+
+}
+
+
+
+/* -------------- Test Radio Buttons -------------- */
+/*.ui-helper-hidden-accessible {
+border: 0;
+clip: initial;
+height: 20px;
+margin: 0;
+overflow: visible;
+padding: 0;
+position: relative;
+width: 20px;
+}*/
+
+.page-node-45 .apply-cta-container{ display:none;}
+
+
+/*TD: 14:35; 03/06/2015;*/
+.show-desktop-only {
+  display:block;
+}
+
+.show-mobile-only {
+  display:none;
+}
+/*TD: 17:34; 03/06/2015;*/
+.cta {
+  padding: 20px; 
+  display: block; 
+  margin-bottom: 20px; 
+  cursor: pointer; 
+  border-radius: 5px; 
+  text-align: center; 
+  font-weight: 300 !important; 
+  color: #fff !important; 
+  background: rgb(142, 195, 250) none repeat scroll 0% 0%;
+}
+
+/*TD: 14:35; 03/06/2015;*/
+@media screen and (max-width: 991px) {
+  .show-desktop-only {
+    display:none;
+  }
+
+  .show-mobile-only {
+    display:block;
+  }
+
+  #top-loans-container.show-mobile-only {
+    float: left;
+  }
+
+  .top-container {
+    height: 1100px;
+  }
+}
+
+.review-container {
+  padding: 20px 0px;
+  /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#f1f1f2+0,e6e7e8+100 */
+background: #f1f1f2; /* Old browsers */
+background: -moz-linear-gradient(top, #f1f1f2 0%, #e6e7e8 100%); /* FF3.6+ */
+background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#f1f1f2), color-stop(100%,#e6e7e8)); /* Chrome,Safari4+ */
+background: -webkit-linear-gradient(top, #f1f1f2 0%,#e6e7e8 100%); /* Chrome10+,Safari5.1+ */
+background: -o-linear-gradient(top, #f1f1f2 0%,#e6e7e8 100%); /* Opera 11.10+ */
+background: -ms-linear-gradient(top, #f1f1f2 0%,#e6e7e8 100%); /* IE10+ */
+background: linear-gradient(to bottom, #f1f1f2 0%,#e6e7e8 100%); /* W3C */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f1f1f2', endColorstr='#e6e7e8',GradientType=0 ); /* IE6-9 */
+-webkit-box-shadow: inset 0px 7px 4px -5px rgba(0,0,0,0.35);
+-moz-box-shadow: inset 0px 7px 4px -5px rgba(0,0,0,0.35);
+box-shadow: inset 0px 7px 4px -5px rgba(0,0,0,0.35);
+}
+
+.review-container .review-box {
+  box-sizing: border-box;
+  background: #fff;
+  width: 30%;
+  margin-right: 5%;
+  vertical-align: top;
+  min-height: 430px;
+  display: inline-block;
+  padding: 25px;
+  position: relative;
+  margin-top: 0;
+}
+
+#fairmoney-panel-box > a,
+#news-views-box > a {
+  position: absolute;
+  left: 25px;
+  bottom: 25px;
+  color: #3FA5EA;
+  font-size: 14px;
+  text-decoration: none;
+}
+
+.review-container .review-box h2 {
+  font-size: 25px;
+  line-height: 30px;
+  padding-bottom: 20px;
+  margin-bottom: 0px;
+  color: #1B5BA6;
+  font-weight: 700;
+
+}
+
+.dotted-bottom {
+  border-bottom: 2px dotted #ccc;
+}
+
+#fairmoney-panel-box {
+  margin-right: 0%;
+}
+
+.tick-list li {
+  display: table;
+  margin-bottom: 20px;
+}
+.tick-list .tick-icon {
+  width: 15%;
+  font-size: 150%;
+  display: table-cell;
+  position: relative;
+}
+
+.tick-list .tick-icon .fa {
+  position: absolute;
+  top: 50%;
+  margin-top: -12px;
+}
+
+.tick-list .tick-content {
+  width: 85%;
+  display: table-cell;
+  font-size: 15px;
+  line-height: 19px;
+}
+
+.tick-icon {
+  font-family: FontAwesome;
+  color: #7AC92F;
+  content: "\f00c";
+}
+
+.most-recent-item {
+  padding-bottom: 15px;
+  padding-top: 15px;
+}
+
+.most-recent-item:nth-of-type(1) {
+  padding-top: 0px;
+}
+
+.most-recent-item h3 {
+  line-height: 25px;
+  margin-bottom: 0px;
+  padding-bottom: 0px;
+}
+.most-recent-item a {
+  color: #3FA5EA;
+  text-decoration: none;
+  font-size: 18px;
+  line-height: 24px;
+}
+
+@media screen and (max-width: 991px) {
+  .review-container .review-box {
+    width: 100%;
+    margin-bottom: 25px;
+  }
+}
+
+.social-footer {
+  float: left;
+  width: 100%;
+  margin-top: 5px;
+}
+
+.social-footer .social-item {
+  display: inline;
+}
+.social-footer .social-item a,
+.social-footer .social-item a .fa {
+  font-size: 30px;
+}
+
+.social-footer .social-item.twitter a:hover .fa {
+  color: #55acee;
+}
+.social-footer .social-item.facebook a:hover .fa {
+  color: #3b5998;
+}
+.social-footer .social-item.instragram a:hover .fa {
+  color: #3f729b;
+}
+.social-footer .social-item.pinterest a:hover .fa {
+  color: #cc2127;
+}
+
+
+/* 
+*  HOME PAGE RE-DESIGN
+*  -------------------
+*
+*  Author: Tom Davies;
+*  Date Started: Tuesday, September 15th 2015;
+*  Date Modfied: Tuesday, September 15th 2015;
+*/
+
+/* <--- GENREALISED CLASSES */
+:focus {outline:none;}
+::-moz-focus-inner {border:0;}
+.background-image {
+  -webkit-background-size: cover !important;
+  -moz-background-size: cover !important;
+  -o-background-size: cover !important;
+  background-size: cover !important;
+  background-position: center center !important;
+}
+h1 {
+  font-size: 28px !important;
+  font-weight: 700 !important;
+}
+h2 {
+  font-size: 28px !important;
+  font-weight: 700 !important;
+}
+small, 
+p {
+  font-size: 16px !important;
+  font-weight: 300 !important;
+}
+/* GENREALISED CLASSES ---> */
+#main-banner > *, 
+#pitch > *,
+#sample-representative-loans > *,
+#help-and-info > * {
+  padding-top: 40px !important;
+  padding-bottom: 40px !important;
+}
+
+#pitch > * {
+  padding-top: 30px !important;
+}
+
+#main-banner > * {
+  padding-top: 20px !important;
+  padding-bottom: 40px !important;
+}
+
+#main-banner > h1, 
+#pitch > h1,
+#sample-representative-loans > h1,
+#help-and-info > h1 {
+}
+
+#header.c_header #navigation #menu-item-879 {
+  display: inline-block;
+}
+
+#navigation #menu-item-199 {
+  display: none;
+}
+
+#main-banner {
+  background: url('../images/fairmoney-banner-bg.png') no-repeat;
+}
+#main-banner h1,
+#main-banner h2,
+#main-banner h3,
+#main-banner a,
+#main-banner small,
+#main-banner p,
+#main-banner span {
+ color: #fff !important;
+}
+#main-banner h1 {
+  margin-top: 5px !important;
+  margin-bottom: 17px !important;
+}
+#main-banner .cta-blue {
+  background-color: rgba(27, 91, 166, 0.5) !important;
+  padding: 20px 60px !important;
+  margin-left: -45px;
+}
+#main-banner .content-wrap {
+  padding-bottom: 10px;
+}
+#main-banner .content-wrap small{
+  display: block;
+  margin-bottom: 5px;
+}
+#main-banner .bottom-content h2{
+  margin-top: 35px;
+}
+/*#main-banner .bottom-content small{
+  display: block;
+  margin-bottom: 5px;
+}*/
+
+#main-banner .bottom-content .content-wrap{
+  padding-bottom: 0px;
+}
+#main-banner span {
+  display: block;
+  margin-top: 10px;
+  margin-bottom: 5px;
+  font-size: 16px;
+}
+#main-banner .loan-btn {
+  width: auto !important;
+  display: inline-block !important;
+  border: 0px none;
+  color: #FFF;
+  padding: 8px 15px;
+  border-radius: 8px;
+  cursor: pointer;
+  background: transparent linear-gradient(to bottom, #7AC92F 0%, #37B34A 100%) repeat scroll 0% 0%;
+}
+#main-banner .loan-btn:hover {
+  background: transparent linear-gradient(to bottom, #37B34A 0%, #7AC92F 100%) repeat scroll 0% 0%;
+  text-decoration: none;
+}
+#main-banner .loan-btn:active {
+  background: transparent linear-gradient(to bottom, #2F993F 0%, #6BAD29 100%) repeat scroll 0% 0%;
+}
+
+#main-container .sub-action {
+  margin-top: 10px;
+  margin-bottom: 0px !important;
+  padding-top: 5px;
+}
+
+#main-container .sub-action p{
+  margin-top: 0px;
+  margin-bottom: 0px;
+  padding-top: 0px;
+  padding-bottom: 0px;
+}
+
+#main-container .sub-action p a{
+  text-decoration: underline;
+}
+
+
+#pitch h1,
+#pitch h2,
+#pitch h3,
+#pitch a,
+#pitch small,
+#pitch p,
+#pitch blockquote,
+#pitch footer,
+#pitch span {
+  color: #fff !important;
+}
+#pitch h1 {
+  margin-top: 5px !important;
+  margin-bottom: 17px !important;
+}
+#pitch {
+  /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#1b5ba6+0,95c3e9+100 */
+  background: #1b5ba6; /* Old browsers */
+  background: -moz-linear-gradient(top,  #1b5ba6 0%, #95c3e9 100%); /* FF3.6+ */
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#1b5ba6), color-stop(100%,#95c3e9)); /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(top,  #1b5ba6 0%,#95c3e9 100%); /* Chrome10+,Safari5.1+ */
+  background: -o-linear-gradient(top,  #1b5ba6 0%,#95c3e9 100%); /* Opera 11.10+ */
+  background: -ms-linear-gradient(top,  #1b5ba6 0%,#95c3e9 100%); /* IE10+ */
+  background: linear-gradient(to bottom,  #1b5ba6 0%,#95c3e9 100%); /* W3C */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#1b5ba6', endColorstr='#95c3e9',GradientType=0 ); /* IE6-9 */
+}
+#pitch .pitch-wrap {
+
+}
+#pitch .pitch-wrap h1 {
+  margin-bottom: 30px;
+}
+#pitch .pitch-wrap blockquote {
+  border-left: none;
+  padding-top: 0px;
+  padding-left: 0px;
+  margin-top: 0px;
+  margin-left: 0px;
+  font-weight: 300;
+  font-size: 20px;
+  font-style: italic;
+}
+#pitch .pitch-wrap footer {
+  margin-top: 40px;
+}
+#pitch .pitch-wrap .pitch-list {
+  margin-top: 8px;
+}
+#pitch .pitch-wrap .pitch-list li {
+  font-size: 18px !important;
+  line-height: 30px;
+  font-weight: 300;
+  margin-bottom: 9px;
+}
+#pitch .pitch-wrap .pitch-list li img.homepage-bullet {
+  width: 30px;
+  top: 0px;
+}
+
+#sample-representative-loans {
+  background: #fff !important;
+}
+#sample-representative-loans h1,
+#sample-representative-loans h2,
+#sample-representative-loans h3,
+#sample-representative-loans a,
+#sample-representative-loans small,
+#sample-representative-loans p,
+#sample-representative-loans blockquote,
+#sample-representative-loans footer,
+#sample-representative-loans span {
+  color: #1B5BA6 !important;
+}
+#sample-representative-loans h1 {
+  margin-top: 0 !important;
+  margin-bottom: 17px !important;
+}
+#sample-representative-loans .srl-wrap small {
+  color: #58595B !important;
+  font-size: 22px !important;
+}
+#sample-representative-loans .credit {
+  
+}
+#sample-representative-loans .credit h3 {
+  padding: 5px 12px 5px 12px;
+  color: #fff !important;
+  display: inline-block;
+  border-radius: 10px 10px 0px 0px;
+  font-size: 19px;
+  line-height: 35px;
+  -webkit-box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.3);
+  -moz-box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.3);
+  box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.3);
+  margin-bottom: 0px;
+  position: relative;
+  z-index: 1;
+}
+#sample-representative-loans .srl-wrap {
+  margin-bottom: 15px;
+}
+#sample-representative-loans .credit .fa {
+  font-size: 35px;
+  vertical-align: middle;
+  margin-left: 5px;
+}
+#sample-representative-loans .credit small {
+  display: block;
+  -webkit-box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.3);
+  -moz-box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.3);
+  box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.3);
+  position: relative;
+  z-index: 2;
+  top: 0px;
+  padding: 24px 12px;
+  border-radius: 0px 15px 15px;
+  background: #fff;
+  color: #58595B !important;
+}
+#sample-representative-loans .credit .good-credit {
+  /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#ffdd15+0,fab819+100 */
+  background: #ffdd15; /* Old browsers */
+  background: -moz-linear-gradient(top,  #ffdd15 0%, #fab819 100%); /* FF3.6+ */
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ffdd15), color-stop(100%,#fab819)); /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(top,  #ffdd15 0%,#fab819 100%); /* Chrome10+,Safari5.1+ */
+  background: -o-linear-gradient(top,  #ffdd15 0%,#fab819 100%); /* Opera 11.10+ */
+  background: -ms-linear-gradient(top,  #ffdd15 0%,#fab819 100%); /* IE10+ */
+  background: linear-gradient(to bottom,  #ffdd15 0%,#fab819 100%); /* W3C */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffdd15', endColorstr='#fab819',GradientType=0 ); /* IE6-9 */
+}
+#sample-representative-loans .credit .poor-credit {
+  /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#d0d2d3+0,b2b4b6+100 */
+  background: #d0d2d3; /* Old browsers */
+  background: -moz-linear-gradient(top,  #d0d2d3 0%, #b2b4b6 100%); /* FF3.6+ */
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#d0d2d3), color-stop(100%,#b2b4b6)); /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(top,  #d0d2d3 0%,#b2b4b6 100%); /* Chrome10+,Safari5.1+ */
+  background: -o-linear-gradient(top,  #d0d2d3 0%,#b2b4b6 100%); /* Opera 11.10+ */
+  background: -ms-linear-gradient(top,  #d0d2d3 0%,#b2b4b6 100%); /* IE10+ */
+  background: linear-gradient(to bottom,  #d0d2d3 0%,#b2b4b6 100%); /* W3C */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#d0d2d3', endColorstr='#b2b4b6',GradientType=0 ); /* IE6-9 */
+}
+#sample-representative-loans .credit .bad-credit {
+  /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#c3996b+0,9c7249+100 */
+  background: #c3996b; /* Old browsers */
+  background: -moz-linear-gradient(top,  #c3996b 0%, #9c7249 100%); /* FF3.6+ */
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#c3996b), color-stop(100%,#9c7249)); /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(top,  #c3996b 0%,#9c7249 100%); /* Chrome10+,Safari5.1+ */
+  background: -o-linear-gradient(top,  #c3996b 0%,#9c7249 100%); /* Opera 11.10+ */
+  background: -ms-linear-gradient(top,  #c3996b 0%,#9c7249 100%); /* IE10+ */
+  background: linear-gradient(to bottom,  #c3996b 0%,#9c7249 100%); /* W3C */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#c3996b', endColorstr='#9c7249',GradientType=0 ); /* IE6-9 */
+}
+
+#sample-representative-loans .credit-wrap .info {
+  margin-top: 40px;
+  color: #58595B !important;
+}
+
+#help-and-info {
+/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#3fa5ea+0,95c3e9+100&amp;0.33+0,0.2+100 */
+background: -moz-linear-gradient(top,  rgba(63,165,234,0.33) 0%, rgba(149,195,233,0.2) 100%); /* FF3.6+ */
+background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(63,165,234,0.33)), color-stop(100%,rgba(149,195,233,0.2))); /* Chrome,Safari4+ */
+background: -webkit-linear-gradient(top,  rgba(63,165,234,0.33) 0%,rgba(149,195,233,0.2) 100%); /* Chrome10+,Safari5.1+ */
+background: -o-linear-gradient(top,  rgba(63,165,234,0.33) 0%,rgba(149,195,233,0.2) 100%); /* Opera 11.10+ */
+background: -ms-linear-gradient(top,  rgba(63,165,234,0.33) 0%,rgba(149,195,233,0.2) 100%); /* IE10+ */
+background: linear-gradient(to bottom,  rgba(63,165,234,0.33) 0%,rgba(149,195,233,0.2) 100%); /* W3C */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#543fa5ea', endColorstr='#3395c3e9',GradientType=0 ); /* IE6-9 */
+
+}
+
+#help-and-info h1,
+#help-and-info h2,
+#help-and-info h3,
+#help-and-info a,
+#help-and-info small,
+#help-and-info p,
+#help-and-info blockquote,
+#help-and-info footer,
+#help-and-info span {
+  color: #1B5BA6 !important;
+}
+#help-and-info h1 {
+  margin-top: 0 !important;
+  margin-bottom: 17px !important;
+}
+#help-and-info .help-and-info-wrap h2 {
+  padding-bottom: 25px;
+}
+
+#help-and-info .help-and-info-wrap h2,
+#help-and-info .help-and-info-wrap li {
+  margin-bottom: 0px;
+  margin-top: 0;
+}
+
+#help-and-info .dotted-bottom {
+  border-bottom: 2px dotted #A6A8AB;
+}
+
+.dotted-top {
+  border-top: 2px dotted #A6A8AB;
+}
+
+#help-and-info .pitch-list {
+  width: 100%;
+}
+#help-and-info .pitch-list li img.homepage-bullet {
+  width: 30px;
+  top: 0px;
+}
+
+#help-and-info .pitch-list li {
+  font-size: 18px !important;
+  line-height: 30px;
+  color: #58595B;
+  font-weight: 300;
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+#help-and-info .help-and-info-wrap .most-recent .most-recent-item {
+  padding-top: 15px;
+}
+#help-and-info .help-and-info-wrap .most-recent .most-recent-item a {
+  font-size: 24px;
+  line-height: 32px;
+  color: #58595B !important;
+}
+#help-and-info .help-and-info-wrap .most-recent .most-recent-item img {
+  padding-left: 0;
+  /*width: 120px !important;*/
+  height: auto !important;
+}
+#help-and-info .help-and-info-wrap .most-recent .most-recent-item h3 {
+  margin-top: 0px;
+}
+#help-and-info .help-and-info-wrap .most-recent .most-recent-item .info {
+  color: #58595B !important;
+  font-weight: 300;
+  font-size: 16px;
+  margin-top: 10px;
+  display: block;
+}
+#help-and-info .help-and-info-wrap .view-all {
+  text-align: center;
+  padding: 15px;
+}
+
+#footer.c_footer {
+  padding-top: 60px;
+  padding-bottom: 40px;
+  height: auto !important;
+  background: #fff !important;
+}
+#footer.c_footer .disclaimer {
+  width: 100%;
+  margin: 0;
+}
+#footer.c_footer .disclaimer p {
+  font-size: 12px !important;
+  line-height: 16px !important;
+}
+#footer.c_footer .copyright {
+  width: 100%;
+  margin: 0;
+}
+#footer.c_footer .copyright p {
+  font-size: 12px !important;
+  line-height: 16px !important;
+}
+#footer.c_footer .adverts{
+  margin-top: 20px;
+  margin-bottom: 0px;
+}
+
+#footer.c_footer .links{
+  width: 100%;
+  text-align:center;
+}
+#footer.c_footer .links a.fair-money-lender{
+  width: 100%;
+  display: inline-block;
+  font-size: 12px !important;
+  line-height: 16px !important;
+  text-align: center;
+}
+#footer.c_footer .links ul li{
+  display: inline;
+}
+#footer.c_footer .links ul li a{
+  font-size: 12px !important;
+  line-height: 16px !important;
+}
+
+#header.c_header {
+  padding-bottom: 3px;
+}
+
+#header.c_header .logo{
+  width: 280px;
+}
+
+#header.c_header #main-container {
+  padding-top: 92px;
+}
+
+#header.c_header #navigation {
+      padding-top: 37px;
+    padding-bottom: 0px;
+}
+
+#header.c_header .loan-btn {
+  width: auto !important;
+  display: inline-block;
+  border: 0px none;
+  margin-top: 62px;
+  float: right;
+  color: #FFF;
+  padding: 8px 15px;
+  border-radius: 8px;
+  cursor: pointer;
+  background: transparent linear-gradient(to bottom, #7AC92F 0%, #37B34A 100%) repeat scroll 0% 0%;
+}
+#header.c_header .loan-btn:hover {
+  background: transparent linear-gradient(to bottom, #37B34A 0%, #7AC92F 100%) repeat scroll 0% 0%;
+  text-decoration: none;
+}
+#header.c_header .loan-btn:active {
+  background: transparent linear-gradient(to bottom, #2F993F 0%, #6BAD29 100%) repeat scroll 0% 0%;
+}
+#header.c_header #navigation .level-3 {
+  width: 100%;
+}
+#main-banner,
+#pitch, 
+#sample-representative-loans {
+  position: relative;
+}
+
+#main-banner .drop-arrow-decoration-blue {
+  position: absolute;
+  bottom: 0px;
+  left: 0%;
+  width: 100%;
+  overflow: hidden;
+}
+
+#main-banner .drop-arrow-decoration-blue img {
+  float: left;
+}
+
+#main-banner .blue-arrow-bg {
+  background: #1b5ba6;
+}
+
+#main-banner .blue-arrow-bg-left {
+    float: left;
+    width: 50%;
+    height: 19px;
+    margin-left: -20px;
+}
+
+#main-banner .blue-arrow-bg-right {
+    float: left;
+    width: 50%;
+    height: 19px;
+    margin-right: -20px;
+}
+
+#sample-representative-loans .drop-arrow-decoration-white{
+  position: absolute;
+  top: 0px;
+  left: 0%;
+  width: 100%;
+  padding-top: 0px !important;
+  padding-bottom: 0px !important;
+  overflow: hidden;
+}
+
+#sample-representative-loans .drop-arrow-decoration-white img {
+  float: left;
+}
+
+#sample-representative-loans .white-arrow-bg {
+  background: #fff;
+}
+
+#sample-representative-loans .white-arrow-bg-left {
+    float: left;
+    width: 50%;
+    height: 19px;
+    margin-left: -20px;
+}
+
+#sample-representative-loans .white-arrow-bg-right {
+    float: left;
+    width: 50%;
+    height: 19px;
+    margin-right: -20px;
+}
+
+@media(max-width:991px){
+  #header.c_header #navigation {
+    padding-top: 5px;
+  }
+  #header.c_header .container {
+    width: 100%;
+  }
+  #header.c_header #logo-container {
+    width: 200px;
+    position: absolute;
+    top: 0px;
+  }
+
+  #header.c_header .container {
+    position: relative;
+  }
+}
+@media(max-width:767px){
+  #pitch,
+  #main-banner,
+  #sample-representative-loans,
+  #help-and-info,
+  #footer {
+    padding-left: 20px;
+    padding-right: 20px;
+    margin-left: 0px;
+  }
+  #sample-representative-loans {
+    background: #fff !important;
+  }
+
+  #footer.c_footer .links a.fair-money-lender {
+    margin-right: 0;
+  }
+  #footer .adverts p {
+    text-align: center;
+  }
+  #footer .adverts .ccta img {
+    margin-left: 0 !important;
+  }
+
+  #footer {
+    text-align: center;
+  }
+
+  #fairmoney-blog {
+    margin-top: 40px;
+  }
+  #main-container.c_main {
+    padding-top: 0px;
+  }
+}
+@media(max-width:500px){
+  #header.c_header #logo-container {
+    width: 200px;
+    position: absolute;
+    top: -5px;
+  }
+
+  .results-table .loan-details li:first-of-type {
+    width: 100%;
+  }
+  .results-table .loan-details li {
+    width: 47%;
+  }
+
+  #footer .content {
+    width: 100%;
+    padding: 20px 0 0 0;
+  }
+
+  #footer {
+    padding: 0;
+    height: auto;
+  }
+
+  #footer .links {
+    width: 100%;
+    float: none;
+  }
+
+  #footer .disclaimer {
+    width: 100%;
+    margin: 0;
+  }
+
+  #footer .links ul li {
+    text-align: center;
+  }
+
+  #footer .footer-logos {
+    width: 100%;
+    margin: 0;
+  }
+
+  #footer .footer-logos a {
+    width: 50%;
+    margin: 20px 25%;
+  }
+
+  #footer a.fair-money-lender {
+    float: none;
+    text-align: center;
+    width: 100%;
+    margin: 0 auto;
+    displaY: block;
+    max-width: 160px;
+  }
+  .social-footer {
+    float: none;
+    padding: 10px 0;
+  }
+  #footer .copyright {
+    width: 90%;
+  }
+
+  #footer * {
+    float: none !important; 
+  }
+  
+}
+@media(max-width:400px){
+  h1 {
+    font-size: 26px !important;
+  }
+  h2 {
+    font-size: 22px !important;
+  }
+
+  #help-and-info .help-and-info-wrap .most-recent .most-recent-item a {
+    font-size: 17px;
+    line-height: 17px;
+  }
+}
+
+/** Bootstrap Container **/
+.container {
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto;
+}
+@media (min-width: 768px) {
+  .container {
+      width: 750px;
+  }
+}
+@media (min-width: 992px) {
+  .container {
+      width: 970px;
+  }
+}
+@media (min-width: 1200px) {
+  .container {
+      width: 1170px;
+  }
+}
+/** Bootstrap Grid **/
+.container {
+  margin-right: auto;
+  margin-left: auto;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+@media (min-width: 768px) {
+  .container {
+    width: 750px;
+  }
+}
+@media (min-width: 992px) {
+  .container {
+    width: 970px;
+  }
+}
+@media (min-width: 1200px) {
+  .container {
+    width: 1170px;
+  }
+}
+.container-fluid {
+  margin-right: auto;
+  margin-left: auto;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+.row {
+  margin-left: -15px;
+  margin-right: -15px;
+}
+.col-xs-1, .col-sm-1, .col-md-1, .col-lg-1, .col-xs-2, .col-sm-2, .col-md-2, .col-lg-2, .col-xs-3, .col-sm-3, .col-md-3, .col-lg-3, .col-xs-4, .col-sm-4, .col-md-4, .col-lg-4, .col-xs-5, .col-sm-5, .col-md-5, .col-lg-5, .col-xs-6, .col-sm-6, .col-md-6, .col-lg-6, .col-xs-7, .col-sm-7, .col-md-7, .col-lg-7, .col-xs-8, .col-sm-8, .col-md-8, .col-lg-8, .col-xs-9, .col-sm-9, .col-md-9, .col-lg-9, .col-xs-10, .col-sm-10, .col-md-10, .col-lg-10, .col-xs-11, .col-sm-11, .col-md-11, .col-lg-11, .col-xs-12, .col-sm-12, .col-md-12, .col-lg-12 {
+  position: relative;
+  min-height: 1px;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+.col-xs-1, .col-xs-2, .col-xs-3, .col-xs-4, .col-xs-5, .col-xs-6, .col-xs-7, .col-xs-8, .col-xs-9, .col-xs-10, .col-xs-11, .col-xs-12 {
+  float: left;
+}
+.col-xs-12 {
+  width: 100%;
+}
+.col-xs-11 {
+  width: 91.66666667%;
+}
+.col-xs-10 {
+  width: 83.33333333%;
+}
+.col-xs-9 {
+  width: 75%;
+}
+.col-xs-8 {
+  width: 66.66666667%;
+}
+.col-xs-7 {
+  width: 58.33333333%;
+}
+.col-xs-6 {
+  width: 50%;
+}
+.col-xs-5 {
+  width: 41.66666667%;
+}
+.col-xs-4 {
+  width: 33.33333333%;
+}
+.col-xs-3 {
+  width: 25%;
+}
+.col-xs-2 {
+  width: 16.66666667%;
+}
+.col-xs-1 {
+  width: 8.33333333%;
+}
+.col-xs-pull-12 {
+  right: 100%;
+}
+.col-xs-pull-11 {
+  right: 91.66666667%;
+}
+.col-xs-pull-10 {
+  right: 83.33333333%;
+}
+.col-xs-pull-9 {
+  right: 75%;
+}
+.col-xs-pull-8 {
+  right: 66.66666667%;
+}
+.col-xs-pull-7 {
+  right: 58.33333333%;
+}
+.col-xs-pull-6 {
+  right: 50%;
+}
+.col-xs-pull-5 {
+  right: 41.66666667%;
+}
+.col-xs-pull-4 {
+  right: 33.33333333%;
+}
+.col-xs-pull-3 {
+  right: 25%;
+}
+.col-xs-pull-2 {
+  right: 16.66666667%;
+}
+.col-xs-pull-1 {
+  right: 8.33333333%;
+}
+.col-xs-pull-0 {
+  right: auto;
+}
+.col-xs-push-12 {
+  left: 100%;
+}
+.col-xs-push-11 {
+  left: 91.66666667%;
+}
+.col-xs-push-10 {
+  left: 83.33333333%;
+}
+.col-xs-push-9 {
+  left: 75%;
+}
+.col-xs-push-8 {
+  left: 66.66666667%;
+}
+.col-xs-push-7 {
+  left: 58.33333333%;
+}
+.col-xs-push-6 {
+  left: 50%;
+}
+.col-xs-push-5 {
+  left: 41.66666667%;
+}
+.col-xs-push-4 {
+  left: 33.33333333%;
+}
+.col-xs-push-3 {
+  left: 25%;
+}
+.col-xs-push-2 {
+  left: 16.66666667%;
+}
+.col-xs-push-1 {
+  left: 8.33333333%;
+}
+.col-xs-push-0 {
+  left: auto;
+}
+.col-xs-offset-12 {
+  margin-left: 100%;
+}
+.col-xs-offset-11 {
+  margin-left: 91.66666667%;
+}
+.col-xs-offset-10 {
+  margin-left: 83.33333333%;
+}
+.col-xs-offset-9 {
+  margin-left: 75%;
+}
+.col-xs-offset-8 {
+  margin-left: 66.66666667%;
+}
+.col-xs-offset-7 {
+  margin-left: 58.33333333%;
+}
+.col-xs-offset-6 {
+  margin-left: 50%;
+}
+.col-xs-offset-5 {
+  margin-left: 41.66666667%;
+}
+.col-xs-offset-4 {
+  margin-left: 33.33333333%;
+}
+.col-xs-offset-3 {
+  margin-left: 25%;
+}
+.col-xs-offset-2 {
+  margin-left: 16.66666667%;
+}
+.col-xs-offset-1 {
+  margin-left: 8.33333333%;
+}
+.col-xs-offset-0 {
+  margin-left: 0%;
+}
+@media (min-width: 768px) {
+  .col-sm-1, .col-sm-2, .col-sm-3, .col-sm-4, .col-sm-5, .col-sm-6, .col-sm-7, .col-sm-8, .col-sm-9, .col-sm-10, .col-sm-11, .col-sm-12 {
+    float: left;
+  }
+  .col-sm-12 {
+    width: 100%;
+  }
+  .col-sm-11 {
+    width: 91.66666667%;
+  }
+  .col-sm-10 {
+    width: 83.33333333%;
+  }
+  .col-sm-9 {
+    width: 75%;
+  }
+  .col-sm-8 {
+    width: 66.66666667%;
+  }
+  .col-sm-7 {
+    width: 58.33333333%;
+  }
+  .col-sm-6 {
+    width: 50%;
+  }
+  .col-sm-5 {
+    width: 41.66666667%;
+  }
+  .col-sm-4 {
+    width: 33.33333333%;
+  }
+  .col-sm-3 {
+    width: 25%;
+  }
+  .col-sm-2 {
+    width: 16.66666667%;
+  }
+  .col-sm-1 {
+    width: 8.33333333%;
+  }
+  .col-sm-pull-12 {
+    right: 100%;
+  }
+  .col-sm-pull-11 {
+    right: 91.66666667%;
+  }
+  .col-sm-pull-10 {
+    right: 83.33333333%;
+  }
+  .col-sm-pull-9 {
+    right: 75%;
+  }
+  .col-sm-pull-8 {
+    right: 66.66666667%;
+  }
+  .col-sm-pull-7 {
+    right: 58.33333333%;
+  }
+  .col-sm-pull-6 {
+    right: 50%;
+  }
+  .col-sm-pull-5 {
+    right: 41.66666667%;
+  }
+  .col-sm-pull-4 {
+    right: 33.33333333%;
+  }
+  .col-sm-pull-3 {
+    right: 25%;
+  }
+  .col-sm-pull-2 {
+    right: 16.66666667%;
+  }
+  .col-sm-pull-1 {
+    right: 8.33333333%;
+  }
+  .col-sm-pull-0 {
+    right: auto;
+  }
+  .col-sm-push-12 {
+    left: 100%;
+  }
+  .col-sm-push-11 {
+    left: 91.66666667%;
+  }
+  .col-sm-push-10 {
+    left: 83.33333333%;
+  }
+  .col-sm-push-9 {
+    left: 75%;
+  }
+  .col-sm-push-8 {
+    left: 66.66666667%;
+  }
+  .col-sm-push-7 {
+    left: 58.33333333%;
+  }
+  .col-sm-push-6 {
+    left: 50%;
+  }
+  .col-sm-push-5 {
+    left: 41.66666667%;
+  }
+  .col-sm-push-4 {
+    left: 33.33333333%;
+  }
+  .col-sm-push-3 {
+    left: 25%;
+  }
+  .col-sm-push-2 {
+    left: 16.66666667%;
+  }
+  .col-sm-push-1 {
+    left: 8.33333333%;
+  }
+  .col-sm-push-0 {
+    left: auto;
+  }
+  .col-sm-offset-12 {
+    margin-left: 100%;
+  }
+  .col-sm-offset-11 {
+    margin-left: 91.66666667%;
+  }
+  .col-sm-offset-10 {
+    margin-left: 83.33333333%;
+  }
+  .col-sm-offset-9 {
+    margin-left: 75%;
+  }
+  .col-sm-offset-8 {
+    margin-left: 66.66666667%;
+  }
+  .col-sm-offset-7 {
+    margin-left: 58.33333333%;
+  }
+  .col-sm-offset-6 {
+    margin-left: 50%;
+  }
+  .col-sm-offset-5 {
+    margin-left: 41.66666667%;
+  }
+  .col-sm-offset-4 {
+    margin-left: 33.33333333%;
+  }
+  .col-sm-offset-3 {
+    margin-left: 25%;
+  }
+  .col-sm-offset-2 {
+    margin-left: 16.66666667%;
+  }
+  .col-sm-offset-1 {
+    margin-left: 8.33333333%;
+  }
+  .col-sm-offset-0 {
+    margin-left: 0%;
+  }
+}
+@media (min-width: 992px) {
+  .col-md-1, .col-md-2, .col-md-3, .col-md-4, .col-md-5, .col-md-6, .col-md-7, .col-md-8, .col-md-9, .col-md-10, .col-md-11, .col-md-12 {
+    float: left;
+  }
+  .col-md-12 {
+    width: 100%;
+  }
+  .col-md-11 {
+    width: 91.66666667%;
+  }
+  .col-md-10 {
+    width: 83.33333333%;
+  }
+  .col-md-9 {
+    width: 75%;
+  }
+  .col-md-8 {
+    width: 66.66666667%;
+  }
+  .col-md-7 {
+    width: 58.33333333%;
+  }
+  .col-md-6 {
+    width: 50%;
+  }
+  .col-md-5 {
+    width: 41.66666667%;
+  }
+  .col-md-4 {
+    width: 33.33333333%;
+  }
+  .col-md-3 {
+    width: 25%;
+  }
+  .col-md-2 {
+    width: 16.66666667%;
+  }
+  .col-md-1 {
+    width: 8.33333333%;
+  }
+  .col-md-pull-12 {
+    right: 100%;
+  }
+  .col-md-pull-11 {
+    right: 91.66666667%;
+  }
+  .col-md-pull-10 {
+    right: 83.33333333%;
+  }
+  .col-md-pull-9 {
+    right: 75%;
+  }
+  .col-md-pull-8 {
+    right: 66.66666667%;
+  }
+  .col-md-pull-7 {
+    right: 58.33333333%;
+  }
+  .col-md-pull-6 {
+    right: 50%;
+  }
+  .col-md-pull-5 {
+    right: 41.66666667%;
+  }
+  .col-md-pull-4 {
+    right: 33.33333333%;
+  }
+  .col-md-pull-3 {
+    right: 25%;
+  }
+  .col-md-pull-2 {
+    right: 16.66666667%;
+  }
+  .col-md-pull-1 {
+    right: 8.33333333%;
+  }
+  .col-md-pull-0 {
+    right: auto;
+  }
+  .col-md-push-12 {
+    left: 100%;
+  }
+  .col-md-push-11 {
+    left: 91.66666667%;
+  }
+  .col-md-push-10 {
+    left: 83.33333333%;
+  }
+  .col-md-push-9 {
+    left: 75%;
+  }
+  .col-md-push-8 {
+    left: 66.66666667%;
+  }
+  .col-md-push-7 {
+    left: 58.33333333%;
+  }
+  .col-md-push-6 {
+    left: 50%;
+  }
+  .col-md-push-5 {
+    left: 41.66666667%;
+  }
+  .col-md-push-4 {
+    left: 33.33333333%;
+  }
+  .col-md-push-3 {
+    left: 25%;
+  }
+  .col-md-push-2 {
+    left: 16.66666667%;
+  }
+  .col-md-push-1 {
+    left: 8.33333333%;
+  }
+  .col-md-push-0 {
+    left: auto;
+  }
+  .col-md-offset-12 {
+    margin-left: 100%;
+  }
+  .col-md-offset-11 {
+    margin-left: 91.66666667%;
+  }
+  .col-md-offset-10 {
+    margin-left: 83.33333333%;
+  }
+  .col-md-offset-9 {
+    margin-left: 75%;
+  }
+  .col-md-offset-8 {
+    margin-left: 66.66666667%;
+  }
+  .col-md-offset-7 {
+    margin-left: 58.33333333%;
+  }
+  .col-md-offset-6 {
+    margin-left: 50%;
+  }
+  .col-md-offset-5 {
+    margin-left: 41.66666667%;
+  }
+  .col-md-offset-4 {
+    margin-left: 33.33333333%;
+  }
+  .col-md-offset-3 {
+    margin-left: 25%;
+  }
+  .col-md-offset-2 {
+    margin-left: 16.66666667%;
+  }
+  .col-md-offset-1 {
+    margin-left: 8.33333333%;
+  }
+  .col-md-offset-0 {
+    margin-left: 0%;
+  }
+}
+@media (min-width: 1200px) {
+  .col-lg-1, .col-lg-2, .col-lg-3, .col-lg-4, .col-lg-5, .col-lg-6, .col-lg-7, .col-lg-8, .col-lg-9, .col-lg-10, .col-lg-11, .col-lg-12 {
+    float: left;
+  }
+  .col-lg-12 {
+    width: 100%;
+  }
+  .col-lg-11 {
+    width: 91.66666667%;
+  }
+  .col-lg-10 {
+    width: 83.33333333%;
+  }
+  .col-lg-9 {
+    width: 75%;
+  }
+  .col-lg-8 {
+    width: 66.66666667%;
+  }
+  .col-lg-7 {
+    width: 58.33333333%;
+  }
+  .col-lg-6 {
+    width: 50%;
+  }
+  .col-lg-5 {
+    width: 41.66666667%;
+  }
+  .col-lg-4 {
+    width: 33.33333333%;
+  }
+  .col-lg-3 {
+    width: 25%;
+  }
+  .col-lg-2 {
+    width: 16.66666667%;
+  }
+  .col-lg-1 {
+    width: 8.33333333%;
+  }
+  .col-lg-pull-12 {
+    right: 100%;
+  }
+  .col-lg-pull-11 {
+    right: 91.66666667%;
+  }
+  .col-lg-pull-10 {
+    right: 83.33333333%;
+  }
+  .col-lg-pull-9 {
+    right: 75%;
+  }
+  .col-lg-pull-8 {
+    right: 66.66666667%;
+  }
+  .col-lg-pull-7 {
+    right: 58.33333333%;
+  }
+  .col-lg-pull-6 {
+    right: 50%;
+  }
+  .col-lg-pull-5 {
+    right: 41.66666667%;
+  }
+  .col-lg-pull-4 {
+    right: 33.33333333%;
+  }
+  .col-lg-pull-3 {
+    right: 25%;
+  }
+  .col-lg-pull-2 {
+    right: 16.66666667%;
+  }
+  .col-lg-pull-1 {
+    right: 8.33333333%;
+  }
+  .col-lg-pull-0 {
+    right: auto;
+  }
+  .col-lg-push-12 {
+    left: 100%;
+  }
+  .col-lg-push-11 {
+    left: 91.66666667%;
+  }
+  .col-lg-push-10 {
+    left: 83.33333333%;
+  }
+  .col-lg-push-9 {
+    left: 75%;
+  }
+  .col-lg-push-8 {
+    left: 66.66666667%;
+  }
+  .col-lg-push-7 {
+    left: 58.33333333%;
+  }
+  .col-lg-push-6 {
+    left: 50%;
+  }
+  .col-lg-push-5 {
+    left: 41.66666667%;
+  }
+  .col-lg-push-4 {
+    left: 33.33333333%;
+  }
+  .col-lg-push-3 {
+    left: 25%;
+  }
+  .col-lg-push-2 {
+    left: 16.66666667%;
+  }
+  .col-lg-push-1 {
+    left: 8.33333333%;
+  }
+  .col-lg-push-0 {
+    left: auto;
+  }
+  .col-lg-offset-12 {
+    margin-left: 100%;
+  }
+  .col-lg-offset-11 {
+    margin-left: 91.66666667%;
+  }
+  .col-lg-offset-10 {
+    margin-left: 83.33333333%;
+  }
+  .col-lg-offset-9 {
+    margin-left: 75%;
+  }
+  .col-lg-offset-8 {
+    margin-left: 66.66666667%;
+  }
+  .col-lg-offset-7 {
+    margin-left: 58.33333333%;
+  }
+  .col-lg-offset-6 {
+    margin-left: 50%;
+  }
+  .col-lg-offset-5 {
+    margin-left: 41.66666667%;
+  }
+  .col-lg-offset-4 {
+    margin-left: 33.33333333%;
+  }
+  .col-lg-offset-3 {
+    margin-left: 25%;
+  }
+  .col-lg-offset-2 {
+    margin-left: 16.66666667%;
+  }
+  .col-lg-offset-1 {
+    margin-left: 8.33333333%;
+  }
+  .col-lg-offset-0 {
+    margin-left: 0%;
+  }
+}
+.clearfix:before,
+.clearfix:after,
+.container:before,
+.container:after,
+.container-fluid:before,
+.container-fluid:after,
+.row:before,
+.row:after {
+  content: " ";
+  display: table;
+}
+.clearfix:after,
+.container:after,
+.container-fluid:after,
+.row:after {
+  clear: both;
+}
+.center-block {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+.pull-right {
+  float: right !important;
+}
+.pull-left {
+  float: left !important;
+}
+.hide {
+  display: none !important;
+}
+.show {
+  display: block !important;
+}
+.invisible {
+  visibility: hidden;
+}
+.text-hide {
+  font: 0/0 a;
+  color: transparent;
+  text-shadow: none;
+  background-color: transparent;
+  border: 0;
+}
+.hidden {
+  display: none !important;
+}
+.affix {
+  position: fixed;
+}
+
+* {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+:after, :before {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+:after, :before {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+a {
+  color: #337ab7;
+  text-decoration: none;
+}
+
+body {
+  font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+}
+
+.notification-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  margin-bottom: 2rem;
+}
+
+.notification-wrap #apply {
+  margin-right: 2rem;
+}
+
+.notification-wrap .bubble-notification {
+  background-color: #1b5ba6;
+  padding: 1rem 1.5rem;
+  border-radius: 1rem;
+  color: white;
+  font-weight: 300px !important;
+}
+
+.notification-wrap .bubble-notification p,
+.notification-wrap .bubble-notification ul,
+.notification-wrap .bubble-notification li {
+  margin-bottom: 0;
+  font-weight: 400 !important;
+}
+
+@media only screen and (max-width: 600px) {
+  .notification-wrap .bubble-notification {
+    width: 100%;
+  }
+}

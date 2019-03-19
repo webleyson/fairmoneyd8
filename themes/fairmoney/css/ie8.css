@@ -1,0 +1,13 @@
+#header {
+  position: absolute;
+  padding: 0;
+  margin: 0;
+  border: 0;
+  width: 100%;
+  box-shadow: 0;
+}
+
+.top-container {
+  -ms-behavior: url(https://fairmoney.com/sites/all/themes/fairmoney/pie/backgroundsize.min.htc);
+  behavior: url(https://fairmoney.com/sites/all/themes/fairmoney/pie/backgroundsize.min.htc);
+}

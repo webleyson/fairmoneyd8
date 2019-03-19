@@ -1,0 +1,501 @@
+{#
+/*@file
+*Available variables:
+*@see template_preprocess_block()
+@ingroup themeable
+#}
+<div id="apply-dialog" title="" style="display: none;">
+  <p id="apply-prompt"></p>
+  <form id="apply-form" action="{{ base_path() }}loans/apply" method="post" target="_blank">
+    <input id="apply-token" name="apply" type="hidden" value="" />
+    <input id="broker-reference-hidden" name="broker_reference" type="hidden" value="" />
+    <input id="lender-option-id-hidden" name="lender_option_id" type="hidden" value="" />
+    <input id="finance-option-id-hidden" name="finance_option_id" type="hidden" value="" />
+    <input id="lender-id-hidden" name="lender_id" type="hidden" value="" />
+    <input id="lender-name-hidden" name="lender_name" type="hidden" value="" />
+    <input id="loan-type-hidden" name="loan_type" type="hidden" value="" />
+    <input id="fulfilling-broker-hidden" name="fulfilling_broker" type="hidden" value="" />
+    <input id="fulfilment-apply-prompt-hidden" name="fulfilment_apply_prompt" type="hidden" value="" />
+    <input id="fulfilment-description-hidden" name="fulfilment_description" type="hidden" value="" />
+    <input name="action" type="hidden" value="Request" />
+  </form>
+</div>
+<div id="clear-dialog" title="" style="display: none;"></div>
+
+<div id="form-container">
+  <form id="smart-search-form" class="cf" method="get" action="" {% if (not is_form_valid) %} {{ ' validate-on-startup="true"' }}{% endif %} {% if (is_form_valid and action == 'Search') %} {{ ' submit-on-startup="true"' }}{% endif %}>
+    <input id="search-token" name="search" type="hidden" value="{{ htmlentities(csrf_token) }}" />
+
+    <div id="loan-details-container" class="form-section white" data-section="1">
+      <div class="inner cf">
+        <div class="content">
+          <div class="form-progress-container">
+            <a class="section-1-btn progress-button active">1</a>
+            <a class="section-2-btn progress-button">2</a>
+            <a class="section-3-btn progress-button disabled">3</a>
+            <a class="section-4-btn progress-button disabled">4</a>
+          </div>
+          <div class="form-section-inner cf">
+            <div class="smart-search-intro">
+              <h1><strong>Your</strong> Smart Search</h1>
+            </div>
+            <div>
+              <h2 class="smart-search-section-header"><span class="form-section-number">1</span>Loan details:</h2>
+              <label class="label-required">What is the purpose of the loan? Please select?</label>
+              <div class="radios loan-purpose-unique cf">
+                {% set index = 0 %} 
+                {% for key,value in loan_purpose_options %} 
+                  {% if (key == '') %} 
+                  <input id="loan-purpose-radio-{{ index }}{% endif %}{% endfor %}" name="loan_purpose" type="radio" value="{{ key }}"{% if (key == selected_loan_purpose) %} {{ ' checked="checked"' }}{% endif %} data-parsley-required="true" data-parsley-trigger="change" data-parsley-required-message="Please select a loan purpose." />
+                  <label for="loan-purpose-radio-{{ index }}">
+                    {% if (loan_purpose_metadata[key] is defined) %} 
+                      <i class="{{ loan_purpose_metadata[key]['class'] }}"></i>
+                    {% endif %} 
+                    {{ value }}{% endif %} 
+                  </label>
+                  {% set index = index + 1 %} 
+                {% endfor %} 
+              </div>
+
+              <label class="label-required">How much would you like to borrow?</label>
+                <div class="prepend-input">
+                    <span class="prepend-content">£</span>
+                    <input id="loan-amount-text" name="loan_amount" type="number" min="100" max="9999999999" step="100" size="12" maxlength="12" value="{{ htmlentities(selected_loan_amount) }}" data-parsley-required="true" data-parsley-money="[100,9999999999]" data-parsley-trigger="change" data-parsley-required-message="Please enter a loan amount." data-parsley-money-message="Please enter a valid loan amount. Your minimum loan amount must be £100." />
+                </div>
+
+
+              <label class="label-required">How long would you like to borrow this money for?</label>
+              <select id="loan-period-select" name="loan_period" data-parsley-required="true" data-parsley-trigger="change" data-parsley-required-message="Please select a loan period.">
+                {% for key,value in loan_period_options %} 
+                  <option value="{{ key }}{% endfor %}"{% if (key == selected_loan_period) %} {{ ' selected="selected"' }}{% endif %}>{{ value }}</option>
+                {% endfor %} 
+              </select>
+            </div>
+            <div class="next-btn">
+              <div class="next-arrow">
+                <p>Next</p>
+                <i class="fa-angle-down fa-fw fa"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="your-details-container" class="form-section blue" data-section="2">
+      <div class="inner cf">
+        <div class="form-progress-container">
+          <a class="section-1-btn progress-button active">1</a>
+          <a class="section-2-btn progress-button active">2</a>
+          <a class="section-3-btn progress-button">3</a>
+          <a class="section-4-btn progress-button disabled">4</a>
+          <p>You are 60 seconds away from finding<br /> a loan that best suits you</p>
+        </div>
+        <div class="form-section-inner cf">
+          <h2 class="smart-search-section-header"><span class="form-section-number">2</span>Your details:</h2>
+
+          <label class="label-required">Title</label>
+          <select id="title" name="title" data-parsley-required="true" data-parsley-trigger="change" data-parsley-required-message="Please select your title.">
+            {% for key,value in title_options %} 
+              <option value="{{ key }}{% endfor %}"{% if (key == selected_title) %} {{ ' selected="selected"' }}{% endif %}>{{ value }}</option>
+            {% endfor %} 
+          </select>
+
+          <label class="label-required">First name</label>
+          <input id="first-name-text" name="first_name" type="text" size="25" maxlength="25" value="{{ htmlentities(selected_first_name) }}" data-parsley-required="true" data-parsley-string="true" data-parsley-firstletter="true" data-parsley-minlength="3" data-parsley-maxlength="25" data-parsley-trigger="change" data-parsley-required-message="Please enter your first name." data-parsley-string-message="Please enter a valid first name. Your first name must contain only alphanumeric characters, spaces and some of the special characters - '\', '/', '-'." data-parsley-firstletter-message="Please enter a valid first name. Your first name must start with a letter." data-parsley-minlength-message="Please enter a valid first name. Your first name must be minimum 3 characters long." />
+
+          <label>Middle name(s)(Optional)</label>
+          <input id="middle-name-text" name="middle_name" type="text" size="25" maxlength="25" value="{{ htmlentities(selected_middle_name) }}" data-parsley-firstletter="true" data-parsley-string="true" data-parsley-firstletter="true" data-parsley-maxlength="25" data-parsley-trigger="change" data-parsley-string-message="Please enter a valid middle name(s). Your middle name(s) must contain only alphanumeric characters, spaces and some of the special characters - '\', '/', '-'." data-parsley-firstletter-message="Please enter a valid middle name(s). Your middle name(s) must start with a letter." />
+
+          <label class="label-required">Surname</label>
+          <input id="surname-text" name="surname" type="text" size="40" maxlength="40" value="{{ htmlentities(selected_surname) }}" data-parsley-required="true" data-parsley-string="true" data-parsley-firstletter="true" data-parsley-minlength="3" data-parsley-maxlength="40" data-parsley-trigger="change" data-parsley-required-message="Please enter your surname." data-parsley-string-message="Please enter a valid surname. Your surname must contain only alphanumeric characters, spaces and some of the special characters - '\', '/', '-'." data-parsley-firstletter-message="Please enter a valid surname. Your surname must start with a letter." data-parsley-minlength-message="Please enter a valid surname. Your surname must be minimum 3 characters long." />
+
+          <label class="label-required">Phone&nbsp;<i id="phone-hover" class="fa fa-question-circle"></i></label>
+          <input id="phone-text" name="phone" type="text" size="25" maxlength="25" value="{{ htmlentities(selected_phone) }}" data-parsley-required="true" data-parsley-phone="true" data-parsley-trigger="change" data-parsley-required-message="Please enter your phone number." data-parsley-phone-message="Please enter a valid UK phone number. Your phone number must contain only numeric characters and spaces." />
+
+          <label class="label-required">Email&nbsp;</span><i id="email-hover" class="fa fa-question-circle"></i></label>
+          <input id="email-text" name="email" type="text" size="100" maxlength="100" value="{{ htmlentities(selected_email) }}" data-parsley-required="true" data-parsley-type="email" data-parsley-trigger="change" data-parsley-required-message="Please enter an email address." data-parsley-type-message="Please enter a valid email address." />
+
+          <label class="label-required">Date of birth</label>
+          <select id="dob-day-select" name="dob_day" data-parsley-required="true" data-parsley-date="#dob-month-select, #dob-year-select" data-parsley-errors-container="#dob-errors" data-parsley-trigger="change" data-parsley-required-message="Please select a day." data-parsley-date-message="Please select a valid date of birth.">
+            {% for key,value in dob_day_options %} 
+              <option value="{{ key }}{% endfor %}"{% if (key == selected_dob_day) %} {{ ' selected="selected"' }}{% endif %}>{{ value }}</option>
+            {% endfor %} 
+          </select>
+          <select id="dob-month-select" name="dob_month" data-parsley-required="true" data-parsley-errors-container="#dob-errors" data-parsley-trigger="change" data-parsley-required-message="Please select a month.">
+            {% for key,value in dob_month_options %} 
+              <option value="{{ key }}{% endfor %}"{% if (key == selected_dob_month) %} {{ ' selected="selected"' }}{% endif %}>{{ value }}</option>
+            {% endfor %} 
+          </select>
+          <select id="dob-year-select" name="dob_year" data-parsley-required="true" data-parsley-errors-container="#dob-errors" data-parsley-trigger="change" data-parsley-required-message="Please select a year.">
+            {% for key,value in dob_year_options %} 
+              <option value="{{ key }}{% endfor %}"{% if (key == selected_dob_year) %} {{ ' selected="selected"' }}{% endif %}>{{ value }}</option>
+            {% endfor %} 
+          </select>
+          <div id="dob-errors"></div>
+
+          <label class="label-required">Marital status</label>
+          <select id="marital-status-select" name="marital_status" data-parsley-required="true" data-parsley-trigger="change" data-parsley-required-message="Please select your marital status.">
+            {% for key,value in marital_status_options %} 
+              <option value="{{ key }}{% endfor %}"{% if (key == selected_marital_status) %} {{ ' selected="selected"' }}{% endif %}>{{ value }}</option>
+            {% endfor %} 
+          </select>
+
+          <div class="next-btn">
+            <div class="next-arrow">
+              <p>Next</p>
+              <i class="fa-angle-down fa-fw fa"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div id="phone-tooltip" class="tooltip">
+        <h4>Why do we need this information?</h4>
+        <p>Your phone number and e-mail address are required so that any lender you apply to can easily contact you. Your information will not be passed to any other 3rd parties without your prior consent, we may however contact you to ensure you have been sucessful in your loan application.</p>
+      </div>
+      <div id="email-tooltip" class="tooltip">
+        <h4>Why do we need this information?</h4>
+        <p>Your phone number and e-mail address are required so that any lender you apply to can easily contact you. Your information will not be passed to any other 3rd parties without your prior consent, we may however contact you to ensure you have been sucessful in your loan application.</p>
+      </div>
+    </div>
+
+    <div id="employment-status-container" class="form-section white" data-section="3">
+      <div class="inner cf">
+        <div class="form-progress-container">
+          <a class="section-1-btn progress-button active">1</a>
+          <a class="section-2-btn progress-button active">2</a>
+          <a class="section-3-btn progress-button active">3</a>
+          <a class="section-4-btn progress-button">4</a>
+        </div>
+        <div class="form-section-inner cf">
+          <h2 class="smart-search-section-header"><span class="form-section-number">3</span>Employment status:</h2>
+
+          <label class="label-required">Employment status</label>
+          <select id="employment-status-select" name="employment_status" data-parsley-required="true" data-parsley-trigger="change" data-parsley-required-message="Please select your employment status.">
+            {% for key,value in employment_status_options %} 
+              <option value="{{ key }}{% endfor %}"{% if (key == selected_employment_status) %} {{ ' selected="selected"' }}{% endif %}>{{ value }}</option>
+            {% endfor %} 
+          </select>
+
+          <label class="label-required">Employment start date</label>
+          <select id="employment-start-month-select" name="employment_start_month" data-parsley-required="true" data-parsley-errors-container="#employment-errors" data-parsley-trigger="change" data-parsley-required-message="Please select a month.">
+            {% for key,value in employment_start_month_options %} 
+              <option value="{{ key }}{% endfor %}"{% if (key == selected_employment_start_month) %} {{ ' selected="selected"' }}{% endif %}>{{ value }}</option>
+            {% endfor %} 
+          </select>
+          <select id="employment-start-year-select" name="employment_start_year" data-parsley-required="true" data-parsley-errors-container="#employment-errors" data-parsley-trigger="change" data-parsley-required-message="Please select a year.">
+            {% for key,value in employment_start_year_options %} 
+              <option value="{{ key }}{% endfor %}"{% if (key == selected_employment_start_year) %} {{ ' selected="selected"' }}{% endif %}>{{ value }}</option>
+            {% endfor %} 
+          </select>
+          <div id="employment-errors"></div>
+
+            <label class="label-required">Annual income&nbsp;<i id="annual-income-hover" class="fa fa-question-circle"></i></label>
+            <div class="prepend-input">
+                <div class="prepend-content">
+                    £
+                </div>
+                <input id="annual-income-text" name="annual_income" type="number" size="12" maxlength="12" value="{{ htmlentities(selected_annual_income) }}" data-parsley-required="true" data-parsley-money="[0,9999999999]" data-parsley-trigger="change" data-parsley-required-message="Please enter your annual income." data-parsley-money-message="Please enter your valid annual income." />
+            </div>
+
+          <label class="label-required">Have you missed any credit card or loan repayments in the last 12 months?</label>
+          <div class="radios">
+            {% set index = 0 %} 
+            {% for key,value in missed_pl_cc_payment_options %} 
+              <input id="missed-pl-cc-payment-radio-{{ index }}{% endfor %}" name="missed_pl_cc_payment" type="radio" value="{{ key }}"{% if (key == selected_missed_pl_cc_payment) %} {{ ' checked="checked"' }}{% endif %} data-parsley-required="true" data-parsley-trigger="change" data-parsley-required-message="Please select an answer." />
+              <label for="missed-pl-cc-payment-radio-{{ index }}" class="circle"></label><p class="circle">{{ value }}</p>
+              {% set index = index + 1 %} 
+            {% endfor %} 
+          </div>
+
+          <label class="label-required">Have you missed any mortgage repayments in the last 12 months?</label>
+          <div class="radios">
+            {% set index = 0 %} 
+            {% for key,value in missed_mortgage_payment_options %} 
+              <input id="missed-mortgage-payment-radio-{{ index }}{% endfor %}" name="missed_mortgage_payment" type="radio" value="{{ key }}"{% if (key == selected_missed_mortgage_payment) %} {{ ' checked="checked"' }}{% endif %} data-parsley-required="true" data-parsley-trigger="change" data-parsley-required-message="Please select an answer." />
+              <label for="missed-mortgage-payment-radio-{{ index }}" class="circle"></label><p class="circle">{{ value }}</p>
+              {% set index = index + 1 %} 
+            {% endfor %} 
+          </div>
+
+          <label class="label-required">Have you had any County Court Judgments (CCJ) in the last 6 years?</label>
+          <div class="radios">
+            {% set index = 0 %} 
+            {% for key,value in had_ccj_options %} 
+              <input id="had-ccj-radio-{{ index }}{% endfor %}" name="had_ccj" type="radio" value="{{ key }}"{% if (key == selected_had_ccj) %} {{ ' checked="checked"' }}{% endif %} data-parsley-required="true" data-parsley-trigger="change" data-parsley-required-message="Please select an answer." />
+              <label for="had-ccj-radio-{{ index }}" class="circle"></label><p class="circle">{{ value }}</p>
+              {% set index = index + 1 %} 
+            {% endfor %} 
+          </div>
+
+          <label class="label-required">Have you had an Individual Voluntary Arrangement (IVA) or been declared bankrupt in the last 6 years?</label>
+          <div class="radios">
+            {% set index = 0 %} 
+            {% for key,value in had_iva_options %} 
+              <input id="had-iva-radio-{{ index }}{% endfor %}" name="had_iva" type="radio" value="{{ key }}"{% if (key == selected_had_iva) %} {{ ' checked="checked"' }}{% endif %} data-parsley-required="true" data-parsley-trigger="change" data-parsley-required-message="Please select an answer." />
+              <label for="had-iva-radio-{{ index }}" class="circle"></label><p class="circle">{{ value }}</p>
+              {% set index = index + 1 %} 
+            {% endfor %} 
+          </div>
+        </div>
+        <div class="next-btn">
+          <div class="next-arrow">
+            <p>Next</p>
+            <i class="fa-angle-down fa-fw fa"></i>
+          </div>
+        </div>
+      </div>
+
+      <div id="annual-income-tooltip" class="tooltip">
+        <h4>Annual income</h4>
+        <p>Total annual household income, before tax and deductions to include benefits, overtime etc. If you are applying solely in your own name please only use your own income and not the total of your household.</p>
+      </div>
+    </div>
+
+    <div id="property-details-container" class="form-section blue" data-section="4">
+      <div class="inner cf">
+        <div class="form-progress-container">
+          <a class="section-1-btn progress-button active">1</a>
+          <a class="section-2-btn progress-button active">2</a>
+          <a class="section-3-btn progress-button active">3</a>
+          <a class="section-4-btn progress-button active">4</a>
+        </div>
+        <div class="form-section-inner cf">
+          <h2 class="smart-search-section-header"><span class="form-section-number">4</span>Property details:</h2>
+          <p class="minimum-text">*Minimum 3 years address history required</p>
+          <div id="address-container" class="address-container cf">
+            <div id="address-item-container-0" class="address-item-container cf">
+              <label class="label-required">Postcode</label>
+              <input id="postcode-text-0" class="postcode-text" name="address[0][postcode]" type="text" size="50" maxlength="50" value="{{ htmlentities(selected_postcode) }}" data-parsley-required="true" data-parsley-postcode="true" data-parsley-trigger="change" data-parsley-required-message="Please enter a post code." data-parsley-postcode-message="This value should be a valid UK postcode." />
+
+              <label>House number <span id="house-or-text">-or-</span></label>
+              <input id="house-number-text-0" class="house-number-text" name="address[0][house_number]" type="text" size="10" maxlength="10" value="{{ htmlentities(selected_house_number) }}" data-index="0" data-parsley-required="true" data-parsley-maxlength="10" data-parsley-trigger="change" data-parsley-required-message="Please enter a house number." />
+
+              <label>House name</label>
+              <input id="house-name-text-0" class="house-name-text" name="address[0][house_name]" type="text" size="40" maxlength="40" value="{{ htmlentities(selected_house_name) }}" data-index="0" data-parsley-required="true" data-parsley-string="true" data-parsley-firstletter="true" data-parsley-maxlength="40" data-parsley-trigger="change" data-parsley-required-message="Please enter a house name." data-parsley-string-message="Please enter a valid house name. Your house name must contain only alphanumeric characters, spaces and some of the special characters - '\', '/', '-'." data-parsley-firstletter-message="Please enter a valid house name. Your house name must start with a letter." />
+
+              <a id="find-address-btn-0" href="#find-address" class="find-address-btn" data-index="0">Find address</a>
+              <div id="address-loader-0" class="address-loader">
+                <i class="fa-circle-o-notch fa-spin fa fa-fw"></i>Please wait while we find your address
+              </div>
+              <a id="select-address-btn-0" href="#select-address" class="select-address-btn" data-index="0">Select address</a>
+
+              <p id="address-error-0" class="address-error"></p>
+
+              <label class="label-required">Address Line 1</label>
+              <input id="street-name-text-0" name="address[0][street_name]" type="text" size="75" maxlength="75" value="{{ htmlentities(selected_street_name) }}" data-parsley-required="true" data-parsley-maxlength="75" data-parsley-trigger="change" data-parsley-required-message="Please enter the first line of your address." />
+
+              <label class="label-required">City / town</label>
+              <input id="post-town-text-0" name="address[0][post_town]" type="text" size="35" maxlength="35" value="{{ htmlentities(selected_post_town) }}" data-parsley-required="true" data-parsley-maxlength="35" data-parsley-trigger="change" data-parsley-required-message="Please enter a city / town." />
+
+              <label>Locality</label>
+              <input id="locality-text-0" name="address[0][locality]" type="text" size="55" maxlength="55" value="{{ htmlentities(selected_locality) }}" data-parsley-required="false" data-parsley-maxlength="55" data-parsley-trigger="change" />
+
+              <label>County</label>
+              <input id="county-text-0" name="address[0][county]" type="text" size="40" maxlength="40" value="{{ htmlentities(selected_county) }}" data-parsley-required="false" data-parsley-maxlength="40" data-parsley-trigger="change" />
+
+              <label class="label-required">Move in date</label>
+              <div class="movein-month-select">
+                <select id="movein-month-select-0" name="address[0][movein_month]" data-parsley-required="true" data-parsley-errors-container="#movein-errors-0" data-parsley-trigger="change" data-parsley-required-message="Please select a month.">
+                  {% for key,value in movein_month_options %} 
+                    <option value="{{ key }}{% endfor %}"{% if (key == selected_movein_month) %} {{ ' selected="selected"' }}{% endif %}>{{ value }}</option>
+                  {% endfor %} 
+                </select>
+              </div>
+              <div class="movein-year-select">
+                <select id="movein-year-select-0" name="address[0][movein_year]" data-parsley-required="true" data-parsley-errors-container="#movein-errors-0" data-parsley-trigger="change" data-parsley-required-message="Please select a year.">
+                  {% for key,value in movein_year_options %} 
+                    <option value="{{ key }}{% endfor %}"{% if (key == selected_movein_year) %} {{ ' selected="selected"' }}{% endif %}>{{ value }}</option>
+                  {% endfor %} 
+                </select>
+              </div>
+              <div id="movein-errors-0" class="movein-errors"></div>
+
+              <button id="remove-address-btn-0" type="button" class="remove-address-btn" data-index="0"><i class="fa fa-times fa-fw"></i>Remove address</button>
+            </div>
+
+            <p>Note that some lenders require that you provide 3 year address history. If you have moved in the last 3 years, please add your previous address(es) as well.</p>
+            <button id="add-address-btn" type="button"><i class="fa fa-plus fa-fw"></i>Add address</button>
+          </div>
+
+          <label class="homeowner-question label-required">Are you a home owner?<br /><small>(this could be outright or with an outstanding mortgage)</small></label>
+          <div class="radios">
+            {% set index = 0 %} 
+            {% for key,value in homeowner_options %} 
+              <input id="homeowner-radio-{{ index }}{% endfor %}" name="homeowner" type="radio" value="{{ key }}"{% if (key == selected_homeowner) %} {{ ' checked="checked"' }}{% endif %} data-parsley-required="true" data-parsley-trigger="change" data-parsley-required-message="Please select an answer." />
+              <label for="homeowner-radio-{{ index }}" class="circle"></label><p class="circle">{{ value }}</p>
+              {% set index = index + 1 %} 
+            {% endfor %} 
+          </div>
+
+          <div id="homeowner-container" class="cf">
+            <label class="label-required">Did you purchase it from the council?</label>
+            <div class="radios">
+              {% set index = 0 %} 
+              {% for key,value in ex_council_options %} 
+                <input id="ex-council-radio-{{ index }}{% endfor %}" name="ex_council" type="radio" value="{{ key }}"{% if (key == selected_ex_council) %} {{ ' checked="checked"' }}{% endif %} data-parsley-required="true" data-parsley-trigger="change" data-parsley-required-message="Please select an answer." />
+                <label for="ex-council-radio-{{ index }}" class="circle"></label><p class="circle">{{ value }}</p>
+                {% set index = index + 1 %} 
+              {% endfor %} 
+            </div>
+
+            <label class="label-required">Estimated mortgage balance</label>
+            <div class="prepend-input">
+                <span class="prepend-content">£</span>
+                <input id="mortgage-balance-text" name="mortgage_balance" type="number" size="12" maxlength="12" value="{{ htmlentities(selected_mortgage_balance) }}" data-parsley-required="true" data-parsley-money="[0,9999999999]" data-parsley-trigger="change" data-parsley-required-message="Please enter your mortgage balance." data-parsley-money-message="Please enter your valid mortgage balance." />
+            </div>
+
+            <label class="label-required">Property value</label>
+            <div class="prepend-input">
+                <span class="prepend-content">£</span>
+                <input id="property-value-text" name="property_value" type="number" size="12" maxlength="12" value="{{ htmlentities(selected_property_value) }}" data-parsley-required="true" data-parsley-money="[0,9999999999]" data-parsley-trigger="change" data-parsley-required-message="Please enter the value of your property." data-parsley-money-message="Please enter your valid property value." />
+            </div>
+            
+            <label class="label-required">Monthly mortgage repayments</label>
+            <div class="prepend-input">
+                <span class="prepend-content">£</span>
+                <input id="monthly-mortgage-repayment-text" name="monthly_mortgage_repayment" type="number" size="7" maxlength="7" value="{{ htmlentities(selected_monthly_mortgage_repayment) }}" data-parsley-required="true" data-parsley-money="[0,99999]" data-parsley-trigger="change" data-parsley-required-message="Please enter your monthly mortgage repayments." data-parsley-money-message="Please enter valid monthly mortgage repayments." />
+            </div>
+
+            <label class="label-required">Property type</label>
+            <select id="property-type-select" name="property_type" data-parsley-required="true" data-parsley-trigger="change" data-parsley-required-message="Please select a property type.">
+              {% for key,value in property_type_options %} 
+                <option value="{{ key }}{% endfor %}"{% if (key == selected_property_type) %} {{ ' selected="selected"' }}{% endif %}>{{ value }}</option>
+              {% endfor %} 
+            </select>
+
+            <label class="label-required">Do you already have a homeowner loan?</label>
+            <div class="radios">
+              {% set index = 0 %} 
+              {% for key,value in homeowner_loan_options %} 
+                <input id="homeowner-loan-radio-{{ index }}{% endfor %}" name="homeowner_loan" type="radio" value="{{ key }}"{% if (key == selected_homeowner_loan) %} {{ ' checked="checked"' }}{% endif %} data-parsley-required="true" data-parsley-trigger="change" data-parsley-required-message="Please select an answer." />
+                <label for="homeowner-loan-radio-{{ index }}" class="circle"></label><p class="circle">{{ value }}</p>
+                {% set index = index + 1 %} 
+              {% endfor %} 
+            </div>
+
+            <div id="homeowner-loan-container">
+                <label class="label-required">Remaining homeowner loan balance</label>
+                <div class="prepend-input">
+                    <span class="prepend-content">£</span>
+                    <input id="homeowner-loan-balance-text" name="homeowner_loan_balance" type="number" size="12" maxlength="12" value="{{ htmlentities(selected_homeowner_loan_balance) }}" data-parsley-required="true" data-parsley-money="[0,9999999999]" data-parsley-trigger="change" data-parsley-required-message="Please enter the remaining balance of your homeowner loan." data-parsley-money-message="Please enter the remaining balance of your homeowner loan." />
+                </div>
+
+              <label class="label-required">Monthly homeowner loan payments</label>
+                <div class="prepend-input">
+                    <span class="prepend-content">£</span>
+                    <input id="monthly-homeowner-loan-payment-text" name="monthly_homeowner_loan_payment" type="number" size="7" maxlength="7" value="{{ htmlentities(selected_monthly_homeowner_loan_payment) }}" data-parsley-required="true" data-parsley-money="[0,99999]" data-parsley-trigger="change" data-parsley-required-message="Please enter monthly homeowner loan payments." data-parsley-money-message="Please enter valid monthly homeowner loan payments." />
+                </div>
+
+              <label class="label-required">Do you wish to consolidate this loan?</label>
+              <div class="radios">
+                {% set index = 0 %} 
+                {% for key,value in consolidate_homeowner_loan_options %} 
+                  <input id="consolidate-homeowner-loan-radio-{{ index }}{% endfor %}" name="consolidate_homeowner_loan" type="radio" value="{{ key }}"{% if (key == selected_consolidate_homeowner_loan) %} {{ ' checked="checked"' }}{% endif %} data-parsley-required="true" data-parsley-trigger="change" data-parsley-required-message="Please select an answer." />
+                  <label for="consolidate-homeowner-loan-radio-{{ index }}" class="circle"></label><p class="circle">{{ value }}</p>
+                  {% set index = index + 1 %} 
+                {% endfor %} 
+              </div>
+            </div>
+          </div>
+
+          <div id="credit-check-container">
+            <h3>Optional credit agency consent</h3>
+            <p>In order to provide you with a more accurate list of qualifying quotes from lenders, we may require information from a credit reference agency. In making such an enquiry, we will leave a Consumer Enquiry search footprint on your credit file, however no lender will be able to view this footprint and your credit rating will not be affected.</p>
+            <label class="label-required">Would you like to use our credit check service?</label>
+            <div class="radios">
+              {% set index = 0 %} 
+              {% for key,value in credit_check_options %} 
+                <input id="credit-check-radio-{{ index }}{% endfor %}" name="credit_check" type="radio" value="{{ key }}"{% if (key == selected_credit_check) %} {{ ' checked="checked"' }}{% endif %} data-parsley-required="true" data-parsley-trigger="change" data-parsley-required-message="Please select an answer." />
+                <label for="credit-check-radio-{{ index }}" class="circle"></label><p class="circle">{{ value }}</p>
+                {% set index = index + 1 %} 
+              {% endfor %} 
+            </div>
+            <div class="terms">
+              <a href="{{ base_path() }}terms-and-conditions" target="_blank">Terms and Conditions</a>
+            </div>
+          </div>
+
+          <div id="terms-container">
+            <p>By clicking on the button below, you agree to our <a href="{{ base_path() }}privacy-policy" target="_blank">Privacy Policy</a> and you are instructing us to supply your personal information to Pancredit Systems Ltd (&quot;Pancredit&quot;) via the fairmoney.com website.</p>
+            <input id="terms-agree-checkbox" name="terms_agree" type="checkbox" value="Y" data-parsley-required="true" data-parsley-trigger="change" data-parsley-required-message="Please agree with terms &amp; conditions before proceeding." />
+            <label for="terms-agree-checkbox">I agree</label>
+          </div>
+
+          <button id="submit-btn" name="action" type="submit" class="submit get-smart-results">Get <strong>your</strong> results now <i class="fa fa-angle-right"></i></button>
+          <button id="clear-btn" name="action" type="button" class="btn">Clear details</button>
+        </div>
+      </div>
+    </div>
+
+    <div id="control-container" class="cf">
+      <div class="content">
+        <div id="profile-container" class="cf">
+          <div class="inner cf">
+            <div class="cf control-group">
+              <h3>Loan details</h3>
+              <div id="loan-container" class="cf">
+                <div id="amount-container" class="cf">
+                  <label class="label-title">Loan amount</label>
+                    <div class="prepend-input">
+                        <span class="prepend-content">£</span>
+                        <input id="loan-amount-alt-text" type="number" size="12" maxlength="12" value="{{ htmlentities(selected_loan_amount) }}" data-parsley-required="true" data-parsley-money="[100,9999999999]" data-parsley-trigger="change" data-parsley-required-message="Please enter a loan amount." data-parsley-money-message="Please enter a valid loan amount. Your minimum loan amount must be £100." />
+                    </div>
+                </div>
+                <div id="term-container" class="cf">
+                  <label class="label-title">Loan period</label>
+                  <select id="loan-period-alt-select" name="loan_period" data-parsley-required="true" data-parsley-trigger="change" data-parsley-required-message="Please select a loan period.">
+                    {% for key,value in loan_period_options %} 
+                      {% if (key == '') %} 
+                      <option value="{{ key }}{% endif %}{% endfor %}"{% if (key == selected_loan_period) %} {{ ' selected="selected"' }}{% endif %}>{{ value }}</option>
+                    {% endfor %} 
+                  </select>
+                </div>
+                <div id="amend-container" class="cf">
+                  <button id="amend-details-btn" name="action" type="button" class="btn">Amend your details <i class="fa fa-angle-right"></i></button>
+                </div>
+                <div id="submit-container" class="cf">
+                  <input id="submit-btn" name="action" type="submit" value="Search" class="submit-btn" />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div id="filter-container" class="cf">
+          <div class="inner cf">
+            <div class="cf control-group">
+              <h3>Filters</h3>
+              <div class="checkboxes">
+                {% set index = 0 %} 
+                {% for key,value in loan_attribute_options %} 
+                  <input id="loan-attribute-checkbox-{{ index }}{% endfor %}" name="loan_attributes[]" type="checkbox" value="{{ key }}"{% if (in_array(key, selected_loan_attributes)) %} {{ ' checked="checked"' }}{% endif %} data-parsley-trigger="change" />
+                  <label for="loan-attribute-checkbox-{{ index }}">{{ value }}</label>
+                  {% set index = index + 1 %} 
+                {% endfor %} 
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>
+<div class="inner cf">
+  <div id="search-result-loader" class="cf">
+    <h3><i class="fa-circle-o-notch fa fa-spin"></i>Please wait while we find the best loans for you...</h3>
+  </div>
+  <div id="search-result-container" class="cf">
+    <div class="inner cf">
+      <div class="content">
+        <div id="search-result">
+        </div>
+        <div id="search-warning-container">
+          {% if (node.field_search_footer != constant('NULL')) %} 
+            {{ node.field_search_footer['und'][0]['value'] }}{% endif %} 
+          {% endif %} 
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

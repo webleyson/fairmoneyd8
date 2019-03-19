@@ -1,0 +1,79 @@
+{#
+/*@file
+*Available variables:
+*@see template_preprocess_block()
+@ingroup themeable
+#}
+
+ {% set apply_url = 'loans?lender_status=All&loan_amount={loan_amount}&loan_period={loan_period}&loan_type={loan_type}&action=Search' %}
+
+ {% if (node.field_apply_loan_amount != constant('NULL') and node.field_apply_loan_amount['und'][0]['value'] != '') %}
+ {% set apply_url = str_replace('{loan_amount}', node.field_apply_loan_amount['und'][0]['value'], apply_url) %}
+ {% else %} 
+ {% set apply_url = str_replace('{loan_amount}', 4000, apply_url) %}
+ {% endif %}
+
+ {% if (node.field_apply_loan_period != constant('NULL') and node.field_apply_loan_period['und'][0]['value'] != '') %}
+ {% set apply_url = str_replace('{loan_period}', node.field_apply_loan_period['und'][0]['value'], apply_url) %}
+ {% else %} 
+ {% set apply_url = str_replace('{loan_period}', 36, apply_url) %}
+ {% endif %}
+
+ {% if (node.field_apply_loan_type != constant('NULL') and node.field_apply_loan_type['und'][0]['value'] != '') %}
+ {# var_dump($node); #}
+ {% set apply_url = str_replace('{loan_type}', ucfirst(node.field_apply_loan_type['und'][0]['value']), apply_url) %}
+ {% else %} 
+ {% set apply_url = str_replace('{loan_type}', 'Secured%20Loan', apply_url) %}
+ {% endif %}
+
+
+<div class="content">
+  <h1>{{ title }}</h1>
+  {% if (node.field_show_apply_button != constant('NULL') and node.field_show_apply_button['und'][0]['value'] == '1') %} 
+    {% if (node.field_apply_loan_type['und'][0]['value'] == 'Car%20Purchase%20Finance') %} 
+        <div class="notification-wrap">
+            <a id="apply" class="cta-btn cta-btn-green" href="{{ base_path() ~ apply_url }}">View Loans<i class="fa fa-angle-right"></i></a>
+            <div class="bubble-notification">
+                <p>Car Finance is NOT normally available for</p>
+                <ul>
+                    <li>
+                        Cars over 10 years old
+                    </li>
+                    <li>
+                        Category Cars (Insurance write offs)
+                    </li>
+                    <li>
+                        Cars with existing loans
+                    </li>
+                </ul>
+            </div>
+        </div>
+    {% else %} 
+        <a id="apply" class="cta-btn cta-btn-green" href="{{ base_path() ~ apply_url }}">View Loans<i class="fa fa-angle-right"></i></a>
+    {% endif %} 
+  {% endif %} 
+  {{ render(content['body']) }}{% endif %} 
+  {% if (node.field_show_apply_button != constant('NULL') and node.field_show_apply_button['und'][0]['value'] == '1') %} 
+    {% if (node.field_apply_loan_type['und'][0]['value'] == 'Car%20Purchase%20Finance') %} 
+        <div class="notification-wrap">
+        <a id="apply" class="cta-btn cta-btn-green" href="{{ base_path() ~ apply_url }}">View Loans<i class="fa fa-angle-right"></i></a>
+            <div class="bubble-notification">
+                <p style="margin-bottom: 0">Car Finance is NOT normally available for</p>
+                <ul style="margin-bottom: 0">
+                    <li style="margin-bottom: 0">
+                        Cars over 10 years old
+                    </li>
+                    <li style="margin-bottom: 0">
+                        Category Cars (Insurance write offs)
+                    </li>
+                    <li style="margin-bottom: 0">
+                        Cars with existing loans
+                    </li>
+                </ul>
+            </div>
+        </div>
+        {% else %} 
+            <a id="apply" class="cta-btn cta-btn-green" href="{{ base_path() ~ apply_url }}">View Loans<i class="fa fa-angle-right"></i></a>
+        {% endif %} 
+  {% endif %} 
+</div>

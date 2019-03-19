@@ -1,0 +1,124 @@
+{#
+/*@file
+*Available variables:
+*@see template_preprocess_block()
+@ingroup themeable
+#}
+
+<div id="apply-dialog" title="" style="display: none;">
+  <h3>Be confident that you will be accepted for this loan</h3>
+  <p>Applying for multiple loans could adversely affect your credit profile.  By using our SMART technology you can be confident that you could be accepted for this loan.</p>
+  <p><strong>THIS WILL NOT AFFECT YOUR CREDIT PROFILE.</strong></p>
+  <form id="apply-form" action="{{ base_path() }}loans/apply" method="post" target="_blank">
+    <input id="apply-token" name="apply" type="hidden" value="" />
+    <input id="broker-reference-hidden" name="broker_reference" type="hidden" value="" />
+    <input id="lender-option-id-hidden" name="lender_option_id" type="hidden" value="" />
+    <input id="finance-option-id-hidden" name="finance_option_id" type="hidden" value="" />
+    <input id="lender-id-hidden" name="lender_id" type="hidden" value="" />
+    <input id="lender-name-hidden" name="lender_name" type="hidden" value="" />
+    <input id="loan-type-hidden" name="loan_type" type="hidden" value="" />
+    <input id="fulfilling-broker-hidden" name="fulfilling_broker" type="hidden" value="" />
+    <input id="fulfilment-apply-prompt-hidden" name="fulfilment_apply_prompt" type="hidden" value="" />
+    <input id="fulfilment-description-hidden" name="fulfilment_description" type="hidden" value="" />
+    <input name="action" type="hidden" value="Request" />
+  </form>
+</div>
+<div id="form-container">
+  <div id="control-container">
+    <div class="inner cf">
+      <div class="content">
+        <form id="search-form" class="cf" method="get" action="" {% if (not is_form_valid) %} {{ ' validate-on-startup="true"' }}{% endif %} {% if (is_form_valid and action == 'Search') %} {{ ' submit-on-startup="true"' }}{% endif %}>
+          <input id="search-token" name="search" type="hidden" value="{{ csrf_token }}" />
+          <div id="details-container" class="control-group cf">
+            <h3>Loan details</h3>
+            <div id="loan-container" class="cf">
+              <div id="amount-container" class="cf">
+                <label class="label-title">Loan amount</label>
+                <div class="prepend-input">
+                    <span class="prepend-content">£</span>
+                    <input id="loan-amount-text" name="loan_amount" type="number" size="12" maxlength="12" value="{{ htmlentities(selected_loan_amount) }}" data-parsley-required="true" data-parsley-money="[100,9999999999]" data-parsley-trigger="change" data-parsley-required-message="Please enter a loan amount." data-parsley-money-message="Please enter a valid loan amount. Your minimum loan amount must be £100." />
+                </div>
+              </div>
+              <div id="term-container" class="cf">
+                <label class="label-title">Loan period</label>
+                <select id="loan-period-select" name="loan_period" data-parsley-required="true" data-parsley-trigger="change" data-parsley-required-message="Please select a loan period.">
+                  {% for key,value in loan_period_options %} 
+                    {% if (key == '') %} 
+                    <option value="{{ key }}{% endif %}{% endfor %}"{% if (key == selected_loan_period) %} {{ ' selected="selected"' }}{% endif %}>{{ value }}</option>
+                  {% endfor %} 
+                </select>
+              </div>
+              <div id="loan-type-container" class="cf">
+                <label class="label-title">Please choose loan type</span></label>
+                <select id="loan-type-select" name="loan_type" data-parsley-required="true" data-parsley-trigger="change" data-parsley-required-message="Please select a loan type.">
+                  {% for key,value in loan_type_options %} 
+                    <option value="{{ key }}{% endfor %}"{% if (key == selected_loan_type) %} {{ ' selected="selected"' }}{% endif %}>{{ value }}</option>
+                  {% endfor %} 
+                </select>
+              </div>
+              <div id="submit-container" class="cf">
+                <input id="submit-btn" name="action" type="submit" value="Search" class="submit-btn" />
+              </div>
+            </div>
+          </div>
+          <div id="profile-container" class="cf control-group">
+            <h3>Credit profile</h3>
+            <div class="radios">
+              <div class="profile-selectors cf">
+                {% set index = 0 %} 
+                {% for key,value in lender_status_options %} 
+                  <div class="profile-selector">
+                    <input id="lender-status-radio-{{ index }}{% endfor %}" name="lender_status" type="radio" value="{{ key }}"{% if (key == selected_lender_status) %} {{ ' checked="checked"' }}{% endif %} data-parsley-required="true" data-parsley-trigger="change" data-parsley-required-message="Please select a profile type." />
+                    <label for="lender-status-radio-{{ index }}">{{ value }}</label>
+                  </div>
+                {% set index = index + 1 %} 
+                {% endfor %} 
+              </div>
+            </div>
+            <a href="{{ base_path() }}loans/smart-search" class="smart-search-cta">
+              Not sure? Why not try our Smart Search?
+              <i class="fa fa-angle-right"></i>
+            </a>
+          </div>
+          <div id="filter-container" class="cf control-group">
+            <h3>Filters</h3>
+            <div class="checkboxes">
+              {% set index = 0 %} 
+              {% for key,value in loan_attribute_options %} 
+                <input id="loan-attribute-checkbox-{{ index }}{% endfor %}" name="loan_attributes[]" type="checkbox" value="{{ key }}"{% if (in_array(key, selected_loan_attributes)) %} {{ ' checked="checked"' }}{% endif %} />
+                <label for="loan-attribute-checkbox-{{ index }}">{{ value }}</label>
+                {% set index = index + 1 %} 
+              {% endfor %} 
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="inner">
+  <div id="search-result-loader" class="cf">
+    <h3><i class="fa-circle-o-notch fa fa-spin"></i>Please wait while we find the best loans for you...</h3>
+  </div>
+</div>
+<script src="https://fairmoney.com/sites/all/themes/fairmoney/js/jquery-migrate-1.2.1.js"></script>
+<script>
+  jQuery( window ).load(function() { 
+    jQuery('.ui-dialog-buttonset .proceed').live('click',function(){
+      ga('send', 'event', 'link', 'click', 'applydirectly');
+    })
+  });
+</script>
+<div id="search-result-container" class="cf">
+  <div class="inner cf">
+    <div class="content">
+      <div id="search-result">
+      </div>
+      <div id="search-warning-container">
+        {% if (node.field_search_footer != constant('NULL')) %} 
+          {{ node.field_search_footer['und'][0]['value'] }}{% endif %} 
+        {% endif %} 
+      </div>
+    </div>
+  </div>
+</div>

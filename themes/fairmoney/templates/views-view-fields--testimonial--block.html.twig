@@ -1,0 +1,20 @@
+{#
+/*@file
+*Available variables:
+*@see template_preprocess_block()
+@ingroup themeable
+#}
+
+
+
+<h2>Read What Our Clients Say...</h2>
+<h4>{{ fields['title'].content }}</h4>
+<div class="photo">
+  {% if (fields['field_photo'].content is defined) %} 
+    {{ fields['field_photo'].content }}{% else %} 
+    <img src="{{ base_path() ~ path_to_theme() }}{% endif %}/images/default-shillotte.png" alt="testimonials" />
+  {% endif %} 
+</div>
+<blockquote>
+  {{ fields['body'].content }} 
+</blockquote>

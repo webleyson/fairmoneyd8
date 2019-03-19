@@ -1,0 +1,220 @@
+﻿{#
+/*@file
+*Available variables:
+*@see template_preprocess_block()
+*@ingroup themeable
+#}
+
+
+ pmt2(apr, loanlength, loanamount) 
+ {% set loanlength/365*apr/100*loanamount+loanamount = 'undefined' %}
+
+
+<style>
+#amount{float:right;}
+</style>
+<link rel="stylesheet" href="//code.jquery.com/ui/1.11.2/themes/smoothness/jquery-ui.css">
+  <script src="//code.jquery.com/jquery-1.10.2.js"></script>
+  <script src="//code.jquery.com/ui/1.11.2/jquery-ui.js"></script>
+<script>
+  jQuery(function() {
+		jQuery( "#slider" ).slider({
+			range: "max",
+			min: 100,
+			max: 1000,
+			step: 10,
+			slide: function( event, ui ) {
+				jQuery( "#amount" ).html('£'+ui.value);
+				jQuery( "#amount_text" ).val('£'+ui.value);							
+			},
+			stop: function( event, ui ) {
+				$.ajax({
+					type : "POST",
+					url : "https://{{ _SERVER['HTTP_HOST'] }}/calculate_loans.php",
+					data: {
+						'loanbaseamount'    :   ui.value
+					},
+					success : function(response) {
+						$('.ajaxloan').html(response);
+						$('.simpleloan').css('display','none');
+					}
+				}); 
+			}	
+		});
+		jQuery( "#amount" ).val( $( "#slider" ).slider( "value" ) );
+
+	});
+  </script>
+  <style>
+.pagecont { float: left; }
+#minvalue { color: #fff; float: left; margin-right: 18px; }
+#maxvalue { color: #fff; float: right; }
+.outputheader { background-color: #1659a8; float: left; width: 98.2%; color: #fff; margin-top: 0px; padding: 15px 1% 8px; border-radius: 24px 24px 0 0; font-size: 18px; font-weight: bold; }
+.headers1 { float: left; margin-left: 10px; width: 100px; }
+.headers2 { float: left; width: 28%; text-align: center; }
+.headers3 { float: left; width: 17%; text-align: center; }
+.headers5 { float: left; text-align: center; width:15%; }
+.headers4 { float: left; width: 22%; text-align: center; }
+.borrow { padding: 15px 15%; background: #1659a8; float: left; width: 70%; border-radius: 20px; margin: 30px 0px 0px 0px; }
+.borrow h6 { padding: 10px 0px; float: left; width: 100%; color: #fff; font-size: 25px; margin: 0px !important; font-weight: bold; text-align: center; }
+.ui-slider.ui-slider-horizontal.ui-widget.ui-widget-content.ui-corner-all { float: left; width: 75%; }
+#amount { padding: 0px 0px; color: #fff!important; float: none; }
+#results { float: left; width: 100%; color: #8ec2fb; margin: 15px 0px 20px 20px; font-size: 25px; }
+.simpleloan { border: 1px solid #1659a8; float: left; width: 100%; }
+.ajaxloan { border: 1px solid #1659a8; float: left; width: 100%; }
+.output { padding: 6px 0px 0px 0px; }
+.outputimg { width: 100px; height: 45px; background: #dccaca; float: left; margin-left: 10px; margin-top: 10px; }
+.outputpayment { color: #1659a8; float: left; font-size: 20px; font-weight: bold; margin: 10px 0 0; padding: 15px 0; text-align: center; width: 28%; }
+.outputfees { color: #1659a8; float: left; font-size: 20px; font-weight: bold; margin: 10px 0 0; padding: 15px 0; text-align: center; width: 17%; }
+.outputapr { color: #1659a8; float: left; font-size: 20px; font-weight: bold; margin: 10px 0 0; padding: 15px 0; text-align: center; width: 22%; }
+.outputlender { float: left; width: 50%; text-align: left; color: #1659a8; font-weight: normal; padding: 15px 0px; margin-left: 10px; font-size: 16px; }
+.outputapply { float: right; width: 28%; text-align: center; color: #c4e2ec; font-weight: normal; margin: 10px 0px 0px 0px; }
+
+.outputterm { color: #1659a8; float: left; font-size: 20px; font-weight: bold; margin: 10px 0 0; padding: 15px 0; text-align: center; width: 15%; }
+
+
+.outputapply a { color: #c4e2ec; padding: 10px 25px 10px 15px; color: #fff; font-weight: normal; font-size: 13px; background: url(images/arrow.png) 55px 12px no-repeat #97c1e7; border-radius: 15px; }
+.outputaprtext { float: left; width: 98%; background: #c5e2ea; padding: 8px 1%; font-size: 14px; }
+.content h1 { color: #9bc7ee; margin: 0px; padding: 0px; font-weight: bold; }
+.content h3 { color: 68574f; margin: 0px; padding: 0px; font-weight: bold; }
+#warning { float: left; font-size: 15px; padding: 5px 0 30px 5px; width: 100%; }
+
+@media only screen and (min-width:320px) and (max-width: 767px) {
+.outputheader { width: 98.5%; }
+.headers1 { float: left; margin-right: 0px; width: 24%; margin-left: 1%; }
+.headers2 { float: left; margin-right: 0px; width: 24%; text-align: center; }
+.headers3 { float: left; margin-right: 0px; width: 24%; text-align: center; }
+.headers4 { float: left; margin-right: 0px; width: 26%; text-align: center; }
+.outputimg {  margin-left: 1%; font-size: 11px; }
+.outputpayment {  font-size: 11px; padding: 20px 0px; }
+.outputfees {  font-size: 11px; padding: 20px 0px; }
+.outputapr {  font-size: 11px; padding: 20px 0px; }
+#amount { margin-right: 0px; }
+.borrow { padding: 15px 5%; width: 90%; }
+.ui-slider.ui-slider-horizontal.ui-widget.ui-widget-content.ui-corner-all { width: 60%; }
+
+.outputheader { font-size:11px;}
+
+.outputterm {font-size:11px; margin-top:15px; }
+.outputimg {width:15%; height:auto;}
+.headers1 { width:15%;}
+.headers2 {width: 26%; }
+.headers3 {width: 17%;}
+}
+
+@media only screen and (min-width:400px) and (max-width: 767px) {
+.ui-slider.ui-slider-horizontal.ui-widget.ui-widget-content.ui-corner-all { width: 72%; }
+}
+ 
+.infoicon {  display: inline-block;
+    float: right;
+    margin-right: 8px;
+    margin-top: -36px;
+    position: relative;} 
+.popupinfotooltip {position:absolute; width:200px; border-radius:5px; border:1px solid #555757; top:24px; padding:10px; background:#fff; left:-100px; display:none; font-size:13px; z-index:999}
+.popupinfotooltip strong{ padding-right:5px; }
+.infoicon:hover .popupinfotooltip {display:block;}
+.popupinfotooltip div{ margin-bottom:8px; width:100%; float:left;}
+  </style>  
+<div class="content">
+	<h1>Compare Payday Loans</h1>
+	<h3>Compare payday loans quickly and easily</h3>
+	<div class="borrow"><h6>I want to borrow : <span id="amount"  style="border:0; color:#f6931f; font-weight:bold;font-size:22px;">£100</span></h6>
+		<input type="hidden" id="amount_text" value="" />
+		<div id="minvalue">£100</div>
+		<div id="maxvalue">£1000</div>
+		<div id="slider"></div>
+	</div>
+	<span id="results">Your Results</span> 
+			 pmt(apr, term, loan) 
+		 {% set term = term * 12 %}
+		 {% set apr = apr / 1200 %}
+		 {% set amount = apr * -loan * pow((1 + apr), term) / 1 - pow((1 + apr), term) %}
+		 number_format(amount, 2)
+		
+		
+
+		{{ include 'excel/excel_reader2.php' }}
+		{{ include 'excel/SpreadsheetReader.php' }}
+		{{ include 'excel/SpreadsheetReader_XLSX.php' }}
+		{% set paths = _SERVER['DOCUMENT_ROOT']~"/Payday.xlsx" %}
+		{% set excel = new SpreadsheetReader(paths) %}
+	
+	<div class="outputheader">
+		<div class="headers1">Provider</div>
+		<div class="headers2">Total Repayable</div>
+		<div class="headers3">Fees</div>
+		<div class="headers5">Term</div>
+		<div class="headers4">APR</div>
+	</div>
+	<div class="ajaxloan"></div>
+	<div class="simpleloan">
+		{% set i = 0 %}
+			{% for Row in excel %} 
+				{% set i = i + 1 %}
+				{% if (i == 1) %} 						
+				{% set days = Row[3] %}{% endif %}
+				{% set payamount = pmt2(Row[1], days, (100+(str_replace('£','',Row[2])))) %} 
+				
+				<div class="output">
+					<div class="outputimg"><a target="_blank" href="{{ Row[6] }}"><img src="{{ Row[7] }}" /></a></div>
+					<div class="outputpayment">£{{ number_format(payamount,2) }}</div>
+					<div class="outputfees">{{ Row[2] }}</div>
+					<div class="outputterm">{{ Row[3]~' ' }}Days</div>
+					<div class="outputapr">{{ number_format((pow((payamount/100),(365/Row[3]))-1)*100,1) }}%</div>
+                    <div class="infoicon">
+						<img src="http://{{ _SERVER ['HTTP_HOST']}}/sites/all/themes/fairmoney/images/infoimg.png" alt="" />
+						<div class="popupinfotooltip">
+							<div class="outputlatepaymentfees"><strong>Late Payment Fees : </strong>{{ Row[8] }}</div>
+							<div class="outputearlyrepayment"><strong>Early Repayment : </strong>{{ Row[9] }}</div>
+							<div class="outputlenderaddress"><strong>Lender Address : </strong>{{ Row[10] }}</div>
+							                            
+                            
+                            {% if (Row[11] is not empty) %} 
+								<div class="outputadditionalinfo"><strong>Additional Information  : </strong>{{ Row[11] }}</div>
+							{% endif %} 
+                            
+							{% if (Row[12] is not empty) %} 
+								<div class="outputcf1"><strong>Custom Field 1  : </strong>{{ Row[12] }}</div>
+							{% endif %} 
+							{% if (Row[13] is not empty) %} 
+								<div class="outputcf2"><strong>Custom Field 2 : </strong>{{ Row[13] }}</div>
+							{% endif %} 
+							{% if (Row[14] is not empty) %} 
+								<div class="outputcf3"><strong>Custom Field 3 : </strong>{{ Row[14] }}</div>
+							{% endif %} 
+							{% if (Row[15] is not empty) %} 
+								<div class="outputcf4"><strong>Custom Field 4 : </strong>{{ Row[15] }}</div>
+							{% endif %} 
+							{% if (Row[16] is not empty) %} 
+								<div class="outputcf5"><strong>Custom Field 5 : </strong>{{ Row[16] }}</div>
+							{% endif %} 
+						</div>
+					</div>
+					<div class="outputlender">{{ Row[0] }}</div>
+					<div id="{% if (Row[0] == 'Quick Quid') %}{{ 'QuickQuid' }}{% else %} {{ Row[0] }}{% endif %}" class="outputapply"><a target="_blank" href="{{ Row[6] }}">Apply</a></div>
+					<div class="outputaprtext">{{ Row[5] }}</div>
+					
+				</div>
+		{% endfor %}	
+	</div>		
+
+<div id="warning">Warning: Late repayment can cause you serious money problems. <br />For help, go to <a href="http://www.moneyadviceservice.org.uk">www.moneyadviceservice.org.uk</a></div>
+<div class="pagecont">
+<p>	With a Payday Loan the customer is expected to repay the balance in full on their next pay day (however most lenders in fact allow customers to choose their own repayment date).</p>
+<p>	Payday Loans are a very expensive way to borrow money, and should only be used for emergencies such as car repairs, boiler repairs etc. It is not recommended that they are used to assist in budgeting or general purchases. A Payday Loan should only be entered into by customers who are confident that they can repay the loan balance within the agreed period of the loan.</p>
+<p>	When taking out a Payday Loan, the lender may ask customers to agree to and set-up a continuous payment authority or recurring payment which allows the lender to take what is owed directly from the customer’s bank account on the day that it is due.</p>
+<p>	Since July 2014 a payday lender is not allowed to make two or more attempts to take what is owed (or part of what is owed) from a customer’s account.</p>
+<p>	If a balance cannot be repaid within the agreed timescale, then a lender may offer customers the ability to extend or roll over the loan balance to a later date. A lender may also offer customers a further loan advance to settle the current outstanding balance. It is important to note that, although this may seem like a good option at the time, additional fees and interest may be added to the balance of the outstanding loan thereby adding to a customer’s indebtedness and this may add to their problems.</p>
+
+<p>	Since July 2014, a payday lender cannot extend a loan more than twice unless they first freeze the interest and fees charged.</p>
+<p>The FCA published its proposals for a payday loan price cap in July. The price cap structure and levels remain unchanged following the consultation.</p>
+<p>These are:</p>
+<p>1.Initial cost cap of 0.8% per day - Lowers the cost for most borrowers. For all high-cost short-term credit loans, interest and fees must not exceed 0.8% per day of the amount borrowed.</p>
+<p>2.Fixed default fees capped at £15 - Protects borrowers struggling to repay. If borrowers do not repay their loans on time, default charges must not exceed £15. Interest on unpaid balances and default charges must not exceed the initial rate.</p>
+<p>3.Total cost cap of 100% - Protects borrowers from escalating debts. Borrowers must never have to pay back more in fees and interest than the amount borrowed.</p>
+<p>From January 2015, no borrower will ever pay back more than twice what they borrowed, and someone taking out a loan for 30 days and repaying on time will not pay more than £24 in fees and charges per £100 borrowed. For more details visit <a href="http://www.fca.org.uk/news/fca-confirms-price-cap-rules-for-payday-lenders">http://www.fca.org.uk/news/fca-confirms-price-cap-rules-for-payday-lenders.</a>
+</p>
+<p>&nbsp;	</p>
+</div>
+</div>

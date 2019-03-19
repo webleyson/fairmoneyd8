@@ -1,0 +1,110 @@
+{#
+/*@file
+*Available variables:
+*@see template_preprocess_block()
+*@ingroup themeable
+#}
+
+
+{% if is_front %}
+ 
+  <div id="header" class="c_header">
+    <div class="container cf">
+      {{ render_var(page['header']) }} 
+    </div>
+  </div>
+{% else %} 
+ 
+ 
+  <div id="header">
+    <div class="inner cf">
+      {{ render_var(page['header']) }}{% endif %} 
+    </div>
+  </div>
+  
+ 
+  {% set sidebar = render_var(page['sidebar']) %} 
+  <div id="main-container" class="cf{% if (sidebar != '') %} {{ ' has-sidebar' }}{% endif %} c_main">
+
+    {% if (not is_front and page_id != 'loan-search' and page_id != 'loan-smart-search') %} 
+      <div class="inner cf">
+    {% endif %} 
+
+    {% if (messages) %} 
+      <div id="messages">
+        {{ messages }}
+      </div>
+    {% endif %} 
+
+    {% if (tabs) %} 
+      <div id="tabs">
+        {{ render_var(tabs) }}
+      </div>
+    {% endif %} 
+
+
+  {% set path = url('<current>')  %} 
+
+  {% if (path == 'node/45') %} 
+    {% include 'payday_loan_table-page.html.twig' %}
+ {% else %} 
+    {{ render_var(page['content']) }} {% endif %}
+
+    {% if (sidebar != '') %} 
+      <div id="sidebar">
+        {{ sidebar }}
+      </div>
+    {% endif %} 
+
+    {% if (not is_front and page_id != 'loan-search' and page_id != 'loan-smart-search') %} 
+      </div>
+    {% endif %} 
+  </div>
+
+<div id="footer" class="c_footer">
+    <div class="container">
+        <div class="row">
+    
+        <div class="col-xs-12 col-sm-12 col-md-10 col-lg-10">
+                <div class="disclaimer">
+                    <p style="line-height: 20.7999992370605px;">
+                        <strong>Fairmoney Comparison Limited</strong> (Company Registration number 08294987, FCA Registration number 776275, Registered office: Regina House 124 Finchley Road, London, NW3 5JS) is an 
+                        Appointed Representative of Car Loan Originations Limited (Company Registration Number 3012315, FCA Registration Number 688840, Registered office: Regina House 124 Finchley Road, London, NW3 5JS)
+                    </p>
+                    <p style="line-height: 20.7999992370605px;">
+                        The FairMoney™ loan decisioning engine is powered by Equiniti Credit Services part of the Equiniti Group.<br>
+                        Email Contact Address: <a style="font-size:12px;"href="mailto:admin@fairmoney.com">admin@fairmoney.com</a><br>
+                        You will not be charged for using this comparison website.<br>
+                        FairMoney and Equiniti Credit Services may receive commission or fees from loan providers when you choose a loan product from this site
+                    </p>
+                    <a style="margin-top: 20px; display:block; margin-bottom:20px;" href="http://www.campaignforfairfinance.org/" target="_blank"> <img src="https://fairmoney.com/sites/default/files/CFF%20BLUE.gif" width="150"></a>
+                    </div>
+                    <div class="copyright">
+                    <p>©FairMoney Comparison Limited {{ date('Y') }}  Registered office Regina House, 124 Finchley Road, London NW3 5JS</p>
+                </div>
+            </div>
+
+            <div class="col-xs-12 col-sm-12 col-md-2 col-lg-2">
+                <div class="links">
+                    <a class="fair-money-lender" href="https://fairmoney.com/about-us/approved-lenders" target="_blank"><img alt="" src="/sites/all/themes/fairmoney/images/logo-approved.jpg"><br>All our approved lenders display this logo</a>
+                    <ul style="width:100%;  text-align:center;"><li style="width:100%;  display:block; text-align:center"><a href="/privacy-policy">Privacy Policy </a></li><li style="width:100%; text-align:center"><a href="/terms-and-conditions">Terms and conditions </a></li></ul>   
+                    <div class="social-footer" style="text-align:center; width:100%;">
+                        <div class="social-item twitter">
+                            <a href="https://twitter.com/UKFairMoney" target="_blank"><i class="fa fa-twitter-square"></i></a>
+                        </div>
+                        <div class="social-item facebook">
+                            <a href="https://www.facebook.com/FairMoneyPage" target="_blank"><i class="fa fa-facebook-square"></i></a>
+                        </div>
+                        <div class="social-item instragram">
+                            <a href="https://instagram.com/ukfairmoney" target="_blank"><i class="fa fa-instagram"></i></a>
+                        </div>
+                        <div class="social-item pinterest">
+                            <a href="https://www.pinterest.com/fairmoney" target="_blank"><i class="fa fa-pinterest-square"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+</div>

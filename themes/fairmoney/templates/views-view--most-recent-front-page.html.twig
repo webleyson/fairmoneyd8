@@ -1,0 +1,13 @@
+{#
+/*@file
+*Available variables:
+*@see template_preprocess_block()
+@ingroup themeable
+#}
+
+<div class="most-recent">
+	{% if (rows) %} 
+		{{ rows }}{% elseif (empty) %} 
+		{{ empty }}{% endif %} 
+	{% endif %} 
+</div>

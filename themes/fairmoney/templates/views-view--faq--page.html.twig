@@ -1,0 +1,29 @@
+{#
+/*@file
+*Available variables:
+*@see template_preprocess_block()
+@ingroup themeable
+#}
+
+<div class="content">
+  {% if (title) %} 
+    {{ title }}{% endif %} 
+  {% endif %} 
+
+  {% if (header) %} 
+    {{ header }}{% endif %} 
+  {% endif %} 
+
+  {% if (rows) %} 
+    {{ rows }}{% elseif (empty) %} 
+    {{ empty }}{% endif %} 
+  {% endif %} 
+
+  {% if (pager) %} 
+    {{ pager }}{% endif %} 
+  {% endif %} 
+
+  {% if (footer) %} 
+    {{ footer }}{% endif %} 
+  {% endif %} 
+</div>

@@ -1,0 +1,160 @@
+{#
+/*@file
+*Available variables:
+*@see template_preprocess_block()
+@ingroup themeable
+#}
+ {% set selected_bg_image = constant('NULL') %}
+
+ {% if (node.field_home_bg_image != constant('NULL')) %}
+ {% set bg_image_count = count(node.field_home_bg_image['und']) %}
+ {% set rand_index = rand(0, bg_image_count - 1) %}
+
+ {% if (node.field_home_bg_image['und'][rand_index] is defined) %}
+ {% set selected_bg_image = node.field_home_bg_image['und'][rand_index] %}
+ {% endif %}
+ {% endif %}
+
+<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet" integrity="sha256-MfvZlkHCEqatNoGiOXveE8FIwMzZg4W85qfrfIFBfYc= sha512-dTfge/zgoMYpP7QbHy4gWMEGsbsdZeCXz7irItjcC3sPUFtf0kuFbDz/ixG7ArTxmDjLXDmezHubeNikyKGVyQ==" crossorigin="anonymous">
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js" integrity="sha256-Sk3nkD6mLTMOF0EOpNtsIry+s1CsaqQC1rVLTAy+0yc= sha512-K1qjQ+NcF2TYO/eI3M6v8EiNYZfA95pQumfvcVrTHtwQVDG+aHRqLi/ETn2uB+1JqwYqVG3LIvdm9lj6imS/pQ==" crossorigin="anonymous"></script>
+<div id="main-banner" class="background-image"> <!-- PUT BACKGROUND HERE POSITION RELATIVE BACKGROUND COVER -->
+	<div class="container">
+    <div class="drop-arrow-decoration-blue">
+      <div class="blue-arrow-bg blue-arrow-bg-left"></div>
+      <img src="/sites/all/themes/fairmoney/images/fairmoney-icon-down-blue.png"/>
+      <div class="blue-arrow-bg blue-arrow-bg-right"></div>
+    </div>
+		<div class="row">
+			<div class="col-xs-12 col-sm-12 col-md-7 col-lg-7 cta-blue">
+				<div class="wrap">
+					<div class="row top-content">
+						<div class="col-xs-12">
+							<div class="content-wrap dotted-bottom">
+								<h1>{{ node.field_banner_title_1['und'][0]['value'] }}</h1> <!-- CMS CONTENT HERE -->
+								<small>{{ node.field_banner_description_1['und'][0]['value'] }}</small> <!-- CMS CONTENT HERE -->
+								<a id="apply" class="loan-btn" href="{{ node.field_banner_action_1_url['und'][0]['value'] }}">{{ node.field_banner_action_text_1['und'][0]['value'] }}</a> <!-- CMS CONTENT HERE -->
+							</div>
+						</div>
+					</div>
+					<div class="row bottom-content content-wrap">
+						<div class="col-xs-12">
+							<div class="content-wrap">
+								<h1>{{ node.field_banner_title_2['und'][0]['value'] }}</h1> <!-- CMS CONTENT HERE -->
+								<small>{{ node.field_banner_description_2['und'][0]['value'] }}</small> <!-- CMS CONTENT HERE -->
+								<a id="apply" class="loan-btn" href="{{ node.field_banner_action_2_url['und'][0]['value'] }}">{{ node.field_banner_action_text_2['und'][0]['value'] }}</a> <!-- CMS CONTENT HERE -->
+                				<small class="sub-action dotted-top">{{ node.field_sub_action_area['und'][0]['value'] }}</small> <!-- CMS CONTENT HERE -->
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<div id="pitch" class="background-gradient">
+	<div class="container">
+		<div class="row">
+			<div id="why-fair-money-pitch" class="col-xs-12 col-sm-12 col-md-6 col-lg-6 pitch-wrap">
+				<h1>{{ node.field_pitch_title['und'][0]['value'] }}</h1> <!-- CMS CONTENT HERE -->
+				<ul class="pitch-list">
+			        <li><img src="/sites/all/themes/fairmoney/images/tick.png" alt="" class="homepage-bullet">{{ node.field_pitch_item['und'][0]['value'] }}</li> <!-- CMS CONTENT HERE -->
+			        <li><img src="/sites/all/themes/fairmoney/images/tick.png" alt="" class="homepage-bullet">{{ node.field_pitch_item['und'][1]['value'] }}</li> <!-- CMS CONTENT HERE -->
+			        <li><img src="/sites/all/themes/fairmoney/images/tick.png" alt="" class="homepage-bullet">{{ node.field_pitch_item['und'][2]['value'] }}</li> <!-- CMS CONTENT HERE -->
+			        <li><img src="/sites/all/themes/fairmoney/images/tick.png" alt="" class="homepage-bullet">{{ node.field_pitch_item['und'][3]['value'] }}</li> <!-- CMS CONTENT HERE -->
+			      </ul>
+			</div>
+			<div id="what-our-clients-say" class="col-xs-12 col-sm-12 col-md-6 col-lg-6 pitch-wrap">
+				<h1>{{ node.field_quote_title['und'][0]['value'] }}</h1> <!-- CMS CONTENT HERE -->
+				<blockquote>
+					{{ node.field_quote_quote_text['und'][0]['value'] }} <!-- CMS CONTENT HERE -->
+					 <footer>{{ node.field_quote_author['und'][0]['value'] }}</footer> <!-- CMS CONTENT HERE -->
+				</blockquote>
+			</div>
+		</div>
+	</div>
+</div>
+<div id="sample-representative-loans" class="background-plain">
+  <div class="drop-arrow-decoration-white">
+    <div class="white-arrow-bg white-arrow-bg-left"></div>
+    <img src="/sites/all/themes/fairmoney/images/fairmoney-icon-down-white.png"/>
+    <div class="white-arrow-bg white-arrow-bg-right"></div>
+  </div>
+	<div class="container">
+		<div class="row">
+			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 srl-wrap">
+				<h1>{{ node.field_srl_title['und'][0]['value'] }}</h1>
+				<small>{{ node.field_srl_description['und'][0]['value'] }}</small>
+			</div>
+		</div>
+		<div class="row credit-wrap">
+			<div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 credit">
+				<h3 class="good-credit">Good Credit <i id="top-loan-gold-hover" class="fa fa-question-circle"></i></h3>
+				<small>{{ node.field_srl_good_credit['und'][0]['value'] }}</small>
+			</div>
+			<div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 credit">
+				<h3 class="poor-credit">Poor Credit <i id="top-loan-silver-hover" class="fa fa-question-circle"></i></h3>
+				<small>{{ node.field_srl_poor_credit['und'][0]['value'] }}</small>
+			</div>
+			<div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 credit">
+				<h3 class="bad-credit">Bad Credit <i id="top-loan-bronze-hover" class="fa fa-question-circle"></i></h3>
+				<small>{{ node.field_srl_bad_credit['und'][0]['value'] }}</small>
+			</div>
+			<div class="col-xs-12">
+				<p class="info">{{ node.field_srl_information['und'][0]['value'] }}</p>
+			</div>
+		</div>
+	</div>
+</div>
+<div id="help-and-info" class="background-gradient">
+	<div class="container">
+		<div class="row">
+			<div class="col-xs-12 col-sm-12 col-md-6 col-lg-4 help-and-info-wrap">
+				<h2 class="dotted-bottom">{{ node.field_hag_title['und'][0]['value'] }}</h2>
+				<ul class="pitch-list">
+		        	<li class="dotted-bottom"><a href="{{ node.field_hag_link_1_url['und'][0]['value'] }}"><img src="/sites/all/themes/fairmoney/images/icon-fairmoney-lock.png" alt="" class="homepage-bullet">{{ node.field_hag_link_1_title['und'][0]['value'] }}</a></li> <!-- CMS CONTENT HERE -->
+		        	<li class="dotted-bottom"><a href="{{ node.field_hag_link_2_url['und'][0]['value'] }}"><img src="/sites/all/themes/fairmoney/images/icon-fairmoney-unlock.png" alt="" class="homepage-bullet">{{ node.field_hag_link_2_title['und'][0]['value'] }}</a></li> <!-- CMS CONTENT HERE -->
+		        	<li class="dotted-bottom"><a href="{{ node.field_hag_link_3_url['und'][0]['value'] }}"><img src="/sites/all/themes/fairmoney/images/icon-fairmoney-info.png" alt="" class="homepage-bullet">{{ node.field_hag_link_3_title['und'][0]['value'] }}</a></li> <!-- CMS CONTENT HERE -->
+				</ul>
+			</div>
+			<div id="fairmoney-blog" class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-lg-offset-2 help-and-info-wrap">
+				<h2 class="dotted-bottom">{{ node.field_blog_title['und'][0]['value'] }}</h2>
+		  		
+ {% set block = module_invoke('views', 'block_view', 'most_recent_front_page-block') %}
+ {{ render(block['content']) }}
+ 
+          <div class="col-xs-12 view-all">
+          <a href="blog">{{ node.field_blog_view_more_text['und'][0]['value'] }}</a>
+          </div>
+			</div>
+		</div>
+	</div>
+</div>
+<div id="staging">
+	<div id="gold-tooltip-new" class="tooltip" style="opacity:1; font-size: 22px;">
+	    <h4>{{ node.field_sample_tooltip_title_1['und'][0]['value'] }}</h4>
+	    <p>{{ node.field_sample_tooltip_info_1['und'][0]['value'] }}</p>
+	    <img src="{{ base_path() ~ path_to_theme() }}/images/gold-small.png" alt="" class="small-badge" />
+	</div>
+
+  	<div id="silver-tooltip-new" class="tooltip" style="opacity:1; font-size: 22px;">
+	    <h4>{{ node.field_sample_tooltip_title_2['und'][0]['value'] }}</h4>
+    	<p>{{ node.field_sample_tooltip_info_2['und'][0]['value'] }}</p>
+    	<img src="{{ base_path() ~ path_to_theme() }}/images/silver-small.png" alt="" class="small-badge" />
+	</div>
+
+  	<div id="bronze-tooltip-new" class="tooltip" style="opacity:1; font-size: 22px;">
+    	<h4>{{ node.field_sample_tooltip_title_3['und'][0]['value'] }}</h4>
+    	<p>{{ node.field_sample_tooltip_info_3['und'][0]['value'] }}</p>
+    	<img src="{{ base_path() ~ path_to_theme() }}/images/bronze-small.png" alt="" class="small-badge" />
+  	</div>
+
+	<div id="credit-score-tooltip" class="tooltip">
+	    <h4>{{ node.field_box_a_tooltip_title_1['und'][0]['value'] }}</h4>
+	    <p>{{ node.field_box_a_tooltip_info_1['und'][0]['value'] }}</p>
+  	</div>
+
+  	<div id="unsure-profile-tooltip" class="tooltip">
+    	<h4>{{ node.field_box_b_tooltip_title_1['und'][0]['value'] }}</h4>
+    	<p>{{ node.field_box_b_tooltip_info_1['und'][0]['value'] }}</p>
+  	</div>
+</div>

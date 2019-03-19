@@ -1,0 +1,20 @@
+{#
+/*@file
+*Available variables:
+*@see template_preprocess_block()
+@ingroup themeable
+#}
+
+{% if (drupal_is_front_page()) %}
+
+<div id="logo-container" class="cf">
+  <a href="{{ base_path() }}"><img src="{{ base_path() ~ drupal_get_path('theme', 'fairmoney') }}/images/logo-wo-strapline.jpg" alt="FairMoney" class="logo" /></a>
+</div>
+{% else %} 
+
+
+<div id="logo-container" class="cf">
+  <a href="{{ base_path() }}{% endif %}"><img src="{{ base_path() ~ drupal_get_path('theme', 'fairmoney') }}/images/logo-r.gif" alt="FairMoney" class="logo" /></a>
+</div>
+
+

@@ -1,0 +1,25 @@
+{#
+/*@file
+*Available variables:
+*@see template_preprocess_block()
+@ingroup themeable
+#}
+<div class="links">
+  <a class="fair-money-lender" href="https://fairmoney.com/about-us/approved-lenders" target="_blank"><img alt="" src="/sites/all/themes/fairmoney/images/logo-approved.jpg" /><br>All our approved lenders display this logo</a>
+  {% set links = menu_navigation_links('menu-footer-menu') %} 
+  {{ fairmoney_footer_menu({('links' : links, 'attributes' : constant('NULL')) }
+    <div class="social-footer">
+      <div class="social-item twitter">
+        <a href="https://twitter.com/UKFairMoney" target="_blank"><i class="fa fa-twitter-square"></i></a>
+      </div>
+      <div class="social-item facebook">
+        <a href="https://www.facebook.com/FairMoneyPage" target="_blank"><i class="fa fa-facebook-square"></i></a>
+      </div>
+      <div class="social-item instragram">
+        <a href="https://instagram.com/ukfairmoney" target="_blank"><i class="fa fa-instagram"></i></a>
+      </div>
+      <div class="social-item pinterest">
+        <a href="https://www.pinterest.com/fairmoney" target="_blank"><i class="fa fa-pinterest-square"></i></a>
+      </div>
+    </div>
+</div>

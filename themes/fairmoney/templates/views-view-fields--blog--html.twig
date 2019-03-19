@@ -1,0 +1,15 @@
+{#
+/*@file
+*Available variables:
+*@see template_preprocess_block()
+@ingroup themeable
+#}
+
+
+ <div id="blog-item-{{ fields['nid'].content }}" class="blog-item" data-id="{{ fields['nid'].content }}">
+  <h3>
+    <a href="{{ fields['path'].content }}">{{ fields['title'].content }}</a>
+  </h3>
+  <p>Posted on: {{ fields['created'].content }}</p>
+  <p>{{ fields['body'].content }}</p>
+</div>

@@ -1,0 +1,279 @@
+{#
+/*@file
+*Available variables:
+*@see template_preprocess_block()
+@ingroup themeable
+#}
+<div class="results-table cf1">
+  <p style="margin-bottom: 10px;">The following rates are based on the lenders lowest rates available, to see what rates would be offered to you, why not use our Smart-Search Technology?</p>
+   
+ {{ '{#' }} 
+ TD: 16:29 0/06/2015
+ Added this to only show encased html when Secured Loan is selected, $view_var_loan_type passed through loan-search-result from fairmoney.pages.inc file, method fairmoney_loans_search_result_ajax()
+ Only noting this because it took me a while to find it, not going through that again. {{ '#}' }}
+ {{ '{%' }} if (view_var_loan_type != 'Secured Loan') {{ '%}' }}
+ 
+  <a href="https://fairmoney.com/loans?lender_status=All&loan_amount=10000&loan_period=60&loan_type=Secured%20Loan&action=Search" class="cta secured-loans-cta">
+  If you are a homeowner a Secured Loan may be a better option for you. Click here to see our Secured Loan table <i class="fa fa-angle-right"></i>
+  </a>
+  <!-- <p>If you are a homeowner a Secured Loan may be a better option for you. Click here to see our Secured Loan table <i class="fa fa-angle-right"></i></p> -->
+   {{ '{%' }} endif {{ '%}' }}
+ 
+
+  {{ '{%' }} if (node.field_header_apr_i != constant('NULL')) {{ '%}' }} 
+    <div id="apr-tooltip" class="tooltip">
+      {{ '{{' }} node.field_header_apr_i['und'][0]['value'] {{ '}}' }}{{ '{%' }} endif {{ '%}' }} 
+    </div>
+  {{ '{%' }} endif {{ '%}' }} 
+  <ul class="table-head">
+    <li style="width: 15.6%">Provider</li> <!-- TD: 13:20 03/06/2015 -->
+    <li style="width: 9.6%">APR / APRC 
+      {{ '{%' }} if (node.field_header_apr_i != constant('NULL')) {{ '%}' }} 
+        <i id="apr-tooltip-hover" class="fa fa-question-circle"></i>
+      {{ '{%' }} endif {{ '%}' }} 
+    </li> <!-- TD: 13:20 03/06/2015 -->
+    <li>Monthly repayment</li>
+    <li>Amount <br />& period</li>
+    <li>Total <br />repayable</li>
+    <li>Loan<br />type</li>
+  </ul>
+
+  {{ '{%' }} set item_number = start_number {{ '%}' }}{{ '{%' }} endif {{ '%}' }} 
+  {{ '{%' }} for item in items {{ '%}' }} 
+    {{ '{%' }} if (item['result_style'] == 'F' or item['result_style'] == 'U') {{ '%}' }} 
+      
+
+      <div class="loan-item cf" data-index="{{ '{{' }} item_number {{ '}}' }}{{ '{%' }} endif {{ '%}' }}{{ '{%' }} endfor {{ '%}' }}">
+
+        <div id="item-metadata-{{ '{{' }} item_number {{ '}}' }}" style="display: none;">
+          <div data-key="lender-id" data-value="{{ '{{' }} item['lender_id'] {{ '}}' }}"></div>
+          <div data-key="lender-name" data-value="{{ '{{' }} item['lender_name'] {{ '}}' }}"></div>
+          <div data-key="lender-option-id" data-value="{{ '{{' }} item['lender_option_id'] {{ '}}' }}"></div>
+          <div data-key="finance-option-id" data-value="{{ '{{' }} item['finance_option_id'] {{ '}}' }}"></div>
+          <div data-key="loan-amount" data-value="{{ '{{' }} item['loan_amount'] {{ '}}' }}"></div>
+          <div data-key="min-loan-amount" data-value="{{ '{{' }} item['min_loan_amount'] {{ '}}' }}"></div>
+          <div data-key="max-loan-amount" data-value="{{ '{{' }} item['max_loan_amount'] {{ '}}' }}"></div>
+          <div data-key="loan-period" data-value="{{ '{{' }} item['loan_period'] {{ '}}' }}"></div>
+          <div data-key="min-loan-period" data-value="{{ '{{' }} item['min_loan_period'] {{ '}}' }}"></div>
+          <div data-key="max-loan-period" data-value="{{ '{{' }} item['max_loan_period'] {{ '}}' }}"></div>
+          <div data-key="loan-type" data-value="{{ '{{' }} item['loan_type'] {{ '}}' }}"></div>
+          <div data-key="fulfilling-broker" data-value="{{ '{{' }} item['fulfilling_broker'] {{ '}}' }}"></div>
+          <div data-key="fulfilment-code" data-value="{{ '{{' }} htmlentities(item['fulfilment_code']) {{ '}}' }}"></div>
+          <div data-key="fulfilment-description" data-value="{{ '{{' }} htmlentities(item['fulfilment_description']) {{ '}}' }}"></div>
+          <div data-key="fulfilment-apply-prompt" data-value="{{ '{{' }} htmlentities(item['fulfilment_apply_prompt']) {{ '}}' }}"></div>
+          <div data-key="fulfilment-help-message" data-value="{{ '{{' }} htmlentities(item['fulfilment_help_message']) {{ '}}' }}"></div>
+        </div>
+
+        <ul class="loan-details cf">
+          <li class="loan-detail"> <!-- TD: 13:20 03/06/2015 -->
+            <img src="{{ '{{' }} base_path() ~ path_to_theme() {{ '}}' }}/logos/{{ '{{' }} lender_logos[item['lender_id']] {{ '}}' }}" />
+            <strong>{{ '{{' }} item['lender_name'] {{ '}}' }}</strong>
+          </li>
+          <li class="loan-detail"> <!-- TD: 13:20 03/06/2015 -->
+            <h2>APR</h2>
+            <p>{{ '{{' }} number_format(item['customer_APR'], 1, '.', ',') {{ '}}' }}%</p>
+          </li>
+          <li class="loan-detail">
+            <h2>Monthly<br />repayment</h2>
+            <p>&#163;{{ '{{' }} number_format(item['repayment'], 2, '.', ',') {{ '}}' }}</p>
+          </li>
+          <li class="loan-detail">
+            <h2>Amount &amp;<br />period</h2>
+            <p>
+              &#163;{{ '{{' }} number_format(item['loan_amount'], 2, '.', ',') {{ '}}' }}<br />
+              <small>{{ '{{' }} item['loan_period'] {{ '}}' }} months</small>
+            </p>
+          </li>
+          <li class="loan-detail">
+            <h2>Total<br />repayable</h2>
+            <p>&#163;{{ '{{' }} number_format(item['total_repayable'], 2, '.', ',') {{ '}}' }}</p>
+          </li>
+          <li class="loan-detail">
+            <h2>Loan type</h2>
+            <p>
+              {{ '{{' }} ucfirst(item['loan_type']) {{ '}}' }} 
+              <i id="loan-type-hover-{{ '{{' }} item_number {{ '}}' }}" class="loan-type-hover fa fa-question-circle" data-index="{{ '{{' }} item_number {{ '}}' }}"></i>
+            </p>
+            <div id="tooltip-loan-type-{{ '{{' }} item_number {{ '}}' }}" class="tooltip" data-index="{{ '{{' }} item_number {{ '}}' }}">
+              {{ '{%' }} if (item['loan_type'] == 'secured loan') {{ '%}' }} 
+                {{ '{%' }} if (node.field_loan_type_tooltip_title_1 != constant('NULL')) {{ '%}' }} 
+                  <h4>{{ '{{' }} node.field_loan_type_tooltip_title_1['und'][0]['value'] {{ '}}' }}{{ '{%' }} endif {{ '%}' }}{{ '{%' }} endif {{ '%}' }}</h4>
+                {{ '{%' }} endif {{ '%}' }} 
+                {{ '{%' }} if (node.field_loan_type_tooltip_info_1 != constant('NULL')) {{ '%}' }} 
+                  {{ '{{' }} node.field_loan_type_tooltip_info_1['und'][0]['value'] {{ '}}' }}{{ '{%' }} endif {{ '%}' }} 
+                {{ '{%' }} elseif (item['loan_type'] == 'guarantor loan') {{ '%}' }} 
+                {{ '{%' }} if (node.field_loan_type_tooltip_title_3 != constant('NULL')) {{ '%}' }} 
+                  <h4>{{ '{{' }} node.field_loan_type_tooltip_title_3['und'][0]['value'] {{ '}}' }}{{ '{%' }} endif {{ '%}' }}{{ '{%' }} endif {{ '%}' }}</h4>
+                {{ '{%' }} endif {{ '%}' }} 
+                {{ '{%' }} if (node.field_loan_type_tooltip_info_3 != constant('NULL')) {{ '%}' }} 
+                  {{ '{{' }} node.field_loan_type_tooltip_info_3['und'][0]['value'] {{ '}}' }}{{ '{%' }} endif {{ '%}' }} 
+                {{ '{%' }} elseif (item['loan_type'] == 'logbook loan') {{ '%}' }} 
+                {{ '{%' }} if (node.field_loan_type_tooltip_title_4 != constant('NULL')) {{ '%}' }} 
+                  <h4>{{ '{{' }} node.field_loan_type_tooltip_title_4['und'][0]['value'] {{ '}}' }}{{ '{%' }} endif {{ '%}' }}{{ '{%' }} endif {{ '%}' }}</h4>
+                {{ '{%' }} endif {{ '%}' }} 
+                {{ '{%' }} if (node.field_loan_type_tooltip_info_4 != constant('NULL')) {{ '%}' }} 
+                  {{ '{{' }} node.field_loan_type_tooltip_info_4['und'][0]['value'] {{ '}}' }}{{ '{%' }} endif {{ '%}' }} 
+                {{ '{%' }} elseif (item['loan_type'] == 'payday loan') {{ '%}' }} 
+                 {{ '{%' }} if (node.field_loan_type_tooltip_title_5 != constant('NULL')) {{ '%}' }} 
+                  <h4>{{ '{{' }} node.field_loan_type_tooltip_title_5['und'][0]['value'] {{ '}}' }}{{ '{%' }} endif {{ '%}' }}{{ '{%' }} endif {{ '%}' }}</h4>
+                {{ '{%' }} endif {{ '%}' }} 
+                {{ '{%' }} if (node.field_loan_type_tooltip_info_5 != constant('NULL')) {{ '%}' }} 
+                  {{ '{{' }} node.field_loan_type_tooltip_info_5['und'][0]['value'] {{ '}}' }}{{ '{%' }} endif {{ '%}' }} 
+                {{ '{%' }} elseif (item['loan_type'] == 'car purchase finance') {{ '%}' }} 
+                 {{ '{%' }} if (node.field_loan_type_tooltip_title_6 != constant('NULL')) {{ '%}' }} 
+                  <h4>{{ '{{' }} node.field_loan_type_tooltip_title_6['und'][0]['value'] {{ '}}' }}{{ '{%' }} endif {{ '%}' }}{{ '{%' }} endif {{ '%}' }}</h4>
+                {{ '{%' }} endif {{ '%}' }} 
+                {{ '{%' }} if (node.field_loan_type_tooltip_info_6 != constant('NULL')) {{ '%}' }} 
+                  {{ '{{' }} node.field_loan_type_tooltip_info_6['und'][0]['value'] {{ '}}' }}{{ '{%' }} endif {{ '%}' }} 
+                {{ '{%' }} elseif (item['loan_type'] == 'peer to peer loan') {{ '%}' }} 
+                 {{ '{%' }} if (node.field_loan_type_tooltip_title_7 != constant('NULL')) {{ '%}' }} 
+                  <h4>{{ '{{' }} node.field_loan_type_tooltip_title_7['und'][0]['value'] {{ '}}' }}{{ '{%' }} endif {{ '%}' }}{{ '{%' }} endif {{ '%}' }}</h4>
+                {{ '{%' }} endif {{ '%}' }} 
+                {{ '{%' }} if (node.field_loan_type_tooltip_info_7 != constant('NULL')) {{ '%}' }} 
+                  {{ '{{' }} node.field_loan_type_tooltip_info_7['und'][0]['value'] {{ '}}' }}{{ '{%' }} endif {{ '%}' }} 
+                {{ '{%' }} else {{ '%}' }} 
+                {{ '{%' }} if (node.field_loan_type_tooltip_title_2 != constant('NULL')) {{ '%}' }} 
+                  <h4>{{ '{{' }} node.field_loan_type_tooltip_title_2['und'][0]['value'] {{ '}}' }}{{ '{%' }} endif {{ '%}' }}{{ '{%' }} endif {{ '%}' }}</h4>
+                {{ '{%' }} endif {{ '%}' }} 
+                {{ '{%' }} if (node.field_loan_type_tooltip_info_2 != constant('NULL')) {{ '%}' }} 
+                  {{ '{{' }} node.field_loan_type_tooltip_info_2['und'][0]['value'] {{ '}}' }}{{ '{%' }} endif {{ '%}' }} 
+                {{ '{%' }} endif {{ '%}' }} 
+              {{ '{%' }} endif {{ '%}' }} 
+            </div>
+          </li>
+        </ul>
+
+        
+ {{ '{%' }} set applyMethod = '#apply' {{ '%}' }}
+ {{ '{%' }} set forceSmartSearch = '' {{ '%}' }}
+ {{ '{%' }} set applyButtonTarget = '_self' {{ '%}' }}
+ 
+ {{ '{%' }} if (item['fulfilment_description'] != 'URL' and item['fulfilment_description'] != 'Instant lender decision') {{ '%}' }}
+ {{ '{%' }} set applyMethod = base_path()~'loans/smart-search' {{ '%}' }}{{ '{%' }} endif {{ '%}' }}
+ {{ '{%' }} set forceSmartSearch = ' force-smart-search' {{ '%}' }}
+ {{ '{%' }} set applyButtonTarget = '_blank' {{ '%}' }}
+ {{ '{%' }} endif {{ '%}' }}
+ 
+
+        <ul class="loan-portal cf">
+          <li>
+            <a id="apply-{{ '{{' }} item_number {{ '}}' }}" target="{{ '{{' }} applyButtonTarget {{ '}}' }}" class="apply-btn{{ '{{' }} forceSmartSearch {{ '}}' }}" href="{{ '{{' }} applyMethod {{ '}}' }}" data-index="{{ '{{' }} item_number {{ '}}' }}">Apply <i class="fa fa-angle-right"></i></a>
+          </li>
+          <li>
+            <a id="more-details-{{ '{{' }} item_number {{ '}}' }}" class="more-details-lnk" href="#more-details" data-index="{{ '{{' }} item_number {{ '}}' }}" data-action="more">More&nbsp;details <i class="fa fa-angle-right"></i></a>
+          </li>
+        </ul>
+
+        <ul id="loan-more-details-{{ '{{' }} item_number {{ '}}' }}" class="loan-more-details cf" data-index="{{ '{{' }} item_number {{ '}}' }}">
+          <li>
+            <div>
+              <h3>Qualifying criteria </h3>
+              <table>
+                <tr>
+                  <td width="200"><strong>Minimum loan amount</strong></td>
+                  <td>&pound;{{ '{{' }} number_format(item['min_loan_amount'], 2, '.', ',') {{ '}}' }}</td>
+                </tr>
+                <tr>
+                  <td><strong>Maximum loan amount</strong></td>
+                  <td>&pound;{{ '{{' }} number_format(item['max_loan_amount'], 2, '.', ',') {{ '}}' }}</td>
+                </tr>
+                <tr>
+                  <td><strong>Minimum loan period</strong></td>
+                  <td>{{ '{{' }} format_plural(item['min_loan_period'] / 12, '@count year', '@count years') {{ '}}' }}</td>
+                </tr>
+                <tr>
+                  <td><strong>Maximum loan period</strong></td>
+                  <td>{{ '{{' }} format_plural(item['max_loan_period'] / 12, '@count year', '@count years') {{ '}}' }}</td>
+                </tr>
+                {{ '{%' }} for terms_and_condition in item['terms_and_conditions'] {{ '%}' }} 
+                  {{ '{%' }} if (strtolower(terms_and_condition['title']) == 'customer type' or strtolower(terms_and_condition['title']) == 'credit info') {{ '%}' }} 
+                    <tr>
+                      <td>
+                        <strong>{{ '{{' }} htmlentities(terms_and_condition['title']) {{ '}}' }}{{ '{%' }} endif {{ '%}' }}{{ '{%' }} endfor {{ '%}' }}</strong>
+                      </td>
+                      <td>
+                        {{ '{%' }} for description in terms_and_condition['description'] {{ '%}' }} 
+                          {{ '{{' }} description {{ '}}' }}{{ '{%' }} endfor {{ '%}' }}<br />
+                        {{ '{%' }} endfor {{ '%}' }} 
+                      </td>
+                    </tr>
+                  {{ '{%' }} endif {{ '%}' }} 
+                {{ '{%' }} endfor {{ '%}' }} 
+              </table>
+              <h3>Terms &amp; conditions</h3>
+              <table>
+                {{ '{%' }} for terms_and_condition in item['terms_and_conditions'] {{ '%}' }} 
+                  {{ '{%' }} if (strtolower(terms_and_condition['title']) != 'customer type' and strtolower(terms_and_condition['title']) != 'credit info' and strtolower(terms_and_condition['title']) != 'representative or typical') {{ '%}' }} 
+                    <tr>
+                      <td width="200">
+                        <strong>{{ '{{' }} htmlentities(terms_and_condition['title']) {{ '}}' }}{{ '{%' }} endif {{ '%}' }}{{ '{%' }} endfor {{ '%}' }}</strong><br />
+                      </td>
+                      <td>
+                        {{ '{%' }} for description in terms_and_condition['description'] {{ '%}' }} 
+                          {{ '{{' }} description {{ '}}' }}{{ '{%' }} endfor {{ '%}' }}<br />
+                        {{ '{%' }} endfor {{ '%}' }} 
+                      </td>
+                    </tr>
+                  {{ '{%' }} endif {{ '%}' }} 
+                {{ '{%' }} endfor {{ '%}' }} 
+              </table>
+            </div>
+          </li>
+        </ul>
+
+        <ul class="loan-example">
+          <li>
+            <p>
+               {{ '{%' }} if (_SERVER['REMOTE_ADDR'] == '62.7.85.50') {{ '%}' }}
+ {{ '{#' }} print_r($item); {{ '#}' }}
+ {{ '{%' }} endif {{ '%}' }}
+ {{ '{%' }} set fee = item['admin_fee'] + item['broker_fee'] {{ '%}' }}
+ {{ '{%' }} if (item['loan_type'] != 'secured loan') {{ '%}' }}
+ 
+ 
+ 
+                <strong>Representative Example</strong>: 
+                Assumed borrowing of 
+                &#163;{{ '{{' }} number_format(item['loan_amount'], 2, '.', ',') {{ '}}' }} <!-- £10,000.00 -->
+                over {{ '{{' }} item['loan_period'] {{ '}}' }} months <!-- over 60 months -->
+                at an annual rate of <!-- at an annual rate of -->
+                {{ '{{' }} number_format(item['driving_rate'], 1, '.', ',') {{ '}}' }}% <!-- 10.9% -->
+                and fees of &#163;{{ '{{' }} number_format(fee, 2, '.', ',') {{ '}}' }} 
+                would result in a representative rate of 
+                {{ '{{' }} number_format(item['comp_Customer_APR'], 1, '.', ',') {{ '}}' }}% APR (Fixed), 
+                {{ '{{' }} item['loan_period'] {{ '}}' }} monthly repayments of 
+                &#163;{{ '{{' }} number_format(item['repayment'], 2, '.', ',') {{ '}}' }}, 
+                total amount repayable is 
+                &#163;{{ '{{' }} number_format(item['total_repayable'], 2, '.', ',') {{ '}}' }}. 
+                Credit available subject to status.
+               {{ '{%' }} else {{ '%}' }} 
+ 
+                <strong>Homeowner loan</strong>: 
+                Assumed borrowing of 
+                &#163;{{ '{{' }} number_format(item['loan_amount'], 2, '.', ',') {{ '}}' }} <!-- £10,000.00 -->
+                over {{ '{{' }} item['loan_period'] {{ '}}' }} months <!-- over 60 months -->
+                at an annual rate of <!-- at an annual rate of -->
+                {{ '{{' }} number_format(item['driving_rate'], 1, '.', ',') {{ '}}' }}%<!-- 10.9% -->
+                {{ '{%' }} if (fee > 0) {{ '%}' }} and fees of &#163;{{ '{{' }} number_format(fee, 2, '.', ',') {{ '}}' }} {{ '{%' }} else {{ '%}' }} 
+ 
+                . There are no additional fees of any kind added to this product. This 
+                 {{ '{%' }} endif {{ '%}' }} 
+                would result in a APRC of 
+                {{ '{{' }} number_format(item['comp_Customer_APR'], 1, '.', ',') {{ '}}' }}% ({{ '{{' }} ucfirst(item['typical_APR_type']) {{ '}}' }}), 
+                {{ '{{' }} item['loan_period'] {{ '}}' }} monthly repayments of 
+                &#163;{{ '{{' }} number_format(item['repayment'], 2, '.', ',') {{ '}}' }}, 
+                total amount repayable is 
+                &#163;{{ '{{' }} number_format(item['total_repayable'], 2, '.', ',') {{ '}}' }}. 
+                Credit available subject to status.
+               {{ '{%' }} endif {{ '%}' }}
+ 
+            </p>
+          </li>
+        </ul>
+
+      </div>
+
+    {{ '{%' }} endif {{ '%}' }} 
+    {{ '{%' }} set item_number = item_number + 1 {{ '%}' }} 
+  {{ '{%' }} endfor {{ '%}' }} 
+</div>
