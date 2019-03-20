@@ -10,7 +10,7 @@
  
   <div id="header" class="c_header">
     <div class="container cf">
-      {{ render_var(page['header']) }} 
+      {{ page.header }} 
     </div>
   </div>
 {% else %} 
@@ -18,10 +18,10 @@
  
   <div id="header">
     <div class="inner cf">
-      {{ render_var(page['header']) }}{% endif %} 
+    {{ page.header }} 
     </div>
   </div>
-  
+  {% endif %} 
  
   {% set sidebar = render_var(page['sidebar']) %} 
   <div id="main-container" class="cf{% if (sidebar != '') %} {{ ' has-sidebar' }}{% endif %} c_main">
@@ -80,7 +80,7 @@
                     <a style="margin-top: 20px; display:block; margin-bottom:20px;" href="http://www.campaignforfairfinance.org/" target="_blank"> <img src="https://fairmoney.com/sites/default/files/CFF%20BLUE.gif" width="150"></a>
                     </div>
                     <div class="copyright">
-                    <p>©FairMoney Comparison Limited {{ date('Y') }}  Registered office Regina House, 124 Finchley Road, London NW3 5JS</p>
+                    <p>©FairMoney Comparison Limited {{ now.year }}  Registered office Regina House, 124 Finchley Road, London NW3 5JS</p>
                 </div>
             </div>
 

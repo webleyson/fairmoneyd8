@@ -436,6 +436,7 @@ class TwigExtension extends \Twig_Extension {
       return NULL;
     }
 
+
     $this->bubbleArgMetadata($arg);
 
     // Keep Twig_Markup objects intact to support autoescaping.
@@ -449,6 +450,7 @@ class TwigExtension extends \Twig_Extension {
       $return = (string) $arg;
     }
     elseif (is_object($arg)) {
+     
       if ($arg instanceof RenderableInterface) {
         $arg = $arg->toRenderable();
       }

@@ -222,13 +222,15 @@ function fairmoney_menu_local_task($variables) {
     // If the link does not contain HTML already, check_plain() it now.
     // After we set 'html'=TRUE the link will not be sanitized by l().
     if (empty($link['localized_options']['html'])) {
-      $link['title'] = check_plain($link['title']);
+    
     }
     $link['localized_options']['html'] = TRUE;
     $link_text = t('!local-task-title', array('!local-task-title' => $link['title']));
   }
 
-  return '<li' . (!empty($variables['element']['#active']) ? ' class="active"' : '') . '>' . l($link_text, $link['href'], $link['localized_options']) . "</li>\n";
+
+  echo "<li><a href=".$link['href'].">".$link_text."</a></li>";
+  // return '<li' . (!empty($variables['element']['#active']) ? ' class="active"' : '') . '>' . l($c, $link['href'], $link['localized_options']) . "</li>\n";
 }
 
 function fairmoney_pager($variables) {
